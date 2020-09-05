@@ -18,7 +18,7 @@ class Home extends React.Component {
         {/* <FeaturesSplit bottomDivider imageFill /> */}
         <HowItWorks/>
         {/* <Pricing pricingSwitcher hasBgColor className="illustration-section-07" /> */}
-        <Testimonial className="illustration-section-05" />
+        {/* <Testimonial className="illustration-section-05" /> */}
         <Cta topDivider bottomDivider split className="reveal-from-top" />
       </React.Fragment>
     );

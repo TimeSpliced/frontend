@@ -5,8 +5,9 @@ $font--import:      'IBM+Plex+Sans:600|Heebo:400,500,700';
 
 // The font set
 $font--family: (
-	heading: 	'"IBM Plex Sans", sans-serif',
-	base:		'"Heebo", sans-serif',
+	heading: 	'"Montserrat", sans-serif',
+	base:		'"Cardo", sans-serif',
+	sans_serif : '"Montserrat", sans-serif',
 	code: 		'Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace',
 	pre: 		'"Courier 10 Pitch", Courier, monospace'
 );

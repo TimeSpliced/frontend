@@ -56,12 +56,12 @@ class Cta extends React.Component {
           >
             <div className="cta-slogan">
               <h3 className="m-0">
-                Nisi porta lorem mollis aliquam ut.
+                Join the saving revolution now.
               </h3>
             </div>
             <div className="cta-action">
               <Button tag="a" color="primary" wideMobile href="#">
-                Pricing and plans
+                Start saving
               </Button>
             </div>
           </div>

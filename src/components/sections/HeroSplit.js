@@ -77,7 +77,7 @@ class HeroSplit extends React.Component {
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
                     <Button tag="a" color="primary" href="https://cruip.com/" wideMobile>
-                      Pricing and plans
+                      Start saving
                     </Button>
                   </div>
                 </div>
