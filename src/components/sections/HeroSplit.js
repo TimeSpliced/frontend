@@ -70,7 +70,7 @@ class HeroSplit extends React.Component {
               <div className="split-item" style={inlineStyle()}>
                 <div className="hero-content split-item-content center-content-mobile">
                   <h1 className="mt-0 mb-16 reveal-from-top" data-reveal-delay="150">
-                    Get Hooked on saving
+                    Get Hooked on Saving
                   </h1>
                   <p className="mt-0 mb-32 reveal-from-top" data-reveal-delay="300">
                   Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns.
