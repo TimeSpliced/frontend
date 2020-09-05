@@ -6,6 +6,7 @@ import FeaturesTiles from '../components/sections/FeaturesTiles';
 import Pricing from '../components/sections/Pricing';
 import Testimonial from '../components/sections/Testimonial';
 import Cta from '../components/sections/Cta';
+import HowItWorks from '../components/sections/HowItWorks';
 
 class Home extends React.Component {
   render() {
@@ -15,7 +16,8 @@ class Home extends React.Component {
         <Clients topDivider bottomDivider />
         <FeaturesTiles />
         {/* <FeaturesSplit bottomDivider imageFill /> */}
-        <Pricing pricingSwitcher hasBgColor className="illustration-section-07" />
+        <HowItWorks/>
+        {/* <Pricing pricingSwitcher hasBgColor className="illustration-section-07" /> */}
         <Testimonial className="illustration-section-05" />
         <Cta topDivider bottomDivider split className="reveal-from-top" />
       </React.Fragment>
