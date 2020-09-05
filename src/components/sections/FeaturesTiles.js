@@ -49,8 +49,8 @@ class FeaturesTiles extends React.Component {
     );
 
     const sectionHeader = {
-      title: 'Optimized for fast answers',
-      paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      title: 'No more boring saving.',
+      paragraph: "Our groundbreaking 'savers take it all' mechanism, gives you the ultimate push to save. The opportunity to get higher interest rates, without risking your principal. If you are motivated enough to make all deposits, you will earn more than you would by saving by yourself."
     };
 
     return (
@@ -70,18 +70,18 @@ class FeaturesTiles extends React.Component {
                   <div className="features-tiles-item-header">
                     <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item">
                       <Image
-                        src={require('./../../assets/images/feature-tile-icon-01.svg')}
-                        alt="Features tile icon 01"
+                        src={require('./../../assets/images/synchronized-swimming.svg')}
+                        alt="Pool icon"
                         width={72}
                         height={72} />
                     </div>
                   </div>
                   <div className="features-tiles-item-content">
                     <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="100">
-                      High-Quality Service
+                    Join our saving pool
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
+                      Dive in and join our saving pool. Once your are motivated to save. No more waiting for the right time to start!
                     </p>
                   </div>
                 </div>
@@ -92,7 +92,7 @@ class FeaturesTiles extends React.Component {
                   <div className="features-tiles-item-header">
                     <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="100">
                       <Image
-                        src={require('./../../assets/images/feature-tile-icon-02.svg')}
+                        src={require('./../../assets/images/money.svg')}
                         alt="Features tile icon 02"
                         width={72}
                         height={72} />
@@ -100,10 +100,10 @@ class FeaturesTiles extends React.Component {
                   </div>
                   <div className="features-tiles-item-content">
                     <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      High-Quality Service
+                     Make regular deposits
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                      A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
+                     Add to your savings weekly. Feel proud as your balance grows. You are free to remove your principle at any point.
                     </p>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ class FeaturesTiles extends React.Component {
                   <div className="features-tiles-item-header">
                     <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
                       <Image
-                        src={require('./../../assets/images/feature-tile-icon-03.svg')}
+                        src={require('./../../assets/images/celebrate.svg')}
                         alt="Features tile icon 03"
                         width={72}
                         height={72} />
@@ -122,15 +122,15 @@ class FeaturesTiles extends React.Component {
                   </div>
                   <div className="features-tiles-item-content">
                     <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                      High-Quality Service
+                       Get rewarded
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="400">
-                      A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
+                    Everyone gets their principle back, but the savvy savers who made every payment, split the interest. Hit your goals to get higher interest.
                     </p>
                   </div>
                 </div>
               </div>
-
+{/* 
               <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="features-tiles-item-header">
@@ -151,9 +151,9 @@ class FeaturesTiles extends React.Component {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="tiles-item">
+              {/* <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="features-tiles-item-header">
                     <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="100">
@@ -173,9 +173,9 @@ class FeaturesTiles extends React.Component {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="tiles-item">
+              {/* <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="features-tiles-item-header">
                     <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
@@ -195,7 +195,7 @@ class FeaturesTiles extends React.Component {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
             </div>
           </div>

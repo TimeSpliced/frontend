@@ -84,8 +84,8 @@ class FeaturesSplit extends React.Component {
                 </div>
                 <div
                   className={classNames(
-                    "split-item-image center-content-mobile illustration-element-01",
-                    imageFill && "split-item-image-fill"
+                    "split-item-image center-content-mobile ",
+                    imageFill && "split-item-image-fill bug-medium-img"
                   )}
                 >
                   {/* <Image
@@ -115,8 +115,8 @@ class FeaturesSplit extends React.Component {
                 </div>
                 <div
                   className={classNames(
-                    "split-item-image center-content-mobile illustration-element-02",
-                    imageFill && "split-item-image-fill"
+                    "split-item-image center-content-mobile ",
+                    imageFill && "split-item-image-fill bug-medium-img"
                   )}
                 >
                   {/* <Image
@@ -147,8 +147,8 @@ class FeaturesSplit extends React.Component {
                 </div>
                 <div
                   className={classNames(
-                    "split-item-image center-content-mobile illustration-element-01",
-                    imageFill && "split-item-image-fill"
+                    "split-item-image center-content-mobile ",
+                    imageFill && "split-item-image-fill bug-medium-img"
                   )}
                 >
                   {/* <Image
