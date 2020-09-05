@@ -50,7 +50,7 @@ class Secondary extends React.Component {
 
     return (
       <React.Fragment>
-        <HeroFull className="illustration-section-02" />
+        {/* <HeroFull className="illustration-section-02" /> */}
         <Team className="illustration-section-04" />
 {/* 
         <GenericSection topDivider>
