@@ -120,8 +120,15 @@ class Header extends React.Component {
                         'list-reset text-xxs',
                         navPosition && `header-nav-${navPosition}`
                       )}>
+                        {/* FIX THESE */}
                       <li>
-                        <Link to="/secondary/" onClick={this.closeMenu}>Secondary page</Link>
+                        <Link to="/2/#team" onClick={this.closeMenu}>Team</Link>
+                      </li>
+                      <li>
+                        <Link to="/2/#roadmap" onClick={this.closeMenu}>Roadmap</Link>
+                      </li>
+                      <li>
+                        <Link to="/2/#roadmap" onClick={this.closeMenu}>FAQs</Link>
                       </li>
                     </ul>
                     {!hideSignin &&
