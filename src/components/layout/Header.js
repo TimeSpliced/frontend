@@ -129,7 +129,7 @@ class Header extends React.Component {
                         className="list-reset header-nav-right"
                       >
                         <li>
-                          <Link to="/signup/" className="button button-dark button-wide-mobile button-sm" onClick={this.closeMenu}>Sign up</Link>
+                          <a href="https://discord.gg/AWvcTFP" target="_blank" className="button button-dark button-wide-mobile button-sm">Join our discord</a>
                         </li>
                       </ul>}
                   </div>
