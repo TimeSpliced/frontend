@@ -52,7 +52,7 @@ class FeaturesSplit extends React.Component {
     );
 
     const sectionHeader = {
-      title: "No more boring saving.",
+      title: "It doesn't have to be boring",
       paragraph:
         "Our groundbreaking 'savers take it all' mechanism, gives you the ultimate push to save. The opportunity to get higher interest rates, without risking your principal. If you are motivated enough to make all deposits, you will earn more than you would by saving by yourself.",
     };
