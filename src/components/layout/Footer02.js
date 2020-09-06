@@ -48,7 +48,7 @@ class Footer extends React.Component {
                   <Logo className="mb-16" />
                   <div className="footer-copyright">&copy; 2020 GoodGhosting, all rights reserved</div>
                 </div>
-                <div className="footer-block">
+                {/* <div className="footer-block">
                   <div className="footer-block-title">Company</div>
                   <ul className="list-reset">
                     <li>
@@ -64,8 +64,8 @@ class Footer extends React.Component {
                       <a href="https://cruip.com/">Be on design</a>
                     </li>
                   </ul>
-                </div>
-                <div className="footer-block">
+                </div> */}
+                {/* <div className="footer-block">
                   <div className="footer-block-title">Uses cases</div>
                   <ul className="list-reset">
                     <li>
@@ -81,8 +81,8 @@ class Footer extends React.Component {
                       <a href="https://cruip.com/">Occaecat cupidatat</a>
                     </li>
                   </ul>
-                </div>
-                <div className="footer-block">
+                </div> */}
+                {/* <div className="footer-block">
                   <div className="footer-block-title">Docs</div>
                   <ul className="list-reset mb-0">
                     <li>
@@ -98,7 +98,7 @@ class Footer extends React.Component {
                       <a href="https://cruip.com/">Occaecat cupidatat</a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="footer-bottom space-between center-content-mobile text-xxs">

@@ -3,7 +3,7 @@ import Header from '../components/layout/Header';
 
 const LayoutDefault = ({ children }) => (
   <React.Fragment>
-    <Header navPosition="right" hideNav />
+    <Header navPosition="right" />
     <main className="site-content">
       {children}
     </main>
