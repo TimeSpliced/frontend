@@ -56,7 +56,7 @@ class Cta extends React.Component {
           >
             <div className="cta-slogan">
               <h3 className="m-0">
-                Join the saving revolution now.
+                Join the financial revolution now.
               </h3>
             </div>
             <div className="cta-action">
