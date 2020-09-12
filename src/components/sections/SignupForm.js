@@ -57,7 +57,10 @@ class SignupForm extends React.Component {
               data={sectionHeader}
               className="center-content"
             />
-        
+            <CountdownContainer
+              timeTillDate="08 16 2020 , 6:00 am"
+              timeFormat="MM DD YYYY, h:mm a"
+            />
             <div className="tiles-wrap">
               <div className="tiles-item">
                 <div className="tiles-item-inner">

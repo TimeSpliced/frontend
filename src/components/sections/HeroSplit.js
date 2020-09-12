@@ -77,7 +77,7 @@ class HeroSplit extends React.Component {
                   {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
-                    <Button tag="a" color="primary" href="https://cruip.com/" wideMobile>
+                    <Button tag="a" color="primary" href="/signup" wideMobile>
                       Start saving
                     </Button>
                   </div>
