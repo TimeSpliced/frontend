@@ -199,7 +199,7 @@ const GamePage = () => {
   };
 
   return (
-    <>
+    <div className="section-inner">
       {!isNotEmptyObj(gameInfo) && <Loading />}
       {isNotEmptyObj(gameInfo) && (
         <>
@@ -232,7 +232,7 @@ const GamePage = () => {
           <RoboHashCredit />
         </>
       )}
-    </>
+    </div>
   );
 };
 
