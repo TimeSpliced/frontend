@@ -13,6 +13,7 @@ import Home from './views/Home';
 import Secondary from './views/Secondary';
 import Login from './views/Login';
 import Signup from './views/Signup';
+import Game from './views/Game';
 
 class App extends React.Component {
 
@@ -38,6 +39,7 @@ class App extends React.Component {
             <AppRoute exact path="/2" component={Secondary} layout={LayoutAlternative} />
             <AppRoute exact path="/login" component={Login} layout={LayoutSignin} />
             <AppRoute exact path="/signup" component={Signup} layout={LayoutSignin} />
+            <AppRoute exact path="/game" component={Game} layout={LayoutSignin}/>
           </Switch>
         )} />
     );
