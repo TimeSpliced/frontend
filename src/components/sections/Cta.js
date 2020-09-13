@@ -60,7 +60,7 @@ class Cta extends React.Component {
               </h3>
             </div>
             <div className="cta-action">
-              <Button tag="a" color="primary" wideMobile href="#">
+              <Button tag="a" color="primary" wideMobile href="/game">
                 Start saving
               </Button>
             </div>
