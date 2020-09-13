@@ -6,16 +6,18 @@ import {status, isNotEmptyObj, brandColors} from '../../utils/utilities';
 import PlayerInfo from '../elements/PlayerInfo';
 import dayjs from "dayjs";
 
+
 const JoinableGame = (props) => (
   <>
     <div>
       <h5>Rules</h5>
       <p>Only on kovan at the moment.</p>
-      <p>Payout function not yet implemented!</p>
 
     </div>
- 
-    {props.usersAddress && props.userStatus === status.unregistered && (
+  
+    {/* TODO add bac in when reading iterable players from the graph */}
+    {/* {props.usersAddress && props.userStatus === status.unregistered && ( */}
+      {true && (
       <>
         {!props.loadingState.joinGame && (
           <Button className="montserrat" onClick={props.joinGame}>Join Game</Button>
