@@ -158,7 +158,7 @@ const GamePage = () => {
     setUserStatus(status.registered);
 
     setTimeout(() => {
-      // getPlayers();
+      getPlayers();
       setSuccessState({ joinGame: false });
     }, 2000);
   };
