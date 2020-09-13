@@ -40,6 +40,7 @@ const GamePage = () => {
   // const alert = useAlert(); // 🚨 TODO fix
 
   const getPlayers = async () => {
+      console.log("in get players")
     const players = await goodGhostingContract.methods.getPlayers().call();
     var playersArr = [];
     for (let key in players) {
@@ -123,7 +124,7 @@ const GamePage = () => {
 
   useEffect(() => {
     if (isNotEmptyObj(goodGhostingContract)) {
-      // getPlayers();
+      getPlayers();
       getGameInfo();
     }
   }, [goodGhostingContract]);
