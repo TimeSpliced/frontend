@@ -5,9 +5,24 @@ import PlayersPrint from "./../elements/PrintPlayers";
 import { status, isNotEmptyObj, brandColors } from "../../utils/utilities";
 import PlayerInfo from "../elements/PlayerInfo";
 import dayjs from "dayjs";
+import SignupForm from './SignupForm';
+import SectionHeader from './partials/SectionHeader';
+import CountdownContainer from './../elements/countdown-container';
 
 const JoinableGame = (props) => (
-  <>
+  <div className="section-inner">
+        <SectionHeader
+              tag="h1"
+              data={{
+                title: "Our saving pool closes in"
+                // paragraph : "Don't miss out, sign up."
+              }}
+              className="center-content"
+            />
+            <CountdownContainer
+              timeTillDate="08 16 2020 , 6:00 am"
+              timeFormat="MM DD YYYY, h:mm a"
+            />
     {console.log(props)}
     <div>
       <h5>Rules</h5>
@@ -18,7 +33,7 @@ const JoinableGame = (props) => (
     {/* {props.usersAddress && props.userStatus === status.unregistered && ( */}
     {true && (
       <>
-        {props.usersAddress && (
+        {props.usersAddress && props.userStatus !== status.registered && (
           <Button className="montserrat" onClick={props.joinGame}>
             Join Game
           </Button>
@@ -62,7 +77,7 @@ const JoinableGame = (props) => (
         {props.connectToWallet()}
       </>
     )}
-  </>
+  </div>
 );
 
 export default JoinableGame;

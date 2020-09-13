@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
     );
 
     const sectionHeader = {
-      title: "Our Genesis saving pool starts in",
+      title: "Time left to join",
       // paragraph : "Save 100 DAI every  week for 6 weeks."
     };
 
