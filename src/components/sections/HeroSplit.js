@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { SectionSplitProps } from '../../utils/SectionProps';
 import Button from '../elements/Button';
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -77,9 +78,11 @@ class HeroSplit extends React.Component {
                   {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
-                    <Button tag="a" color="primary" href="/game" wideMobile>
+                    <Link to="/game">
+                    <Button tag="a" color="primary"  wideMobile>
                       Start saving
                     </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

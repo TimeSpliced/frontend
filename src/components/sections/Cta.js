@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
 import Button from '../elements/Button';
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   ...SectionProps.types,
@@ -60,9 +61,11 @@ class Cta extends React.Component {
               </h3>
             </div>
             <div className="cta-action">
+              <Link to="/game">
               <Button tag="a" color="primary" wideMobile href="/game">
                 Start saving
               </Button>
+              </Link>
             </div>
           </div>
         </div>
