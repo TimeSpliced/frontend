@@ -10,7 +10,7 @@ const RoboHashCredit = () => (
     }}
   >
     Robots lovingly delivered by
-    <a href="https://robohash.org" target="_blank">
+    <a href="https://robohash.org" target="_blank" rel="noopener noreferrer>
       Robohash.org
     </a>
   </span>

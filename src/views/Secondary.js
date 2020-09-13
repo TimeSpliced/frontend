@@ -249,11 +249,11 @@ class Secondary extends React.Component {
                   We deposit your principal into two decentralized finance
                   (DeFi) services (
                 </span>
-                <a href="https://aave.com/" target="_blank">
+                <a href="https://aave.com/" target="_blank"  rel="noopener noreferrer">
                   AAVE
                 </a>
                 <span> and </span>
-                <a href="https://yearn.finance/" target="_blank">
+                <a href="https://yearn.finance/" target="_blank"  rel="noopener noreferrer">
                   Yearn Finance
                 </a>
                 <span>
@@ -273,7 +273,7 @@ class Secondary extends React.Component {
                   DAI
                 </a>
                 <span> and </span>
-                <a href="https://www.circle.com/en/usdc" target="_blank">
+                <a href="https://www.circle.com/en/usdc" target="_blank"  rel="noopener noreferrer">
                   USDC
                 </a>
                 <span>
@@ -291,11 +291,11 @@ class Secondary extends React.Component {
               </AccordionItem>
               <AccordionItem title="Which DeFi platforms are you using?">
                 <span>We currently support </span>
-                <a href="https://aave.com/" target="_blank">
+                <a href="https://aave.com/" target="_blank"  rel="noopener noreferrer">
                   AAVE
                 </a>
                 <span> and </span>
-                <a href="https://yearn.finance/" target="_blank">
+                <a href="https://yearn.finance/" target="_blank"  rel="noopener noreferrer">
                   Yearn.finance
                 </a>
                 <span>

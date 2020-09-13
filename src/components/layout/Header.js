@@ -136,7 +136,7 @@ class Header extends React.Component {
                         className="list-reset header-nav-right"
                       >
                         <li>
-                          <a href="https://discord.gg/AWvcTFP" target="_blank" className="button button-dark button-wide-mobile button-sm">Join our discord</a>
+                          <a href="https://discord.gg/AWvcTFP" target="_blank" className="button button-dark button-wide-mobile button-sm"  rel="noopener noreferrer">Join our discord</a>
                         </li>
                       </ul>}
                   </div>
