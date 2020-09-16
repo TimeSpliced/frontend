@@ -122,7 +122,7 @@ class Header extends React.Component {
                       )}>
                         {/* FIX THESE */}
                         <li>
-                        <a href="/https://github.com/Good-Ghosting/#team" target="_blank" rel="noopener" >Github</a>
+                        <a href="https://github.com/Good-Ghosting" target="_blank" rel="noopener" >Github</a>
                       </li>
                       <li>
                         <Link to="/2/#team" onClick={this.closeMenu}>Team</Link>
