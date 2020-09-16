@@ -24,11 +24,11 @@ class Home extends React.Component {
         {/* <Pricing pricingSwitcher hasBgColor className="illustration-section-07" /> */}
         {/* <Testimonial className="illustration-section-05" /> */}
         <div className="container" style={{ padding: "5%", textAlign :" center" }}>
-          <h5>Next game starts in</h5>
-          <CountdownContainer
+          {/* <h5>Next game starts in</h5> */}
+          {/* <CountdownContainer
             timeTillDate="08 16 2020 , 6:00 am"
             timeFormat="MM DD YYYY, h:mm a"
-          />
+          /> */}
           {/* <div style={{display : "flex", justifyContent : "center", margin : "2%"}}>
 
           <Button tag="a" color="primary" wideMobile href="#" >

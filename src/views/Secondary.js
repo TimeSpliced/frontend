@@ -52,7 +52,7 @@ class Secondary extends React.Component {
       <React.Fragment>
         {/* <HeroFull className="illustration-section-02" /> */}
         <Team className="illustration-section-04" />
-{/* 
+        {/* 
         <GenericSection topDivider>
           <div className="container-xs">
             <h2 className="mt-0">
@@ -241,6 +241,12 @@ class Secondary extends React.Component {
               className="center-content"
             />
             <Accordion>
+              <AccordionItem title="When are you launching?">
+                We are in active development. We will be launching a testent
+                version early Q4. After this launch we will incorporate the
+                feedback gathered, and launch a mainnet version later in 2020.
+                Read more about our <a href="https://medium.com/goodghosting/confession-time-whats-next-f5ac52aa517d" target="_blank" rel="noopener"> development plans in this blog post.</a>
+              </AccordionItem>
               <AccordionItem
                 title="How are you getting such high interest rates?"
                 active
@@ -249,11 +255,19 @@ class Secondary extends React.Component {
                   We deposit your principal into two decentralized finance
                   (DeFi) services (
                 </span>
-                <a href="https://aave.com/" target="_blank"  rel="noopener noreferrer">
+                <a
+                  href="https://aave.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   AAVE
                 </a>
                 <span> and </span>
-                <a href="https://yearn.finance/" target="_blank"  rel="noopener noreferrer">
+                <a
+                  href="https://yearn.finance/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Yearn Finance
                 </a>
                 <span>
@@ -272,13 +286,13 @@ class Secondary extends React.Component {
                 >
                   DAI
                 </a>
-                <span> and </span>
+                {/* <span> and </span>
                 <a href="https://www.circle.com/en/usdc" target="_blank"  rel="noopener noreferrer">
                   USDC
-                </a>
+                </a> */}
                 <span>
-                  . Both are stablecoins whose value is pegged to the dollar. If
-                  you would like to use a different token Let us know on
+                  , however we are looking at adding more tokens. If there is a
+                  particular token you would like please let us know on our
                   discord.
                 </span>
               </AccordionItem>
@@ -291,11 +305,19 @@ class Secondary extends React.Component {
               </AccordionItem>
               <AccordionItem title="Which DeFi platforms are you using?">
                 <span>We currently support </span>
-                <a href="https://aave.com/" target="_blank"  rel="noopener noreferrer">
+                <a
+                  href="https://aave.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   AAVE
                 </a>
                 <span> and </span>
-                <a href="https://yearn.finance/" target="_blank"  rel="noopener noreferrer">
+                <a
+                  href="https://yearn.finance/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Yearn.finance
                 </a>
                 <span>

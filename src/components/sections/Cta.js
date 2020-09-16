@@ -62,8 +62,8 @@ class Cta extends React.Component {
             </div>
             <div className="cta-action">
               <Link to="/game">
-              <Button tag="a" color="primary" wideMobile href="/game">
-                Start saving
+              <Button tag="a" color="primary" wideMobile href="https://discord.com/invite/AWvcTFP">
+                Join our discord
               </Button>
               </Link>
             </div>

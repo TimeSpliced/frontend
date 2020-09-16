@@ -121,11 +121,18 @@ class Header extends React.Component {
                         navPosition && `header-nav-${navPosition}`
                       )}>
                         {/* FIX THESE */}
+                        <li>
+                        <a href="/https://github.com/Good-Ghosting/#team" target="_blank" rel="noopener" >Github</a>
+                      </li>
                       <li>
                         <Link to="/2/#team" onClick={this.closeMenu}>Team</Link>
                       </li>
+                      
                       <li>
                         <Link to="/2/#roadmap" onClick={this.closeMenu}>Roadmap</Link>
+                      </li>
+                      <li>
+                        <a href="https://medium.com/@goodghosting" target="_blank" rel="noopener">Blog</a>
                       </li>
                       <li>
                         <Link to="/2/#roadmap" onClick={this.closeMenu}>FAQs</Link>
