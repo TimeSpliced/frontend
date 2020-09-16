@@ -128,7 +128,7 @@ class Secondary extends React.Component {
           </div>
         </GenericSection> */}
 
-        <GenericSection topDivider>
+        {/* <GenericSection topDivider>
           <div className="container-xs">
             <SectionHeader
               data={genericSection02Header}
@@ -145,7 +145,7 @@ class Secondary extends React.Component {
                 >
                   <Button color="primary">Get the latest updates</Button>
                 </Input>
-              </div>
+              </div> */}
               {/* <div className="mb-24">
                 <Input
                   type="email"
@@ -172,9 +172,9 @@ class Secondary extends React.Component {
                   <Button color="primary">Early access</Button>
                 </Input>
               </div> */}
-            </form>
+            {/* </form>
           </div>
-        </GenericSection>
+        </GenericSection> */}
 
         {/* <GenericSection topDivider>
           <div className="container-xs">
