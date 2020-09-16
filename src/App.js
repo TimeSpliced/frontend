@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Switch } from 'react-router-dom';
+import { withRouter, Switch, HashRouter } from 'react-router-dom';
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 
@@ -24,9 +24,9 @@ class App extends React.Component {
 
   // Route change
   componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    // if (this.props.location.pathname !== prevProps.location.pathname) {
       this.refs.scrollReveal.init();
-    }
+    // }
   }
 
   render() {
@@ -34,6 +34,7 @@ class App extends React.Component {
       <ScrollReveal
         ref="scrollReveal"
         children={() => (
+          <HashRouter>
           <Switch>
             <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
             <AppRoute exact path="/2" component={Secondary} layout={LayoutAlternative} />
@@ -41,6 +42,7 @@ class App extends React.Component {
             <AppRoute exact path="/signup" component={Signup} layout={LayoutSignin} />
             <AppRoute exact path="/game" component={Game} layout={LayoutSignin}/>
           </Switch>
+          </HashRouter>
         )} />
     );
   }
