@@ -18,17 +18,17 @@ const FooterNav = ({
       className={classes}
     >
       <ul className="list-reset">
-        <li>
+        {/* <li>
           <Link to="/contact/">Contact</Link>
         </li>
         <li>
           <Link to="/about-us/">About us</Link>
+        </li> */}
+        <li>
+          {/* <Link to="/2#faqs">FAQ's</Link> */}
         </li>
         <li>
-          <Link to="/faqs/">FAQ's</Link>
-        </li>
-        <li>
-          <Link to="/support/">Support</Link>
+          <a href="https://gitcoin.co/grants/1112/goodghosting-a-defi-savings-game" target="_blank" rel="noopen">Support</a>
         </li>
       </ul>
     </nav>

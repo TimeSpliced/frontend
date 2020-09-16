@@ -234,7 +234,7 @@ class Secondary extends React.Component {
           </div>
         </GenericSection> */}
 
-        <GenericSection topDivider className="illustration-section-06">
+        <GenericSection topDivider className="illustration-section-06" id="faqs">
           <div className="container-xs">
             <SectionHeader
               data={genericSection04Header}
