@@ -78,11 +78,10 @@ class HeroSplit extends React.Component {
                   {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
-                    <Link to="/game">
+                   
                     <Button tag="a" color="primary"  wideMobile>
-                      Join our discord
+                      <a className="cta-button" href="https://discord.com/invite/AWvcTFP">Join our discord</a>
                     </Button>
-                    </Link>
                   </div>
                 </div>
               </div>
