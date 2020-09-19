@@ -23,7 +23,10 @@ import {
   parseRevertError,
 } from "../utils/utilities";
 import RoboHashCredit from "../components/elements/RoboHashCredit";
+import { request, gql } from "graphql-request";
+
 // import getRevertReason from "eth-revert-reason";
+
 
 const GamePage = () => {
   const [players, setPlayers] = useState([]);
@@ -40,23 +43,35 @@ const GamePage = () => {
   // const alert = useAlert(); // 🚨 TODO fix
 
   const getPlayers = async () => {
-      console.log("in get players")
-    const players = await goodGhostingContract.methods.getPlayers().call();
-    var playersArr = [];
-    for (let key in players) {
-      await fetch(`https://ipfs.3box.io/profile?address=${players[key]}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const player = {
-            address: players[key].toLowerCase(),
-            threeBoxName: data.name,
-            threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
-          };
-          playersArr.push(player);
-        });
-    }
-    setGetPlayersStatus(true);
-    setPlayers(playersArr);
+    const query = gql`
+      {
+        players {
+          id
+        }
+      }
+    `;
+
+    request(
+      "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
+      query
+    ).then((data) => console.log("👻", data));
+
+    // const players = await goodGhostingContract.methods.getPlayers().call();
+    // var playersArr = [];
+    // for (let key in players) {
+    //   await fetch(`https://ipfs.3box.io/profile?address=${players[key]}`)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       const player = {
+    //         address: players[key].toLowerCase(),
+    //         threeBoxName: data.name,
+    //         threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
+    //       };
+    //       playersArr.push(player);
+    //     });
+    // }
+    // setGetPlayersStatus(true);
+    // setPlayers(playersArr);
   };
 
   const getGameInfo = async () => {
@@ -125,7 +140,7 @@ const GamePage = () => {
   useEffect(() => {
     if (isNotEmptyObj(goodGhostingContract)) {
       getPlayers();
-      getGameInfo();
+      getGameInfo(); //🚨TODO decomment
     }
   }, [goodGhostingContract]);
 
@@ -209,42 +224,44 @@ const GamePage = () => {
     return gameInfo.firstSegmentEnd.valueOf() > Date.now();
   };
 
+
   return (
     <main className="site-content">
-      <div className="section center-content illustration-section-04">
-        {!isNotEmptyObj(gameInfo) && <Loading />}
-        {isNotEmptyObj(gameInfo) && (
-          <>
-            {isFirstSegment() && (
-              <JoinableGame
-                usersAddress={usersAddress}
-                getAddressFromMetaMask={getAddressFromMetaMask}
-                players={players}
-                loadingState={loadingState}
-                joinGame={joinGame}
-                success={success}
-                userStatus={userStatus}
-                connectToWallet={connectToWallet}
-                playerInfo={playerInfo}
-                gameInfo={gameInfo}
-              />
-            )}
-            {!isFirstSegment() && (
-              <LiveGame
-                usersAddress={usersAddress}
-                players={players}
-                userStatus={userStatus}
-                connectToWallet={connectToWallet}
-                players={players}
-                playerInfo={playerInfo}
-                gameInfo={gameInfo}
-                makeDeposit={makeDeposit}
-              />
-            )}
-            <RoboHashCredit />
-          </>
-        )}
-      </div>
+
+        <div className="section center-content illustration-section-04">
+          {!isNotEmptyObj(gameInfo) && <Loading />}
+          {isNotEmptyObj(gameInfo) && (
+            <>
+              {isFirstSegment() && (
+                <JoinableGame
+                  usersAddress={usersAddress}
+                  getAddressFromMetaMask={getAddressFromMetaMask}
+                  players={players}
+                  loadingState={loadingState}
+                  joinGame={joinGame}
+                  success={success}
+                  userStatus={userStatus}
+                  connectToWallet={connectToWallet}
+                  playerInfo={playerInfo}
+                  gameInfo={gameInfo}
+                />
+              )}
+              {!isFirstSegment() && (
+                <LiveGame
+                  usersAddress={usersAddress}
+                  players={players}
+                  userStatus={userStatus}
+                  connectToWallet={connectToWallet}
+                  players={players}
+                  playerInfo={playerInfo}
+                  gameInfo={gameInfo}
+                  makeDeposit={makeDeposit}
+                />
+              )}
+              <RoboHashCredit />
+            </>
+          )}
+        </div>
     </main>
   );
 };
