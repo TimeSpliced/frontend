@@ -25,7 +25,7 @@ const PlayersPrint = (players) =>
       <p className="sans_serif text-color-primary fw-500 text-xxs tt-u">
         {player.threeBoxName
           ? player.threeBoxName
-          : `${player.address.slice(0, 7)}...`}
+          : `${player.id.slice(0, 7)}...`}
       </p>
     </div>
   ));

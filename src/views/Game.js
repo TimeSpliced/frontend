@@ -40,38 +40,45 @@ const GamePage = () => {
   const [gameInfo, setGameInfo] = useState({});
   const [web3, setWeb3] = useState({});
 
+  const getPlayers = async ()=> {
   // const alert = useAlert(); // 🚨 TODO fix
-
-  const getPlayers = async () => {
-    const query = gql`
-      {
-        players {
-          id
+    const playerReq = async ()=>{
+   
+      const query = gql`
+        {
+          players {
+            id
+          }
         }
-      }
-    `;
+      `;
+  
+      const res = await
+       request(
+        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
+        query
+      )
+    return res;
 
-    request(
-      "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
-      query
-    ).then((data) => console.log("👻", data));
+  }
+  const players =  await playerReq().catch(err => err)
+    console.log('players', players)
+    
 
-    // const players = await goodGhostingContract.methods.getPlayers().call();
-    // var playersArr = [];
-    // for (let key in players) {
-    //   await fetch(`https://ipfs.3box.io/profile?address=${players[key]}`)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       const player = {
-    //         address: players[key].toLowerCase(),
-    //         threeBoxName: data.name,
-    //         threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
-    //       };
-    //       playersArr.push(player);
-    //     });
-    // }
-    // setGetPlayersStatus(true);
-    // setPlayers(playersArr);
+    var playersArr = [];
+    for (let key in players.players) {
+      await fetch(`https://ipfs.3box.io/profile?address=${players.players[key].id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const player = {
+            id: players.players[key].id,
+            threeBoxName: data.name,
+            threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
+          };
+          playersArr.push(player);
+        });
+    }
+    setGetPlayersStatus(true);
+    setPlayers(playersArr);
   };
 
   const getGameInfo = async () => {
