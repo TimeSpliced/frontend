@@ -20,7 +20,7 @@ export default (props) => (
       players={props.players}
     />
 
-    <div style={{ justifyContent: "center" }}>{props.connectToWallet()}</div>
+    <div style={{ justifyContent: "center", marginTop: '3em ' }}>{props.connectToWallet()}</div>
     <>
       {props.userStatus === status.registered && (
         <RegisteredPlayer
@@ -30,7 +30,7 @@ export default (props) => (
         />
       )}
 
-      <div style={{ justifyContent: "center" }}>
+      <div style={{ justifyContent: "center", marginTop: '3em ' }}>
         {props.players && PlayersPrint(props.players)}
       </div>
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
@@ -40,7 +40,7 @@ export default (props) => (
 
 const RegisteredPlayer = (props) => {
   return (
-    <>
+    <div>
       {isNotEmptyObj(props.playerInfo) && (
         <PlayerInfo playerInfo={props.playerInfo} />
       )}
@@ -57,7 +57,7 @@ const RegisteredPlayer = (props) => {
         </div>
       )}
       {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
-    </>
+    </div>
   );
 };
 
