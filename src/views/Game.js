@@ -219,7 +219,7 @@ const GamePage = () => {
       return status.unloaded;
     }
     const isInGame = !!players.filter(
-      (player) => player.address === usersAddress
+      (player) => player.id === usersAddress
     ).length;
     return isInGame ? status.registered : status.unregistered;
   };
