@@ -1,3 +1,7 @@
 .game-stats-figures p {
     margin-bottom: 0 !important;
 }
+
+.pricing-item-header::after {
+    background : white !important;
+}

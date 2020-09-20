@@ -14,6 +14,7 @@ import Secondary from './views/Secondary';
 import Login from './views/Login';
 import Signup from './views/Signup';
 import Game from './views/Game';
+import './App.css'
 
 class App extends React.Component {
 

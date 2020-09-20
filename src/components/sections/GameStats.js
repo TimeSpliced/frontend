@@ -95,7 +95,7 @@ class GameStats extends React.Component {
           <div >
             <SectionHeader data={sectionHeader} className="center-content invert-color" />          
             <div className={tilesClasses}>
-              <div className="tiles-item reveal-from-top" style={{opacity : '1'}}>
+              <div className="tiles-item reveal-from-top" style={{opacity : '1', flexBasis: '500px', maxWidth : '500px'}}>
                 <div className="tiles-item-inner has-shadow">
                   <div className="pricing-item-content">
                     <div className="pricing-item-header">
