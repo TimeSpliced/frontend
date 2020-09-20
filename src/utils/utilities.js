@@ -1,6 +1,6 @@
 import parseErr from 'parse-err';
 import getRevertReason from 'eth-revert-reason';
-
+import web3 from 'web3';
 export const status = {
     unloaded : "unloaded",
     registered : "registered",
@@ -35,6 +35,11 @@ export const parseRevertError = async (error)=>{
     const reason = await getRevertReason(transactionHash, "kovan");
     return reason;
   }
-  
+
+export const weiToERC20 = (wei) =>{
+    const BN = web3.utils.BN;
+    let weiBN = new BN(wei)
+    return web3.utils.fromWei(weiBN)
+  }
 // current segment counts from 0 and is a string
 export const displaySegment = (raw)=>(parseInt(raw) + 1)

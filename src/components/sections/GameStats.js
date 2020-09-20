@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SectionTilesProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
-import {displaySegment} from './../../utils/utilities'
+import {displaySegment, weiToERC20} from './../../utils/utilities'
 import web3 from 'web3';
-import dayjs from 'dayjs';
+
 const propTypes = {
   ...SectionTilesProps.types,
   pricingSwitcher: PropTypes.bool,
@@ -18,10 +18,7 @@ const defaultProps = {
   pricingSlider: false
 }
 
-class Pricing extends React.Component {
-
-
-
+class GameStats extends React.Component {
 
   handlePricingSwitch = (e) => {
     this.setState({ priceChangerValue: e.target.checked ? '1' : '0' });
@@ -41,6 +38,12 @@ class Pricing extends React.Component {
 
   getPricingData = (values, set) => {
     return set !== undefined ? values[this.state.priceChangerValue][set] : values[this.state.priceChangerValue];
+  }
+
+  totalPoolAmount(){
+    const BN = web3.utils.BN;
+    let gamePrincipal = new BN(this.props.gameInfo.totalGamePrincipal)
+    return web3.utils.fromWei(gamePrincipal)
   }
 
   render() {
@@ -89,24 +92,30 @@ class Pricing extends React.Component {
         className={outerClasses}
       >
         <div className="container">
-          <div className={innerClasses}>
+          <div >
             <SectionHeader data={sectionHeader} className="center-content invert-color" />          
-
-    
             <div className={tilesClasses}>
-
               <div className="tiles-item reveal-from-top" style={{opacity : '1'}}>
                 <div className="tiles-item-inner has-shadow">
                   <div className="pricing-item-content">
-                    <div className="pricing-item-header pb-16 mb-24">
+                    <div className="pricing-item-header">
                       <div className="pricing-item-price mb-4">
                         <span className="pricing-item-price-currency h2 text-color-mid">
                         </span>
-                        <span className="pricing-item-price-amount">
-                          <h4> Deposit {web3.utils.fromWei(this.props.gameInfo.rawSegmentPayment)} Dai every {this.props.gameInfo.segmentLength.$d.days} days</h4>
-                        </span>
-                        <span className="pricing-item-price-amount">
-                        <p>Current round: {displaySegment(this.props.gameInfo.currentSegment)}</p>
+                        <span className="pricing-item-price-amount game-stats-figures">
+                          <span>Every day deposit</span>
+                          {/* {this.props.gameInfo.segmentLength.$d.days}  can use this to ref the specific number of days   */}
+                          <h4>{web3.utils.fromWei(this.props.gameInfo.rawSegmentPayment)} DAI</h4>
+                          <p>Total Pool Amount</p>
+                          <h4> {this.props.gameInfo  && weiToERC20(this.props.gameInfo.totalGamePrincipal)} DAI</h4>
+                          <p>Total Pool Interest</p>
+                          <h4> {this.props.gameInfo  && weiToERC20(this.props.totalGameInterest)} DAI</h4>
+                          <p>  Players Status </p>
+                          {/* TODO calculate this */}
+                          <h4> 1 Paid   3 Live   0 Dead</h4>
+                          <p>  Current Round </p>
+                          {/* TODO calculate this */}
+                          <h4> {displaySegment(this.props.gameInfo.currentSegment)}</h4>
                         </span>
                       </div>
                     </div>
@@ -121,7 +130,7 @@ class Pricing extends React.Component {
   }
 }
 
-Pricing.propTypes = propTypes;
-Pricing.defaultProps = defaultProps;
+GameStats.propTypes = propTypes;
+GameStats.defaultProps = defaultProps;
 
-export default Pricing;
+export default GameStats;

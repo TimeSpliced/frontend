@@ -47,6 +47,9 @@ const GamePage = () => {
         {
           players {
             id
+            address
+            mostRecentSegmentPaid
+            amountPaid
           }
         }
       `;
@@ -65,6 +68,7 @@ const GamePage = () => {
       //🚨TODO add an alert in UI
       return;
     }
+    console.log("players", players)
     var playersArr = [];
     for (let key in players.players) {
       await fetch(
@@ -74,6 +78,9 @@ const GamePage = () => {
         .then((data) => {
           const player = {
             id: players.players[key].id,
+            address: players.players[key].address,
+            mostRecentSegmentPaid: players.players[key].mostRecentSegmentPaid,
+            amountPaid: players.players[key].amountPaid,
             threeBoxName: data.name,
             threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
           };
@@ -294,7 +301,6 @@ const GamePage = () => {
                 players={players}
                 userStatus={userStatus}
                 connectToWallet={connectToWallet}
-                players={players}
                 playerInfo={playerInfo}
                 gameInfo={gameInfo}
                 makeDeposit={makeDeposit}

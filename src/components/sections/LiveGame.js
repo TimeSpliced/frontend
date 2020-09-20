@@ -3,7 +3,7 @@ import { status, isNotEmptyObj, displaySegment } from "../../utils/utilities";
 import PlayersPrint from "./../elements/PrintPlayers";
 import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
-import GameStats from './GameStats'
+import GameStats from "./GameStats";
 
 // const GameStats = (props) => (
 //   <div>
@@ -13,18 +13,23 @@ import GameStats from './GameStats'
 
 export default (props) => (
   <>
-  <GameStats hasBgColor className="illustration-section-07" gameInfo={props.gameInfo} />
+    <GameStats
+      hasBgColor
+      className="illustration-section-07"
+      gameInfo={props.gameInfo}
+      players={props.players}
+    />
 
-      <div style={{ justifyContent: "center" }}>{props.connectToWallet()}</div>
-      <>
-        {props.userStatus === status.registered && (
-          <RegisteredPlayer
-            gameInfo={props.gameInfo}
-            playerInfo={props.playerInfo}
-            makeDeposit={props.makeDeposit}
-          />
-        )}
-  
+    <div style={{ justifyContent: "center" }}>{props.connectToWallet()}</div>
+    <>
+      {props.userStatus === status.registered && (
+        <RegisteredPlayer
+          gameInfo={props.gameInfo}
+          playerInfo={props.playerInfo}
+          makeDeposit={props.makeDeposit}
+        />
+      )}
+
       <div style={{ justifyContent: "center" }}>
         {props.players && PlayersPrint(props.players)}
       </div>
