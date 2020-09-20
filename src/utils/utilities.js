@@ -36,3 +36,5 @@ export const parseRevertError = async (error)=>{
     return reason;
   }
   
+// current segment counts from 0 and is a string
+export const displaySegment = (raw)=>(parseInt(raw) + 1)

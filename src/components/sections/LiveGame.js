@@ -1,49 +1,36 @@
 import React from "react";
-import { status, isNotEmptyObj } from "../../utils/utilities";
+import { status, isNotEmptyObj, displaySegment } from "../../utils/utilities";
 import PlayersPrint from "./../elements/PrintPlayers";
-import {  Badge } from "react-bootstrap";
 import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
+import GameStats from './GameStats'
 
-const GameStats = (props) => (
-  <div>
-    <p>Game Started on {props.gameInfo.firstSegmentStart.toString()}</p>
-  </div>
-);
+// const GameStats = (props) => (
+//   <div>
+//     <p>Game Started on {props.gameInfo.firstSegmentStart.toString()}</p>
+//   </div>
+// );
 
 export default (props) => (
-  <div
-    style={{ textAlign: "center", margin: "auto", justifyContent: "center" }}
-  >
-    <div style={{ justifyContent: "center" }}>
-      <h3 className="cardo">
-        This game is :{" "}
-        <Badge
-          style={{ fontFamily: "montserrat", fontWeight: "400" }}
-          variant="success"
-        >
-          live{" "}
-        </Badge>
-      </h3>
-    </div>
-    <div style={{ justifyContent: "center" }}>
-      <p className="cardo"> Game Timeframe : {props.gameInfo.currentSegment}</p>
-    </div>
-    <div style={{ justifyContent: "center" }}>{props.connectToWallet()}</div>
-    <>
-      {props.userStatus === status.registered && (
-        <RegisteredPlayer
-          gameInfo={props.gameInfo}
-          playerInfo={props.playerInfo}
-          makeDeposit={props.makeDeposit}
-        />
-      )}
+  <>
+  <GameStats hasBgColor className="illustration-section-07" gameInfo={props.gameInfo} />
+
+      <div style={{ justifyContent: "center" }}>{props.connectToWallet()}</div>
+      <>
+        {props.userStatus === status.registered && (
+          <RegisteredPlayer
+            gameInfo={props.gameInfo}
+            playerInfo={props.playerInfo}
+            makeDeposit={props.makeDeposit}
+          />
+        )}
+  
       <div style={{ justifyContent: "center" }}>
         {props.players && PlayersPrint(props.players)}
       </div>
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
     </>
-  </div>
+  </>
 );
 
 const RegisteredPlayer = (props) => {
@@ -52,17 +39,19 @@ const RegisteredPlayer = (props) => {
       {isNotEmptyObj(props.playerInfo) && (
         <PlayerInfo playerInfo={props.playerInfo} />
       )}
-      { props.playerInfo.mostRecentPaid > props.gameInfo.currentSegment && (
+      {props.playerInfo.mostRecentPaid > props.gameInfo.currentSegment && (
         <div>
           <Button
-            tag="a" color="primary"  wideMobile 
+            tag="a"
+            color="primary"
+            wideMobile
             onClick={props.makeDeposit}
           >
             Deposit {props.gameInfo.segmentPayment} DAI
           </Button>
         </div>
       )}
-      {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />}
+      {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
     </>
   );
 };

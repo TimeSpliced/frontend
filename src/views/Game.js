@@ -107,6 +107,7 @@ const GamePage = () => {
       console.error(err);
       return gqlErrors.game;
     });
+    console.log("👋", glqGameData)
     if (glqGameData === gqlErrors.game) {
       //🚨TODO add an alert in UI
       return;
@@ -119,7 +120,7 @@ const GamePage = () => {
       .segmentLength()
       .call();
     dayjs.extend(duration);
-    dayjs.duration(segmentLength, "s");
+    dayjs.duration(segmentLength, "d");
     const segmentPayment = await goodGhostingContract.methods
       .segmentPayment()
       .call();
