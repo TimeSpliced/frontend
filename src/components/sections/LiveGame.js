@@ -1,7 +1,8 @@
 import React from "react";
-import { status, isNotEmptyObj } from '../../utils/utilities';
+import { status, isNotEmptyObj } from "../../utils/utilities";
 import PlayersPrint from "./../elements/PrintPlayers";
-import { Row, Button, Badge } from "react-bootstrap";
+import {  Badge } from "react-bootstrap";
+import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
 
 const GameStats = (props) => (
@@ -14,23 +15,32 @@ export default (props) => (
   <div
     style={{ textAlign: "center", margin: "auto", justifyContent: "center" }}
   >
-    <Row style={{ justifyContent: "center" }}>
-      <h3 className="cardo">This game is : <Badge style={{fontFamily: "montserrat", fontWeight : "400"}} variant="success">live </Badge></h3>
-    </Row>
-    <Row style={{ justifyContent: "center" }}>
+    <div style={{ justifyContent: "center" }}>
+      <h3 className="cardo">
+        This game is :{" "}
+        <Badge
+          style={{ fontFamily: "montserrat", fontWeight: "400" }}
+          variant="success"
+        >
+          live{" "}
+        </Badge>
+      </h3>
+    </div>
+    <div style={{ justifyContent: "center" }}>
       <p className="cardo"> Game Timeframe : {props.gameInfo.currentSegment}</p>
-    </Row>
-    <Row style={{ justifyContent: "center" }}>{props.connectToWallet()}</Row>
+    </div>
+    <div style={{ justifyContent: "center" }}>{props.connectToWallet()}</div>
     <>
       {props.userStatus === status.registered && (
-        <RegisteredPlayer 
-          gameInfo={props.gameInfo} 
-          playerInfo={props.playerInfo} 
-          makeDeposit={props.makeDeposit}/>
+        <RegisteredPlayer
+          gameInfo={props.gameInfo}
+          playerInfo={props.playerInfo}
+          makeDeposit={props.makeDeposit}
+        />
       )}
-      <Row style={{ justifyContent: "center" }}>
+      <div style={{ justifyContent: "center" }}>
         {props.players && PlayersPrint(props.players)}
-      </Row>
+      </div>
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
     </>
   </div>
@@ -40,11 +50,19 @@ const RegisteredPlayer = (props) => {
   return (
     <>
       {isNotEmptyObj(props.playerInfo) && (
-        <PlayerInfo playerInfo={props.playerInfo}  />
+        <PlayerInfo playerInfo={props.playerInfo} />
       )}
-      { true && <Row> <Button style={{marginLeft : "auto", marginRight : "auto", marginTop : "20px",  marginBottom : "20px"}} onClick={props.makeDeposit}>Deposit {props.gameInfo.segmentPayment} DAI</Button></Row>}
+      {true && (
+        <div>
+          <Button
+            tag="a" color="primary"  wideMobile 
+            onClick={props.makeDeposit}
+          >
+            Deposit {props.gameInfo.segmentPayment} DAI
+          </Button>
+        </div>
+      )}
       {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />}
-      
     </>
   );
 };
