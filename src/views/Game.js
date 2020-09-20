@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import toArray from "dayjs/plugin/toArray";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Button } from "react-bootstrap";
+import Button from './../components/elements/Button';
 import { useAlert } from "react-alert";
 // import parseErr  from 'parse-err';
 // import ErrorStackParser from 'error-stack-parser';
@@ -226,7 +226,7 @@ const GamePage = () => {
 
   const connectToWallet = () =>
     !usersAddress && (
-      <Button onClick={getAddressFromMetaMask}>Connect MetaMask</Button>
+      <Button  tag="a" color="primary"  wideMobile onClick={getAddressFromMetaMask}>Connect MetaMask</Button>
     );
 
   const isFirstSegment = () => {

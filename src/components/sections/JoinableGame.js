@@ -1,6 +1,6 @@
 import React from "react";
 import Loading from "./../elements/Loading";
-import { Button, Badge, Row } from "react-bootstrap";
+import Button  from "./../elements/Button";
 import PlayersPrint from "./../elements/PrintPlayers";
 import { status, isNotEmptyObj, brandColors } from "../../utils/utilities";
 import PlayerInfo from "../elements/PlayerInfo";
@@ -34,7 +34,7 @@ const JoinableGame = (props) => (
     {true && (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
-          <Button className="montserrat" onClick={props.joinGame}>
+          <Button tag="a" color="primary"  wideMobile onClick={props.joinGame}>
             Join Game
           </Button>
         )}
@@ -47,9 +47,7 @@ const JoinableGame = (props) => (
     )}
     {props.players && isNotEmptyObj(props.gameInfo) && (
       <>
-        <Row style={{ justifyContent: "center" }}>
-      
-        </Row>
+
         <h5 className="cardo">Players in the game</h5>
         {props.gameInfo.firstSegmentStart && (
           <p className="cardo">
