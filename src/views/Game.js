@@ -6,8 +6,9 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import toArray from "dayjs/plugin/toArray";
 import relativeTime from "dayjs/plugin/relativeTime";
-import Button from './../components/elements/Button';
+import Button from "./../components/elements/Button";
 import { useAlert } from "react-alert";
+import { gameNumber, gqlErrors } from "./../utils/utilities";
 // import parseErr  from 'parse-err';
 // import ErrorStackParser from 'error-stack-parser';
 
@@ -58,11 +59,11 @@ const GamePage = () => {
     };
     const players = await playerReq().catch((err) => {
       console.error(err);
-      return "gql request failed";
+      return gqlErrors.players;
     });
-    if(players === "gql request failed"){
-      //🚨TODO add an alert in UI 
-      return 
+    if (players === gqlErrors.players) {
+      //🚨TODO add an alert in UI
+      return;
     }
     var playersArr = [];
     for (let key in players.players) {
@@ -84,6 +85,33 @@ const GamePage = () => {
   };
 
   const getGameInfo = async () => {
+    const gameReq = async () => {
+      const query = gql`
+        {
+          games {
+            id
+            totalGamePrincipal
+            totalGameInterest
+            redeemed
+          }
+        }
+      `;
+
+      const res = await request(
+        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
+        query
+      );
+      return res;
+    };
+    const glqGameData = await gameReq().catch((err) => {
+      console.error(err);
+      return gqlErrors.game;
+    });
+    if (glqGameData === gqlErrors.game) {
+      //🚨TODO add an alert in UI
+      return;
+    }
+
     const firstSegmentStart = await goodGhostingContract.methods
       .firstSegmentStart()
       .call();
@@ -114,7 +142,7 @@ const GamePage = () => {
       // currentSegmentEnd : dayjs.unix(firstSegmentStart).add(segmentLength * , "s")
     };
 
-    setGameInfo(gameInfo);
+    setGameInfo(Object.assign(gameInfo, glqGameData.games[gameNumber]));
   };
 
   const makeDeposit = async () => {
@@ -218,15 +246,21 @@ const GamePage = () => {
     if (!getPlayersStatus) {
       return status.unloaded;
     }
-    const isInGame = !!players.filter(
-      (player) => player.id === usersAddress
-    ).length;
+    const isInGame = !!players.filter((player) => player.id === usersAddress)
+      .length;
     return isInGame ? status.registered : status.unregistered;
   };
 
   const connectToWallet = () =>
     !usersAddress && (
-      <Button  tag="a" color="primary"  wideMobile onClick={getAddressFromMetaMask}>Connect MetaMask</Button>
+      <Button
+        tag="a"
+        color="primary"
+        wideMobile
+        onClick={getAddressFromMetaMask}
+      >
+        Connect MetaMask
+      </Button>
     );
 
   const isFirstSegment = () => {

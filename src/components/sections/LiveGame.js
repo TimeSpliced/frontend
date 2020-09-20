@@ -52,7 +52,7 @@ const RegisteredPlayer = (props) => {
       {isNotEmptyObj(props.playerInfo) && (
         <PlayerInfo playerInfo={props.playerInfo} />
       )}
-      {true && (
+      { props.playerInfo.mostRecentPaid > props.gameInfo.currentSegment && (
         <div>
           <Button
             tag="a" color="primary"  wideMobile 

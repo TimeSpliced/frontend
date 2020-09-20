@@ -22,6 +22,13 @@ export const brandColors = {
     purple : "#8860d0"
 }
 
+export const gqlErrors = {
+    players : "gql players request failed",
+    game : "gql game request failed"
+}
+
+export const gameNumber = 0
+
 export const parseRevertError = async (error)=>{
     const errorToString = parseErr(error).stack.toString();
     const transactionHash = errorToString.split('transactionHash": ')[1].slice(1, 67);
