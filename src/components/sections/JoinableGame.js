@@ -73,6 +73,8 @@ const JoinableGame = (props) => (
             : "join"}
           : {dayjs().to(props.gameInfo.firstSegmentEnd)}
         </p>
+        <p>Customize your avatar at <a href="https://3box.io/hub" target="_blank" rel="noopen"> 3Box Hub</a></p>
+
         {props.players && PlayersPrint(props.players)}
         {props.connectToWallet()}
       </>
