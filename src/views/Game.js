@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import GoodGhostingABI from "../ABIs/ABI-goodghosting";
 import DaiABI from "../ABIs/ABI-dai";
 import Web3 from "web3";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import toArray from "dayjs/plugin/toArray";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Button from "./../components/elements/Button";
+import ButtonGroup from "../components/elements/ButtonGroup";
 import { useAlert } from "react-alert";
 import { gameNumber, gqlErrors } from "./../utils/utilities";
 // import parseErr  from 'parse-err';
@@ -39,6 +41,7 @@ const GamePage = () => {
   const [getPlayersStatus, setGetPlayersStatus] = useState(false);
   const [gameInfo, setGameInfo] = useState({});
   const [web3, setWeb3] = useState({});
+  const provider = new WalletConnectProvider({infuraId: "d3a8de7eea584588be986ea275e4b018" }); //Required for WalletConnect
 
   const getPlayers = async () => {
     // const alert = useAlert(); // 🚨 TODO fix
@@ -235,7 +238,6 @@ const GamePage = () => {
     }
   };
 
-  //🚨TODO replace this with portis or alternative wallet connection
   const getAddressFromMetaMask = async () => {
     if (typeof window.ethereum == "undefined") {
       this.setState({ needToAWeb3Browser: true });
@@ -246,6 +248,21 @@ const GamePage = () => {
       setUsersAddress(address);
     }
   };
+
+   // Added first part of WalletConnect (QR code scan)
+    //https://docs.walletconnect.org/quick-start/dapps/web3-provider
+    // 🚨TODO - check if it actual works and if the downstream processed need to be adjusted
+    //   I was able to generate a CR code and scane if with Argent wallet, but nothing afterwards🚨
+      // EROR: "Unhandled Rejection (TypeError): this.send is not a function"
+  const getAddressFromWalletConnect = async () => {
+      await provider.enable();  //Enable session (triggers QR Code modal)
+      const web3 = new Web3(provider); //Create Web3
+      🚨//const accounts = await web3.eth.getAccounts();
+      🚨//const address = accounts[0];
+      🚨//setUsersAddress(address);
+      //const networkId = await web3.eth.net.getId();
+      //await provider.close()
+    }
 
   const checkUserStatus = () => {
     if (!usersAddress) {
@@ -261,15 +278,27 @@ const GamePage = () => {
 
   const connectToWallet = () =>
     !usersAddress && (
+      <ButtonGroup>
       <Button
         tag="a"
         color="primary"
         wideMobile
         onClick={getAddressFromMetaMask}
       >
-        Connect MetaMask
+        Connect MetaMask (KOVAN)
       </Button>
+      <Button
+        tag="a"
+        color="primary"
+        wideMobile
+        onClick={getAddressFromWalletConnect}
+      >
+        Connect WalletConnect (KOVAN)
+      </Button>
+      </ButtonGroup>
     );
+
+
 
   const isFirstSegment = () => {
     return gameInfo.firstSegmentEnd.valueOf() > Date.now();
@@ -285,6 +314,7 @@ const GamePage = () => {
               <JoinableGame
                 usersAddress={usersAddress}
                 getAddressFromMetaMask={getAddressFromMetaMask}
+                getAddressFromWalletConnect={getAddressFromWalletConnect}
                 players={players}
                 loadingState={loadingState}
                 joinGame={joinGame}
