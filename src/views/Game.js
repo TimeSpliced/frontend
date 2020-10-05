@@ -68,7 +68,7 @@ const GamePage = () => {
       //🚨TODO add an alert in UI
       return;
     }
-    console.log("players", players)
+    console.log("players", players);
     var playersArr = [];
     for (let key in players.players) {
       await fetch(
@@ -114,7 +114,7 @@ const GamePage = () => {
       console.error(err);
       return gqlErrors.game;
     });
-    console.log("👋", glqGameData)
+    console.log("👋", glqGameData);
     if (glqGameData === gqlErrors.game) {
       //🚨TODO add an alert in UI
       return;
@@ -230,7 +230,7 @@ const GamePage = () => {
         .players(usersAddress)
         .call();
       playerInfo.isStillInGame =
-        playerInfo.mostRecentSegmentPaid + 1 >= gameInfo.currentSegment;
+        playerInfo.mostRecentSegmentPaid > gameInfo.currentSegment - 2;
       setPlayerInfo(playerInfo);
     }
   };
