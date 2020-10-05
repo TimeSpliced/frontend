@@ -102,18 +102,23 @@ class GameStats extends React.Component {
 
     const gameData = [
       {
-        label: "Every day deposit",
-        data: web3.utils.fromWei(this.props.gameInfo.rawSegmentPayment),
+        label: "Regular deposit",
+        data: `${web3.utils.fromWei(
+          this.props.gameInfo.rawSegmentPayment
+        )} DAI`,
       },
       {
         label: "Total Pool Amount",
-        data:
+        data: `${
           this.props.gameInfo &&
-          weiToERC20(this.props.gameInfo.totalGamePrincipal),
+          weiToERC20(this.props.gameInfo.totalGamePrincipal)
+        } DAI`,
       },
       {
         label: "Total Pool Interest",
-        data: this.props.gameInfo && weiToERC20(this.props.totalGameInterest),
+        data: `${
+          this.props.gameInfo && weiToERC20(this.props.totalGameInterest)
+        } DAI`,
       },
       {
         label: "Players Status",
