@@ -7,22 +7,23 @@ import PlayerInfo from "../elements/PlayerInfo";
 import dayjs from "dayjs";
 import SignupForm from "./SignupForm";
 import SectionHeader from "./partials/SectionHeader";
-import CountdownContainer from "./../elements/countdown-container";
+// import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
   <div className="section-inner">
     <SectionHeader
       tag="h1"
       data={{
-        title: "Our saving pool closes in",
-        // paragraph : "Don't miss out, sign up."
+        title: "Our saving pool closes",
+        paragraph: dayjs().to(props.gameInfo.firstSegmentEnd),
       }}
       className="center-content"
     />
-    <CountdownContainer
+
+    {/* <CountdownContainer
       timeTillDate="08 16 2020 , 6:00 am"
       timeFormat="MM DD YYYY, h:mm a"
-    />
+    /> */}
     {console.log(props)}
     <div>
       <h5>Rules</h5>
@@ -30,7 +31,7 @@ const JoinableGame = (props) => (
     </div>
 
     {/* TODO add bac in when reading iterable players from the graph */}
-    {props.usersAddress && props.userStatus === status.unregistered &&  (
+    {props.usersAddress && props.userStatus === status.unregistered && (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
           <Button tag="a" color="primary" wideMobile onClick={props.joinGame}>
