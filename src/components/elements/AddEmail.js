@@ -13,6 +13,8 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     textAlign: "center",
+    boxShadow: "0 32px 64px rgba(43,43,82,0.24)",
+    border: "none",
   },
 };
 
@@ -71,7 +73,15 @@ const AddEmail = (props) => {
     <>
       {!hasEmail && hasChecked && (
         <>
-          <p style={{ fontSize: "0.7rem" }}>
+          <p
+            className="sans_serif"
+            style={{
+              fontSize: "0.7rem",
+              textAlign: "center",
+              marginBottom: "1px",
+              marginTop: "20px",
+            }}
+          >
             Make sure you don't miss a payment, add an email for reminders
           </p>
           <Button tag="a" color="primary" wideMobile onClick={openModal}>
