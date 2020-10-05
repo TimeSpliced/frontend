@@ -32,7 +32,7 @@ const PlayerInfo = (props) => {
           position: "absolute",
           right: "26px",
           top: "0px",
-          zIndex: "1",
+          zIndex: "0",
         }}
         className="illustration-element-05 gg-image"
       >
