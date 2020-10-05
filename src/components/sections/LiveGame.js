@@ -4,6 +4,7 @@ import PlayersPrint from "./../elements/PrintPlayers";
 import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
 import GameStats from "./GameStats";
+import AddEmail from "./../elements/AddEmail";
 
 // const GameStats = (props) => (
 //   <div>
@@ -20,7 +21,9 @@ export default (props) => (
       players={props.players}
     />
 
-    <div style={{ justifyContent: "center", marginTop: '3em ' }}>{props.connectToWallet()}</div>
+    <div style={{ justifyContent: "center", marginTop: "3em " }}>
+      {props.connectToWallet()}
+    </div>
     <>
       {props.userStatus === status.registered && (
         <RegisteredPlayer
@@ -30,7 +33,7 @@ export default (props) => (
         />
       )}
 
-      <div style={{ justifyContent: "center", marginTop: '3em ' }}>
+      <div style={{ justifyContent: "center", marginTop: "3em " }}>
         {props.players && PlayersPrint(props.players)}
       </div>
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
@@ -44,6 +47,7 @@ const RegisteredPlayer = (props) => {
       {isNotEmptyObj(props.playerInfo) && (
         <PlayerInfo playerInfo={props.playerInfo} />
       )}
+      <AddEmail addr={props.playerInfo.addr} />
       {props.playerInfo.mostRecentPaid > props.gameInfo.currentSegment && (
         <div>
           <Button
