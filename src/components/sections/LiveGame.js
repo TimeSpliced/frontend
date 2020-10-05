@@ -41,14 +41,35 @@ export default (props) => (
   </>
 );
 
+// current segment = 2
+// previous sgement = 1
+
 const RegisteredPlayer = (props) => {
+  console.log(
+    "👻",
+    "props.playerInfo.mostRecentPaid ",
+    props.playerInfo.mostRecentPaid,
+    "props.gameInfo.currentSegment",
+    props.gameInfo.currentSegment
+  );
+  const hasNotPaidThisSegment =
+    props.playerInfo.mostRecentSegmentPaid !== props.gameInfo.currentSegment;
+  const didNotMissPreviousSegment =
+    props.playerInfo.mostRecentSegmentPaid > props.gameInfo.currentSegment - 2;
+
+  console.log(
+    "hasNotPaidThisSegment",
+    hasNotPaidThisSegment,
+    "didNotMissPreviousSegment",
+    didNotMissPreviousSegment
+  );
   return (
     <div>
       {isNotEmptyObj(props.playerInfo) && (
         <PlayerInfo playerInfo={props.playerInfo} />
       )}
       <AddEmail addr={props.playerInfo.addr} />
-      {props.playerInfo.mostRecentPaid > props.gameInfo.currentSegment && (
+      {hasNotPaidThisSegment && didNotMissPreviousSegment && (
         <div>
           <Button
             tag="a"
