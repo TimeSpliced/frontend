@@ -4,6 +4,18 @@ import axios from "./../../Hooks/axios";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
+  },
+};
+
 // https://ci0pz8ou28.execute-api.us-east-1.amazonaws.com/check-email?address=0x2f4cE4f714C68A3fC871d1f543FFC24b9b3c2386
 const AddEmail = (props) => {
   const [addr, setAddr] = useState(props.addr);
@@ -76,18 +88,31 @@ const AddEmail = (props) => {
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
-            // style={customStyles}
+            style={customStyles}
             contentLabel="Example Modal"
           >
             <h2>Add your email for updates</h2>
-            <button onClick={closeModal}>close</button>
             {emailPosting === "notSent" && (
               <>
                 <div>This email will only be used for game updates</div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input name="email" ref={register({ required: true })} />
-                  {errors.email && <span>This field is required</span>}
-                  <input type="submit" />
+                  {
+                    <p
+                      style={{
+                        color: "red",
+                        fontSize: "0.8rem",
+                        marginBottom: "0",
+                        height: "30px",
+                      }}
+                    >
+                      {errors.email ? "This field is required" : "  "}
+                    </p>
+                  }
+                  <input
+                    className="button button-dark button-wide-mobile button-sm"
+                    type="submit"
+                  />
                 </form>
               </>
             )}
@@ -106,6 +131,12 @@ const AddEmail = (props) => {
                 </Button>
               </p>
             )}
+            <button
+              className="button button-wide-mobile button-sm"
+              onClick={closeModal}
+            >
+              close
+            </button>
           </Modal>
         </>
       )}
