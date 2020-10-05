@@ -11,17 +11,7 @@ const PlayersPrint = (players) =>
         margin: "0.5rem",
       }}
     >
-      <div className={`team-item-image mb-24 illustration-element-0${(key % 3)+ 3} gg-image`}>
-        <Image
-          width={100}
-          height={100}
-          src={
-            player.threeBoxAvatar
-              ? `https://ipfs.infura.io/ipfs/${player.threeBoxAvatar}`
-              : `https://robohash.org/${player.address}`
-          }
-        />
-      </div>
+      <PlayerImage i={key} player={player} />
       <p className="sans_serif text-color-primary fw-500 text-xxs tt-u">
         {player.threeBoxName
           ? player.threeBoxName
@@ -31,3 +21,24 @@ const PlayersPrint = (players) =>
   ));
 
 export default PlayersPrint;
+
+export const PlayerImage = (props) => {
+  return (
+    <div
+      className={`team-item-image mb-24 illustration-element-0${
+        (parseInt(props.i) % 3) + 3
+      } gg-image`}
+    >
+      <Image
+        style={props.style}
+        width={100}
+        height={100}
+        src={
+          props.player.threeBoxAvatar
+            ? `https://ipfs.infura.io/ipfs/${props.player.threeBoxAvatar}`
+            : `https://robohash.org/${props.player.address}`
+        }
+      />
+    </div>
+  );
+};
