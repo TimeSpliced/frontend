@@ -80,9 +80,10 @@ const JoinableGame = (props) => (
             3Box Hub
           </a>
         </p>
-
+        <div className="connect-to-wallet" style={{ margin: "20px" }}>
+          {props.connectToWallet()}
+        </div>
         {props.players && PlayersPrint(props.players)}
-        {props.connectToWallet()}
       </>
     )}
   </div>
