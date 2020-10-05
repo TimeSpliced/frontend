@@ -230,7 +230,8 @@ const GamePage = () => {
         .players(usersAddress)
         .call();
       playerInfo.isStillInGame =
-        playerInfo.mostRecentSegmentPaid > gameInfo.currentSegment - 2;
+        parseInt(playerInfo.mostRecentSegmentPaid) >
+        parseInt(gameInfo.currentSegment) - 2;
       setPlayerInfo(playerInfo);
     }
   };
