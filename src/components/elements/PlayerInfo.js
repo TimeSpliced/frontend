@@ -1,6 +1,6 @@
 import React from "react";
 import { PlayerImage } from "./../elements/PrintPlayers";
-
+import AddEmail from "./AddEmail";
 const PlayerInfo = (props) => {
   const humanMostRecentSegmentPaid =
     parseInt(props.playerInfo.mostRecentSegmentPaid) + 1;
@@ -83,6 +83,8 @@ const PlayerInfo = (props) => {
           </span>
         </div>
       </div>
+
+      <AddEmail addr={props.playerInfo.addr} />
     </div>
   );
 };

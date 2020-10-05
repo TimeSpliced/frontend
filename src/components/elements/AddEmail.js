@@ -71,9 +71,8 @@ const AddEmail = (props) => {
     <>
       {!hasEmail && hasChecked && (
         <>
-          <p>
+          <p style={{ fontSize: "0.7rem" }}>
             Make sure you don't miss a payment, add an email for reminders
-            (optional)
           </p>
           <Button tag="a" color="primary" wideMobile onClick={openModal}>
             Add email
