@@ -18,22 +18,40 @@ const PlayerInfo = (props) => {
       <h3>Your Profile</h3>
       <div>
         <div>
-          <span style={{ fontWeight: "600" }}> ETH address </span> :{" "}
-          {props.playerInfo.addr}
+          <span className="sans_serif" style={{ fontWeight: "600" }}>
+            {" "}
+            ETH address{" "}
+          </span>{" "}
+          :{" "}
+          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
+            {props.playerInfo.addr}
+          </span>
         </div>
         <div>
-          <span style={{ fontWeight: "600" }}>Amount Paid:</span>{" "}
-          {props.playerInfo.amountPaid}
+          <span className="sans_serif" style={{ fontWeight: "600" }}>
+            Amount Paid:
+          </span>{" "}
+          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
+            {props.playerInfo.amountPaid}
+          </span>
         </div>
         <div>
-          <span style={{ fontWeight: "600" }}>Most Recent Segment Paid:</span>{" "}
-          {humanMostRecentSegmentPaid}
+          <span className="sans_serif" style={{ fontWeight: "600" }}>
+            Most Recent Segment Paid:
+          </span>{" "}
+          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
+            {humanMostRecentSegmentPaid}
+          </span>
         </div>
         <div>
-          <span style={{ fontWeight: "600" }}>Players Status:</span>{" "}
-          {props.playerInfo.isStillInGame
-            ? "live 🎉"
-            : "sorry you missed a payment 😢"}
+          <span className="sans_serif" style={{ fontWeight: "600" }}>
+            Players Status:
+          </span>{" "}
+          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
+            {props.playerInfo.isStillInGame
+              ? "live 🎉"
+              : "sorry you missed a payment 😢"}
+          </span>
         </div>
       </div>
     </div>
