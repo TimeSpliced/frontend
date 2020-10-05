@@ -28,8 +28,8 @@ const AddEmail = (props) => {
   const onSubmit = (data) => {
     setEmailPosting("loading");
     async function fetchData() {
-      const request = await axios
-        .post(`add-email?address=${"props.addr"}&email=${data.email}`)
+      await axios
+        .post(`add-email?address=${props.addr}&email=${data.email}`)
         .then(() => {
           setEmailPosting("done");
           setTimeout(() => {
@@ -49,12 +49,6 @@ const AddEmail = (props) => {
   Modal.setAppElement("#root");
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-    console.log("opened");
   }
 
   function closeModal() {
@@ -86,7 +80,6 @@ const AddEmail = (props) => {
           </Button>
           <Modal
             isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal"
@@ -116,7 +109,7 @@ const AddEmail = (props) => {
                 </form>
               </>
             )}
-            {emailPosting === "loading" && <p>Loading</p>}
+            {emailPosting === "loading" && <p>Saving 💾</p>}
             {emailPosting === "done" && <p>Done!🎉</p>}
             {emailPosting === "error" && (
               <p>
