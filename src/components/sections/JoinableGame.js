@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import SignupForm from "./SignupForm";
 import SectionHeader from "./partials/SectionHeader";
 import AddEmail from "./../elements/AddEmail";
+import GameStats from "./GameStats";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -28,10 +29,16 @@ const JoinableGame = (props) => (
     {props.userStatus === status.registered && (
       <AddEmail addr={props.playerInfo.addr} />
     )}
-    <div>
-      <h5>Rules</h5>
-      <p>Only on kovan at the moment.</p>
-    </div>
+
+    {props.gameInfo && props.players && (
+      <GameStats
+        hasBgColor
+        className="illustration-section-07"
+        gameInfo={props.gameInfo}
+        players={props.players}
+        hideHeader={true}
+      />
+    )}
 
     {/* TODO add bac in when reading iterable players from the graph */}
     {props.usersAddress && props.userStatus === status.unregistered && (
@@ -50,7 +57,6 @@ const JoinableGame = (props) => (
     )}
     {props.players && isNotEmptyObj(props.gameInfo) && (
       <>
-        <h5 className="cardo">Players in the game</h5>
         {props.gameInfo.firstSegmentStart && (
           <p className="cardo">
             Game launched :
@@ -60,12 +66,12 @@ const JoinableGame = (props) => (
         {/* {props.gameInfo.firstSegmentEnd && (
           <p>Join by: {props.gameInfo.firstSegmentEnd.toString()}</p>
         )} */}
-        {props.gameInfo.segmentLength && props.gameInfo.segmentPayment && (
+        {/* {props.gameInfo.segmentLength && props.gameInfo.segmentPayment && (
           <p>
             Deposit {props.gameInfo.segmentPayment} DAI every{" "}
             {props.gameInfo.segmentLength.asDays()} days
           </p>
-        )}
+        )} */}
         <p>
           Time left to{" "}
           {props.userStatus === status.registered
@@ -73,6 +79,11 @@ const JoinableGame = (props) => (
             : "join"}
           : {dayjs().to(props.gameInfo.firstSegmentEnd)}
         </p>
+
+        <div className="connect-to-wallet" style={{ margin: "20px" }}>
+          {props.connectToWallet()}
+        </div>
+        <h5 className="cardo">Players in the game</h5>
         <p>
           Customize your avatar at{" "}
           <a href="https://3box.io/hub" target="_blank" rel="noopen">
@@ -80,9 +91,6 @@ const JoinableGame = (props) => (
             3Box Hub
           </a>
         </p>
-        <div className="connect-to-wallet" style={{ margin: "20px" }}>
-          {props.connectToWallet()}
-        </div>
         {props.players && PlayersPrint(props.players)}
       </>
     )}
