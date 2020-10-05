@@ -93,10 +93,14 @@ const AddEmail = (props) => {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <h2>Add your email for updates</h2>
+            <h2>Get Email Reminders</h2>
             {emailPosting === "notSent" && (
               <>
-                <div>This email will only be used for game updates</div>
+                <div style={{ paddingLeft: "20%", paddingRight: "20%" }}>
+                  Get regular email notifications, to help you remember to
+                  deposit. Your email will only be used for notification
+                  purposes.
+                </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input
                     name="email"
