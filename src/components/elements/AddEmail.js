@@ -98,7 +98,18 @@ const AddEmail = (props) => {
               <>
                 <div>This email will only be used for game updates</div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <input name="email" ref={register({ required: true })} />
+                  <input
+                    name="email"
+                    ref={register({ required: true })}
+                    style={{
+                      borderColor: "rgb(217, 224, 240)",
+                      borderRadius: "7px",
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                      height: "36px",
+                      marginTop: "17px",
+                    }}
+                  />
                   {
                     <p
                       style={{

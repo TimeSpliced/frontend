@@ -10,6 +10,16 @@ const PlayerInfo = (props) => {
         player.address.toLowerCase() === props.playerInfo.addr.toLowerCase()
       );
     });
+  const valueStyle = {
+    backgroundColor: "white",
+    marginLeft: "20px",
+    paddingLeft: "15px",
+    paddingRight: "15px",
+    borderRadius: "3px;",
+    fontFamily: "monospace",
+    fontSize: "0.85rem",
+    marginLeft: "0px",
+  };
   return (
     <div
       className="tiles-item-inner"
@@ -51,32 +61,25 @@ const PlayerInfo = (props) => {
             {" "}
             ETH address{" "}
           </span>{" "}
-          :{" "}
-          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
-            {props.playerInfo.addr}
-          </span>
+          : <span style={valueStyle}>{props.playerInfo.addr}</span>
         </div>
         <div>
           <span className="sans_serif" style={{ fontWeight: "600" }}>
             Amount Paid:
           </span>{" "}
-          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
-            {props.playerInfo.amountPaid}
-          </span>
+          <span style={valueStyle}>{props.playerInfo.amountPaid}</span>
         </div>
         <div>
           <span className="sans_serif" style={{ fontWeight: "600" }}>
             Most Recent Segment Paid:
           </span>{" "}
-          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
-            {humanMostRecentSegmentPaid}
-          </span>
+          <span style={valueStyle}>{humanMostRecentSegmentPaid}</span>
         </div>
         <div>
           <span className="sans_serif" style={{ fontWeight: "600" }}>
             Players Status:
           </span>{" "}
-          <span className="sans_serif" style={{ fontSize: "0.8rem" }}>
+          <span style={valueStyle}>
             {props.playerInfo.isStillInGame
               ? "live 🎉"
               : "sorry you missed a payment 😢"}
