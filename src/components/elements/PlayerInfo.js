@@ -4,6 +4,12 @@ import { PlayerImage } from "./../elements/PrintPlayers";
 const PlayerInfo = (props) => {
   const humanMostRecentSegmentPaid =
     parseInt(props.playerInfo.mostRecentSegmentPaid) + 1;
+  const getPlayerFromPlayers = () =>
+    props.players.filter((player) => {
+      return (
+        player.address.toLowerCase() === props.playerInfo.addr.toLowerCase()
+      );
+    });
   return (
     <div
       className="tiles-item-inner"
@@ -32,7 +38,7 @@ const PlayerInfo = (props) => {
       >
         <PlayerImage
           i={1}
-          player={props.playerInfo}
+          player={getPlayerFromPlayers()[0]}
           style={{
             backgroundColor: "white",
             boxShadow: "0 32px 64px rgba(43, 43, 82, 0.24)",

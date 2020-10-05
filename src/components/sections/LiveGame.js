@@ -30,6 +30,7 @@ export default (props) => (
           gameInfo={props.gameInfo}
           playerInfo={props.playerInfo}
           makeDeposit={props.makeDeposit}
+          players={props.players}
         />
       )}
 
@@ -50,7 +51,7 @@ const RegisteredPlayer = (props) => {
   return (
     <div>
       {isNotEmptyObj(props.playerInfo) && (
-        <PlayerInfo playerInfo={props.playerInfo} />
+        <PlayerInfo playerInfo={props.playerInfo} players={props.players} />
       )}
       <AddEmail addr={props.playerInfo.addr} />
       {hasNotPaidThisSegment && didNotMissPreviousSegment && (
