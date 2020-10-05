@@ -177,7 +177,9 @@ class GameStats extends React.Component {
                         }
                         return (
                           <div key={i}>
-                            <span style={{ fontWeight: "400" }}>
+                            <span
+                              style={{ fontWeight: "600", fontSize: "0.85rem" }}
+                            >
                               {item.label} : {"  "}
                             </span>
                             <span style={valueStyle}>{item.data}</span>

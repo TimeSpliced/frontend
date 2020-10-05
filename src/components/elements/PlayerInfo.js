@@ -1,6 +1,8 @@
 import React from "react";
 import { PlayerImage } from "./../elements/PrintPlayers";
 import AddEmail from "./AddEmail";
+import { weiToERC20 } from "./../../utils/utilities";
+
 const PlayerInfo = (props) => {
   const humanMostRecentSegmentPaid =
     parseInt(props.playerInfo.mostRecentSegmentPaid) + 1;
@@ -15,7 +17,7 @@ const PlayerInfo = (props) => {
     marginLeft: "20px",
     paddingLeft: "15px",
     paddingRight: "15px",
-    borderRadius: "3px;",
+    borderRadius: "3px",
     fontFamily: "monospace",
     fontSize: "0.85rem",
     marginLeft: "0px",
@@ -57,26 +59,40 @@ const PlayerInfo = (props) => {
       </div>
       <div>
         <div>
-          <span className="sans_serif" style={{ fontWeight: "600" }}>
+          <span
+            className="sans_serif"
+            style={{ fontWeight: "600", fontSize: "0.85rem" }}
+          >
             {" "}
             ETH address{" "}
           </span>{" "}
           : <span style={valueStyle}>{props.playerInfo.addr}</span>
         </div>
         <div>
-          <span className="sans_serif" style={{ fontWeight: "600" }}>
+          <span
+            className="sans_serif"
+            style={{ fontWeight: "600", fontSize: "0.85rem" }}
+          >
             Amount Paid:
           </span>{" "}
-          <span style={valueStyle}>{props.playerInfo.amountPaid}</span>
+          <span style={valueStyle}>
+            {weiToERC20(props.playerInfo.amountPaid)} DAI
+          </span>
         </div>
         <div>
-          <span className="sans_serif" style={{ fontWeight: "600" }}>
+          <span
+            className="sans_serif"
+            style={{ fontWeight: "600", fontSize: "0.85rem" }}
+          >
             Most Recent Segment Paid:
           </span>{" "}
           <span style={valueStyle}>{humanMostRecentSegmentPaid}</span>
         </div>
         <div>
-          <span className="sans_serif" style={{ fontWeight: "600" }}>
+          <span
+            className="sans_serif"
+            style={{ fontWeight: "600", fontSize: "0.85rem" }}
+          >
             Players Status:
           </span>{" "}
           <span style={valueStyle}>
