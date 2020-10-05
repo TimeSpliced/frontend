@@ -5,14 +5,16 @@ const PlayerInfo = (props) => {
     parseInt(props.playerInfo.mostRecentSegmentPaid) + 1;
   return (
     <div
+      className="tiles-item-inner"
       style={{
-        width: "24rem",
+        flexBasis: "500px",
+        maxWidth: "500px",
         margin: "auto",
         textAlign: "left",
         fontFamily: "monserrat !important",
         backgroundColor: "#F6F8FE",
         padding: "28px",
-        boxShadow: "0 32px 64px rgba(43,43,82,0.24)",
+        // boxShadow: "0 32px 64px rgba(43,43,82,0.24)",
       }}
     >
       <h3>Your Profile</h3>

@@ -85,7 +85,32 @@ class GameStats extends React.Component {
       title: "Our Saving Pool is live!",
       paragraph: "👉Don't forget to make your regular deposit!",
     };
-    console.log("👻", props);
+
+    const gameData = [
+      {
+        label: "Every day deposit",
+        data: web3.utils.fromWei(this.props.gameInfo.rawSegmentPayment),
+      },
+      {
+        label: "Total Pool Amount",
+        data:
+          this.props.gameInfo &&
+          weiToERC20(this.props.gameInfo.totalGamePrincipal),
+      },
+      {
+        label: "Total Pool Interest",
+        data: this.props.gameInfo && weiToERC20(this.props.totalGameInterest),
+      },
+      {
+        label: "Players Status",
+        data: " 1 Paid 3 Live 0 Dead",
+        condition: !props.hidePlayersStatus,
+      },
+      {
+        label: "Current Round",
+        data: displaySegment(this.props.gameInfo.currentSegment),
+      },
+    ];
     return (
       <section className={outerClasses}>
         <div className="container">
@@ -103,49 +128,17 @@ class GameStats extends React.Component {
               >
                 <div className="tiles-item-inner has-shadow">
                   <div className="pricing-item-content">
-                    <div className="pricing-item-header">
-                      <div className="pricing-item-price mb-4">
-                        <span className="pricing-item-price-currency h2 text-color-mid"></span>
-                        <span className="pricing-item-price-amount game-stats-figures">
-                          <span>Every day deposit</span>
-                          {/* {this.props.gameInfo.segmentLength.$d.days}  can use this to ref the specific number of days   */}
-                          <h4>
-                            {web3.utils.fromWei(
-                              this.props.gameInfo.rawSegmentPayment
-                            )}{" "}
-                            DAI
-                          </h4>
-                          <p>Total Pool Amount</p>
-                          <h4>
-                            {" "}
-                            {this.props.gameInfo &&
-                              weiToERC20(
-                                this.props.gameInfo.totalGamePrincipal
-                              )}{" "}
-                            DAI
-                          </h4>
-                          <p>Total Pool Interest</p>
-                          <h4>
-                            {" "}
-                            {this.props.gameInfo &&
-                              weiToERC20(this.props.totalGameInterest)}{" "}
-                            DAI
-                          </h4>
-                          {!props.hidePlayersStatus && (
-                            <>
-                              <p> Players Status </p>
-                              {/* /* TODO calculate this */}
-                              <h4> 1 Paid 3 Live 0 Dead</h4>
-                            </>
-                          )}
-                          <p> Current Round </p>
-                          {/* TODO calculate this */}
-                          <h4>
-                            {" "}
-                            {displaySegment(this.props.gameInfo.currentSegment)}
-                          </h4>
-                        </span>
-                      </div>
+                    <div
+                      className="pricing-item-header sans_serif"
+                      style={{ textAlign: "left" }}
+                    >
+                      <h3>Game Stats</h3>
+                      {gameData.map((item) => (
+                        <div>
+                          <span>{item.label} : </span>
+                          <span>{item.data}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -162,3 +155,44 @@ GameStats.propTypes = propTypes;
 GameStats.defaultProps = defaultProps;
 
 export default GameStats;
+
+{
+  /* <div className="pricing-item-price mb-4">
+<span className="pricing-item-price-currency h2 text-color-mid"></span>
+<span className="pricing-item-price-amount game-stats-figures">
+  <span>Every day deposit</span>
+  <h4>
+    {web3.utils.fromWei(
+      this.props.gameInfo.rawSegmentPayment
+    )}{" "}
+    DAI
+  </h4>
+  <p>Total Pool Amount</p>
+  <h4>
+    {" "}
+    {this.props.gameInfo &&
+      weiToERC20(
+        this.props.gameInfo.totalGamePrincipal
+      )}{" "}
+    DAI
+  </h4>
+  <p>Total Pool Interest</p>
+  <h4>
+    {" "}
+    {this.props.gameInfo &&
+      weiToERC20(this.props.totalGameInterest)}{" "}
+    DAI
+  </h4>
+  {!props.hidePlayersStatus && (
+    <>
+      <p> Players Status </p>
+      <h4> 1 Paid 3 Live 0 Dead</h4>
+    </>
+  )}
+  <p> Current Round </p>
+  <h4>
+    {displaySegment(this.props.gameInfo.currentSegment)}
+  </h4>
+</span>
+</div>  */
+}
