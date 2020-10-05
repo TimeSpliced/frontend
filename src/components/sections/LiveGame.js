@@ -35,6 +35,7 @@ export default (props) => (
       )}
 
       <div style={{ justifyContent: "center", marginTop: "3em " }}>
+        {props.playerInfo.addr && <h4>The Competition</h4>}
         {props.players && PlayersPrint(props.players, props.playerInfo.addr)}
       </div>
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
