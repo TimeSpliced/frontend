@@ -1,8 +1,15 @@
 import React from "react";
 import Image from "./Image";
 
-const PlayersPrint = (players) =>
-  players.map((player, key) => (
+const PlayersPrint = (players, currentPlayer) => {
+  let iterablePlayers = players;
+  if (currentPlayer) {
+    iterablePlayers = players.filter(
+      (player) => player.address.toLowerCase() !== currentPlayer.toLowerCase()
+    );
+  }
+
+  return iterablePlayers.map((player, key) => (
     <div
       key={key}
       style={{
@@ -19,6 +26,7 @@ const PlayersPrint = (players) =>
       </p>
     </div>
   ));
+};
 
 export default PlayersPrint;
 
