@@ -132,11 +132,15 @@ class GameStats extends React.Component {
                       className="pricing-item-header sans_serif"
                       style={{ textAlign: "left" }}
                     >
-                      <h3>Game Stats</h3>
+                      <h3>Game Stats 👾</h3>
                       {gameData.map((item) => (
                         <div>
-                          <span>{item.label} : </span>
-                          <span>{item.data}</span>
+                          <span style={{ fontWeight: "600" }}>
+                            {item.label} : {"  "}
+                          </span>
+                          <span style={{ fontSize: "0.8rem" }}>
+                            {item.data}
+                          </span>
                         </div>
                       ))}
                     </div>
