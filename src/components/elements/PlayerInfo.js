@@ -1,6 +1,8 @@
 import React from "react";
 
 const PlayerInfo = (props) => {
+  const humanMostRecentSegmentPaid =
+    parseInt(props.playerInfo.mostRecentSegmentPaid) + 1;
   return (
     <div
       style={{
@@ -25,7 +27,7 @@ const PlayerInfo = (props) => {
         </div>
         <div>
           <span style={{ fontWeight: "600" }}>Most Recent Segment Paid:</span>{" "}
-          {props.playerInfo.mostRecentSegmentPaid}
+          {humanMostRecentSegmentPaid}
         </div>
         <div>
           <span style={{ fontWeight: "600" }}>Players Status:</span>{" "}
