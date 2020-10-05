@@ -127,6 +127,15 @@ class GameStats extends React.Component {
         data: displaySegment(this.props.gameInfo.currentSegment),
       },
     ];
+
+    const valueStyle = {
+      backgroundColor: "#F6F8FE",
+      marginLeft: "20px",
+      paddingLeft: "15px",
+      paddingRight: "15px",
+      borderRadius: "3px;",
+      fontFamily: "monospace",
+    };
     return (
       <section className={outerClasses}>
         <div className="container">
@@ -148,9 +157,8 @@ class GameStats extends React.Component {
                       className="pricing-item-header sans_serif"
                       style={{ textAlign: "left" }}
                     >
-                      <h3>
-                        {" "}
-                        Game Stats{" "}
+                      <h3 style={{ marginTop: "5px" }}>
+                        Game Stats
                         <span role="img" aria-label="game emoji">
                           👾
                         </span>
@@ -164,12 +172,10 @@ class GameStats extends React.Component {
                         }
                         return (
                           <div key={i}>
-                            <span style={{ fontWeight: "600" }}>
+                            <span style={{ fontWeight: "400" }}>
                               {item.label} : {"  "}
                             </span>
-                            <span style={{ fontSize: "0.8rem" }}>
-                              {item.data}
-                            </span>
+                            <span style={valueStyle}>{item.data}</span>
                           </div>
                         );
                       })}
