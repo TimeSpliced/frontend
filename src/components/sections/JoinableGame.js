@@ -7,6 +7,7 @@ import PlayerInfo from "../elements/PlayerInfo";
 import dayjs from "dayjs";
 import SignupForm from "./SignupForm";
 import SectionHeader from "./partials/SectionHeader";
+import AddEmail from "./../elements/AddEmail";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -24,7 +25,9 @@ const JoinableGame = (props) => (
       timeTillDate="08 16 2020 , 6:00 am"
       timeFormat="MM DD YYYY, h:mm a"
     /> */}
-    {console.log(props)}
+    {props.userStatus === status.registered && (
+      <AddEmail addr={props.playerInfo.addr} />
+    )}
     <div>
       <h5>Rules</h5>
       <p>Only on kovan at the moment.</p>
