@@ -85,6 +85,20 @@ class GameStats extends React.Component {
       title: "Our Saving Pool is live!",
       paragraph: "👉Don't forget to make your regular deposit!",
     };
+    const numberOfPlayers = (status) => {
+      const conditions = {
+        dead: (player) =>
+          parseInt(player.mostRecentSegmentPaid) <
+          parseInt(props.gameInfo.currentSegment) - 2,
+        alive: (player) =>
+          parseInt(player.mostRecentSegmentPaid) >
+          parseInt(props.gameInfo.currentSegment) - 2,
+      };
+      const deadPlayers = props.players.filter((player) =>
+        conditions[status](player)
+      );
+      return deadPlayers.length;
+    };
 
     const gameData = [
       {
@@ -103,7 +117,9 @@ class GameStats extends React.Component {
       },
       {
         label: "Players Status",
-        data: " 1 Paid 3 Live 0 Dead",
+        data: ` Live: ${numberOfPlayers("alive")} Dead: ${numberOfPlayers(
+          "dead"
+        )} `,
         condition: !props.hidePlayersStatus,
       },
       {
@@ -132,17 +148,31 @@ class GameStats extends React.Component {
                       className="pricing-item-header sans_serif"
                       style={{ textAlign: "left" }}
                     >
-                      <h3>Game Stats 👾</h3>
-                      {gameData.map((item) => (
-                        <div>
-                          <span style={{ fontWeight: "600" }}>
-                            {item.label} : {"  "}
-                          </span>
-                          <span style={{ fontSize: "0.8rem" }}>
-                            {item.data}
-                          </span>
-                        </div>
-                      ))}
+                      <h3>
+                        {" "}
+                        Game Stats{" "}
+                        <span role="img" aria-label="game emoji">
+                          👾
+                        </span>
+                      </h3>
+                      {gameData.map((item, i) => {
+                        if (
+                          item.hasOwnProperty("condition") &&
+                          !item.condition
+                        ) {
+                          return null;
+                        }
+                        return (
+                          <div key={i}>
+                            <span style={{ fontWeight: "600" }}>
+                              {item.label} : {"  "}
+                            </span>
+                            <span style={{ fontSize: "0.8rem" }}>
+                              {item.data}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -159,44 +189,3 @@ GameStats.propTypes = propTypes;
 GameStats.defaultProps = defaultProps;
 
 export default GameStats;
-
-{
-  /* <div className="pricing-item-price mb-4">
-<span className="pricing-item-price-currency h2 text-color-mid"></span>
-<span className="pricing-item-price-amount game-stats-figures">
-  <span>Every day deposit</span>
-  <h4>
-    {web3.utils.fromWei(
-      this.props.gameInfo.rawSegmentPayment
-    )}{" "}
-    DAI
-  </h4>
-  <p>Total Pool Amount</p>
-  <h4>
-    {" "}
-    {this.props.gameInfo &&
-      weiToERC20(
-        this.props.gameInfo.totalGamePrincipal
-      )}{" "}
-    DAI
-  </h4>
-  <p>Total Pool Interest</p>
-  <h4>
-    {" "}
-    {this.props.gameInfo &&
-      weiToERC20(this.props.totalGameInterest)}{" "}
-    DAI
-  </h4>
-  {!props.hidePlayersStatus && (
-    <>
-      <p> Players Status </p>
-      <h4> 1 Paid 3 Live 0 Dead</h4>
-    </>
-  )}
-  <p> Current Round </p>
-  <h4>
-    {displaySegment(this.props.gameInfo.currentSegment)}
-  </h4>
-</span>
-</div>  */
-}

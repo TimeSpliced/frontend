@@ -82,6 +82,7 @@ const GamePage = () => {
             mostRecentSegmentPaid: players.players[key].mostRecentSegmentPaid,
             amountPaid: players.players[key].amountPaid,
             threeBoxName: data.name,
+
             threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
           };
           playersArr.push(player);
@@ -114,7 +115,6 @@ const GamePage = () => {
       console.error(err);
       return gqlErrors.game;
     });
-    console.log("👋", glqGameData);
     if (glqGameData === gqlErrors.game) {
       //🚨TODO add an alert in UI
       return;
