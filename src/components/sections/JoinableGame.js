@@ -37,6 +37,7 @@ const JoinableGame = (props) => (
         gameInfo={props.gameInfo}
         players={props.players}
         hideHeader={true}
+        hidePlayersStatus={true}
       />
     )}
 

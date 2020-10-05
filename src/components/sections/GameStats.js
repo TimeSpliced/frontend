@@ -131,9 +131,13 @@ class GameStats extends React.Component {
                               weiToERC20(this.props.totalGameInterest)}{" "}
                             DAI
                           </h4>
-                          <p> Players Status </p>
-                          {/* TODO calculate this */}
-                          <h4> 1 Paid 3 Live 0 Dead</h4>
+                          {!props.hidePlayersStatus && (
+                            <>
+                              <p> Players Status </p>
+                              {/* /* TODO calculate this */}
+                              <h4> 1 Paid 3 Live 0 Dead</h4>
+                            </>
+                          )}
                           <p> Current Round </p>
                           {/* TODO calculate this */}
                           <h4>
