@@ -86,7 +86,7 @@ const JoinableGame = (props) => (
           {props.connectToWallet()}
         </div>
         <h5 className="cardo">Players in the game</h5>
-        <p>
+        <p style={{ fontSize: "0.7rem" }}>
           Customize your avatar at{" "}
           <a href="https://3box.io/hub" target="_blank" rel="noopen">
             {" "}
