@@ -48,14 +48,16 @@ const PlayerInfo = (props) => {
         }}
         className="illustration-element-05 gg-image"
       >
-        <PlayerImage
-          i={1}
-          player={getPlayerFromPlayers()[0]}
-          style={{
-            backgroundColor: "white",
-            boxShadow: "0 32px 64px rgba(43, 43, 82, 0.24)",
-          }}
-        />
+        {getPlayerFromPlayers()[0] && (
+          <PlayerImage
+            i={1}
+            player={getPlayerFromPlayers()[0]}
+            style={{
+              backgroundColor: "white",
+              boxShadow: "0 32px 64px rgba(43, 43, 82, 0.24)",
+            }}
+          />
+        )}
       </div>
       <div>
         <div>
