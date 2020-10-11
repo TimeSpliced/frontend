@@ -4,13 +4,6 @@ import PlayersPrint from "./../elements/PrintPlayers";
 import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
 import GameStats from "./GameStats";
-import AddEmail from "./../elements/AddEmail";
-
-// const GameStats = (props) => (
-//   <div>
-//     <p>Game Started on {props.gameInfo.firstSegmentStart.toString()}</p>
-//   </div>
-// );
 
 export default (props) => (
   <>

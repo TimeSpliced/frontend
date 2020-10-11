@@ -73,20 +73,31 @@ const AddEmail = (props) => {
     <>
       {!hasEmail && hasChecked && (
         <>
-          <p
-            className="sans_serif"
-            style={{
-              fontSize: "0.7rem",
-              textAlign: "center",
-              marginBottom: "1px",
-              marginTop: "20px",
-            }}
-          >
-            Make sure you don't miss a payment, add an email for reminders
-          </p>
-          <Button tag="a" color="primary" wideMobile onClick={openModal}>
-            Add email
-          </Button>
+          {props.buttonStyle && (
+            <>
+              <p
+                className="sans_serif"
+                style={{
+                  fontSize: "0.7rem",
+                  textAlign: "center",
+                  marginBottom: "1px",
+                  marginTop: "20px",
+                }}
+              >
+                Make sure you don't miss a payment, add an email for reminders
+              </p>
+              <Button tag="a" color="primary" wideMobile onClick={openModal}>
+                Add email
+              </Button>
+            </>
+          )}
+          {props.bannerStyle && (
+            <Alert
+              action={openModal}
+              text="Don't miss a payment,"
+              actionText="sign up for email reminders"
+            />
+          )}
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
@@ -162,3 +173,51 @@ const AddEmail = (props) => {
 };
 
 export default AddEmail;
+
+const Alert = (props) => {
+  const [visibiliy, setVisibility] = useState(true);
+
+  return (
+    <div
+      className="sans_serif"
+      style={{
+        width: "100vw",
+        position: "absolute",
+        backgroundColor: "#FE88E4",
+        color: "#2B2C52",
+        padding: "8px",
+        display: visibiliy ? "block" : "none",
+        zIndex: visibiliy ? 10 : 0,
+      }}
+    >
+      <span>
+        {props.text}
+        <span
+          onClick={() => {
+            props.action();
+            setVisibility(false);
+          }}
+          className="alert-action-text"
+          style={{ fontWeight: "900", paddingLeft: "3px" }}
+        >
+          {props.actionText}
+        </span>
+      </span>
+      <span
+        className="alert-close"
+        style={{
+          position: "absolute",
+          top: "3px",
+          right: "18px",
+          fontSize: "0.8rem",
+          color: "white",
+        }}
+        onClick={() => {
+          setVisibility(false);
+        }}
+      >
+        X
+      </span>
+    </div>
+  );
+};

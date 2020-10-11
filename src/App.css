@@ -1,7 +1,20 @@
 .game-stats-figures p {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .pricing-item-header::after {
-    background : white !important;
+  background: white !important;
+}
+.alert-action-text {
+  transition: color 0.15s ease;
+}
+.alert-action-text:hover {
+  color: #8e79fc;
+}
+.alert-close {
+  transition: color 0.15s ease;
+}
+
+.alert-close:hover {
+  color: #8e79fc !important;
 }

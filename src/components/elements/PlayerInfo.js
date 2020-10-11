@@ -105,7 +105,7 @@ const PlayerInfo = (props) => {
         </div>
       </div>
 
-      <AddEmail addr={props.playerInfo.addr} />
+      <AddEmail addr={props.playerInfo.addr} buttonStyle={true} />
     </div>
   );
 };

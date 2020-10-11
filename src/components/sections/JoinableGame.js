@@ -28,7 +28,7 @@ const JoinableGame = (props) => (
       timeFormat="MM DD YYYY, h:mm a"
     /> */}
     {props.userStatus === status.registered && (
-      <AddEmail addr={props.playerInfo.addr} />
+      <AddEmail addr={props.playerInfo.addr} bannerStyle={true} />
     )}
 
     {props.gameInfo && props.players && (
