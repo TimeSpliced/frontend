@@ -5,6 +5,7 @@ import { SectionTilesProps } from "../../utils/SectionProps";
 import SectionHeader from "./partials/SectionHeader";
 import { displaySegment, weiToERC20 } from "./../../utils/utilities";
 import web3 from "web3";
+import dayjs from "dayjs";
 
 const propTypes = {
   ...SectionTilesProps.types,
@@ -82,8 +83,14 @@ class GameStats extends React.Component {
     const tilesClasses = classNames("tiles-wrap", pushLeft && "push-left");
 
     const sectionHeader = {
-      title: "Our Saving Pool is live!",
-      paragraph: "👉Don't forget to make your regular deposit!",
+      title: props.isJoinable
+        ? `Our saving pool closes in ${dayjs().to(
+            props.gameInfo.firstSegmentEnd
+          )}`
+        : "Our Saving Pool is live!",
+      paragraph: props.isJoinable
+        ? ""
+        : "👉Don't forget to make your regular deposit!",
     };
     const numberOfPlayers = (status) => {
       const conditions = {
@@ -145,12 +152,10 @@ class GameStats extends React.Component {
       <section className={outerClasses}>
         <div className="container">
           <div>
-            {!props.hideHeader && (
-              <SectionHeader
-                data={sectionHeader}
-                className="center-content invert-color"
-              />
-            )}
+            <SectionHeader
+              data={sectionHeader}
+              className="center-content invert-color"
+            />
             <div className={tilesClasses}>
               <div
                 className="tiles-item reveal-from-top"

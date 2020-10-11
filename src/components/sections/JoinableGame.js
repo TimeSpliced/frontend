@@ -13,14 +13,15 @@ import GameStats from "./GameStats";
 
 const JoinableGame = (props) => (
   <div className="section-inner">
-    <SectionHeader
+    {/* <SectionHeader
       tag="h1"
       data={{
         title: "Our saving pool closes",
         paragraph: dayjs().to(props.gameInfo.firstSegmentEnd),
       }}
+      headerStyle={{ paddingBottom: "20px" }}
       className="center-content"
-    />
+    /> */}
 
     {/* <CountdownContainer
       timeTillDate="08 16 2020 , 6:00 am"
@@ -36,8 +37,8 @@ const JoinableGame = (props) => (
         className="illustration-section-07"
         gameInfo={props.gameInfo}
         players={props.players}
-        hideHeader={true}
         hidePlayersStatus={true}
+        isJoinable={true}
       />
     )}
 
