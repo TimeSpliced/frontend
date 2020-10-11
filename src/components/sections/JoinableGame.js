@@ -12,7 +12,7 @@ import GameStats from "./GameStats";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
-  <div className="section-inner">
+  <div>
     {/* <SectionHeader
       tag="h1"
       data={{
