@@ -138,6 +138,7 @@ const GamePage = () => {
       .getCurrentSegment()
       .call();
 
+    const lastSegment = await goodGhostingContract.methods.lastSegment().call();
     const gameInfo = {
       firstSegmentStart: dayjs.unix(firstSegmentStart),
       firstSegmentStartArr: dayjs.unix(firstSegmentStart).toArray(),
@@ -146,6 +147,8 @@ const GamePage = () => {
       segmentLengthInSecs: segmentLength,
       segmentLength: dayjs.duration(segmentLength * 1000),
       currentSegment,
+      lastSegment,
+      isGameCompleted: currentSegment > lastSegment - 1,
       firstSegmentEnd: dayjs.unix(firstSegmentStart).add(segmentLength, "s"),
       // currentSegmentEnd : dayjs.unix(firstSegmentStart).add(segmentLength * , "s")
     };
