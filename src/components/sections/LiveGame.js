@@ -27,10 +27,18 @@ export default (props) => (
         />
       )}
 
-      <div style={{ justifyContent: "center", marginTop: "3em " }}>
-        {props.playerInfo.addr && <h4>The Competition</h4>}
-        {props.players && PlayersPrint(props.players, props.playerInfo.addr)}
-      </div>
+      {!props.gameInfo.isGameCompleted && (
+        <div style={{ justifyContent: "center", marginTop: "3em " }}>
+          {props.playerInfo.addr && <h4>The Competition</h4>}
+          {props.players && PlayersPrint(props.players, props.playerInfo.addr)}
+        </div>
+      )}
+      {props.gameInfo.isGameCompleted && (
+        <div style={{ justifyContent: "center", marginTop: "3em " }}>
+          {props.playerInfo.addr && <h4>The Winners! 🥳</h4>}
+          {props.players && PlayersPrint(props.players)}
+        </div>
+      )}
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
     </>
   </>
@@ -48,17 +56,30 @@ const RegisteredPlayer = (props) => {
         <PlayerInfo playerInfo={props.playerInfo} players={props.players} />
       )}
       {/* <AddEmail addr={props.playerInfo.addr} /> */}
-      {hasNotPaidThisSegment && didNotMissPreviousSegment && (
-        <div>
-          <Button
-            tag="a"
-            color="primary"
-            wideMobile
-            onClick={props.makeDeposit}
-          >
-            Deposit {props.gameInfo.segmentPayment} DAI
-          </Button>
-        </div>
+      {hasNotPaidThisSegment &&
+        didNotMissPreviousSegment &&
+        !props.gameInfo.isGameCompleted && (
+          <div>
+            <Button
+              tag="a"
+              color="primary"
+              wideMobile
+              onClick={props.makeDeposit}
+            >
+              Deposit {props.gameInfo.segmentPayment} DAI
+            </Button>
+          </div>
+        )}
+      {props.gameInfo.isGameCompleted && (
+        <Button
+          style={{ margin: "20px" }}
+          tag="a"
+          color="primary"
+          wideMobile
+          onClick={() => console.log("hi")}
+        >
+          Withdraw your funds
+        </Button>
       )}
       {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
     </div>

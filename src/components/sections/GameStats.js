@@ -145,7 +145,7 @@ class GameStats extends React.Component {
       marginLeft: "20px",
       paddingLeft: "15px",
       paddingRight: "15px",
-      borderRadius: "3px;",
+      borderRadius: "3px",
       fontFamily: "monospace",
     };
     return (
