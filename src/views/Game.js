@@ -82,7 +82,9 @@ const GamePage = () => {
             mostRecentSegmentPaid: players.players[key].mostRecentSegmentPaid,
             amountPaid: players.players[key].amountPaid,
             threeBoxName: data.name,
-
+            isLive:
+              gameInfo.currentSegment - 1 >=
+              players.players[key].mostRecentSegmentPaid,
             threeBoxAvatar: data.image ? data.image[0].contentUrl["/"] : null,
           };
           playersArr.push(player);
