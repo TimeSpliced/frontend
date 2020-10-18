@@ -141,6 +141,7 @@ const GamePage = () => {
       .call();
 
     const lastSegment = await goodGhostingContract.methods.lastSegment().call();
+    const hasRedeemed = await goodGhostingContract.methods.redeemed().call();
     const gameInfo = {
       firstSegmentStart: dayjs.unix(firstSegmentStart),
       firstSegmentStartArr: dayjs.unix(firstSegmentStart).toArray(),
@@ -151,6 +152,7 @@ const GamePage = () => {
       currentSegment,
       lastSegment,
       isGameCompleted: currentSegment > lastSegment - 1,
+      hasRedeemed,
       firstSegmentEnd: dayjs.unix(firstSegmentStart).add(segmentLength, "s"),
       // currentSegmentEnd : dayjs.unix(firstSegmentStart).add(segmentLength * , "s")
     };
@@ -175,6 +177,30 @@ const GamePage = () => {
         const reason = await parseRevertError(error);
         //   alert.show(reason);
       });
+  };
+
+  const withdraw = async () => {
+    console.log(
+      "in withdraw users address:",
+      usersAddress,
+      goodGhostingContract
+    );
+    if (gameInfo.hasRedeemed) {
+      const redeeem = await goodGhostingContract.methods
+        .redeemFromExternalPool()
+        .send({
+          from: usersAddress,
+        })
+        .catch(async (error) => {
+          const reason = await parseRevertError(error);
+          //   alert.show(reason);
+          console.log("reason", reason);
+        });
+      console.log("redeem", redeeem);
+      await goodGhostingContract.methods
+        .withdraw()
+        .send({ from: usersAddress });
+    }
   };
 
   const setUp = () => {
@@ -310,6 +336,7 @@ const GamePage = () => {
                 playerInfo={playerInfo}
                 gameInfo={gameInfo}
                 makeDeposit={makeDeposit}
+                withdraw={withdraw}
               />
             )}
             <RoboHashCredit />

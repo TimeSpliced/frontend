@@ -24,6 +24,7 @@ export default (props) => (
           playerInfo={props.playerInfo}
           makeDeposit={props.makeDeposit}
           players={props.players}
+          withdraw={props.withdraw}
         />
       )}
 
@@ -76,7 +77,7 @@ const RegisteredPlayer = (props) => {
           tag="a"
           color="primary"
           wideMobile
-          onClick={() => console.log("hi")}
+          onClick={props.withdraw}
         >
           Withdraw your funds
         </Button>
