@@ -39,6 +39,7 @@ const GamePage = () => {
   const [getPlayersStatus, setGetPlayersStatus] = useState(false);
   const [gameInfo, setGameInfo] = useState({});
   const [web3, setWeb3] = useState({});
+  const [errors, setErrors] = useState({});
 
   const getPlayers = async () => {
     // const alert = useAlert(); // 🚨 TODO fix
@@ -175,6 +176,7 @@ const GamePage = () => {
         const reason = await parseRevertError(error);
         //   alert.show(reason);
       });
+    getPlayerInfo();
     setLoadingState({ makeDeposit: false });
   };
 
@@ -240,9 +242,15 @@ const GamePage = () => {
     }
 
     const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
-    await daiContract.methods
+    const approve = await daiContract.methods
       .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
-      .send({ from: usersAddress });
+      .send({ from: usersAddress })
+      .then((res) => console.log("res", res))
+      .catch((err) => {
+        setErrors({ joinGameApprove: err }); // 🚨 TODO display in FE
+        setLoadingState({ joinGame: false });
+      });
+    console.log("approve", approve);
 
     await goodGhostingContract.methods.joinGame().send({ from: usersAddress });
     setSuccessState({ joinGame: true });
