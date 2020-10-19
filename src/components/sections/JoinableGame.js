@@ -1,5 +1,4 @@
 import React from "react";
-import Loading from "./../elements/Loading";
 import Button from "./../elements/Button";
 import PlayersPrint from "./../elements/PrintPlayers";
 import { status, isNotEmptyObj, brandColors } from "../../utils/utilities";
@@ -9,6 +8,7 @@ import SignupForm from "./SignupForm";
 import SectionHeader from "./partials/SectionHeader";
 import AddEmail from "./../elements/AddEmail";
 import GameStats from "./GameStats";
+import Loading from "./../../assets/loading.svg";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -47,10 +47,21 @@ const JoinableGame = (props) => (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
           <Button tag="a" color="primary" wideMobile onClick={props.joinGame}>
-            {props.loadingState.joinGame ? "Loading " : "Join Game"}
+            {props.loadingState.joinGame ? (
+              <>
+                Loading{" "}
+                <img
+                  src={Loading}
+                  alt="loading"
+                  className="loading-img-button"
+                  style={{ width: "28px", paddingLeft: "10px" }}
+                />
+              </>
+            ) : (
+              "Join Game"
+            )}
           </Button>
         )}
-        {props.loadingState.joinGame && <Loading></Loading>}
         {props.success.joinGame && <h1>🎉 Success</h1>}
       </>
     )}

@@ -179,12 +179,7 @@ const GamePage = () => {
   };
 
   const withdraw = async () => {
-    console.log(
-      "in withdraw users address:",
-      usersAddress,
-      goodGhostingContract
-    );
-    if (!gameInfo.redeeemed) {
+    if (!gameInfo.redeemed) {
       const redeeem = await goodGhostingContract.methods
         .redeemFromExternalPool()
         .send({
@@ -195,11 +190,13 @@ const GamePage = () => {
           //   alert.show(reason);
           console.log("reason", reason);
         });
-      console.log("redeem", redeeem);
       const allocateWithdrawAmounts = await goodGhostingContract.methods
         .allocateWithdrawAmounts()
         .send({ from: usersAddress });
-      console.log("allocateWithdrawAmounts", allocateWithdrawAmounts);
+      await goodGhostingContract.methods
+        .withdraw()
+        .send({ from: usersAddress });
+    } else {
       await goodGhostingContract.methods
         .withdraw()
         .send({ from: usersAddress });
