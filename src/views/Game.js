@@ -68,7 +68,6 @@ const GamePage = () => {
       //🚨TODO add an alert in UI
       return;
     }
-    console.log("players", players);
     var playersArr = [];
     for (let key in players.players) {
       await fetch(
@@ -121,7 +120,6 @@ const GamePage = () => {
       //🚨TODO add an alert in UI
       return;
     }
-    console.log(`glgGameData ${JSON.stringify(glqGameData)}`);
 
     const firstSegmentStart = await goodGhostingContract.methods
       .firstSegmentStart()
@@ -160,6 +158,7 @@ const GamePage = () => {
   };
 
   const makeDeposit = async () => {
+    setLoadingState({ makeDeposit: true });
     if (!isNotEmptyObj(web3)) {
       const web3 = new Web3(window.ethereum);
       setWeb3(web3);
@@ -213,7 +212,7 @@ const GamePage = () => {
   useEffect(() => {
     if (isNotEmptyObj(goodGhostingContract)) {
       getPlayers();
-      getGameInfo(); //🚨TODO decomment
+      getGameInfo();
     }
   }, [goodGhostingContract]);
 
@@ -230,6 +229,7 @@ const GamePage = () => {
   }, [userStatus]);
 
   const joinGame = async () => {
+    setLoadingState({ joinGame: true });
     if (!isNotEmptyObj(web3)) {
       const web3 = new Web3(window.ethereum);
       setWeb3(web3);
@@ -240,7 +240,6 @@ const GamePage = () => {
       .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
       .send({ from: usersAddress });
 
-    setLoadingState({ joinGame: true });
     await goodGhostingContract.methods.joinGame().send({ from: usersAddress });
     setSuccessState({ joinGame: true });
     setLoadingState({ joinGame: false });
@@ -328,6 +327,7 @@ const GamePage = () => {
               <LiveGame
                 usersAddress={usersAddress}
                 players={players}
+                loadingState={loadingState}
                 userStatus={userStatus}
                 connectToWallet={connectToWallet}
                 playerInfo={playerInfo}

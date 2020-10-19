@@ -4,6 +4,7 @@ import PlayersPrint from "./../elements/PrintPlayers";
 import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
 import GameStats from "./GameStats";
+import Loading from "./../../assets/loading.svg";
 
 export default (props) => (
   <>
@@ -25,6 +26,7 @@ export default (props) => (
           makeDeposit={props.makeDeposit}
           players={props.players}
           withdraw={props.withdraw}
+          loadingState={props.loadingState}
         />
       )}
 
@@ -60,14 +62,27 @@ const RegisteredPlayer = (props) => {
       {hasNotPaidThisSegment &&
         didNotMissPreviousSegment &&
         !props.gameInfo.isGameCompleted && (
-          <div>
+          <div style={{ marginTop: "20px" }}>
             <Button
               tag="a"
               color="primary"
               wideMobile
               onClick={props.makeDeposit}
             >
-              Deposit {props.gameInfo.segmentPayment} DAI
+              {props.loadingState.makeDeposit ? (
+                <>
+                  {" "}
+                  Loading{" "}
+                  <img
+                    src={Loading}
+                    alt="loading"
+                    className="loading-img-button"
+                    style={{ width: "28px", paddingLeft: "10px" }}
+                  />
+                </>
+              ) : (
+                ` Deposit ${props.gameInfo.segmentPayment} DAI`
+              )}
             </Button>
           </div>
         )}

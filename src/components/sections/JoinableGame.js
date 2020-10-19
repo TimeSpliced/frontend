@@ -47,7 +47,7 @@ const JoinableGame = (props) => (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
           <Button tag="a" color="primary" wideMobile onClick={props.joinGame}>
-            Join Game
+            {props.loadingState.joinGame ? "Loading " : "Join Game"}
           </Button>
         )}
         {props.loadingState.joinGame && <Loading></Loading>}
