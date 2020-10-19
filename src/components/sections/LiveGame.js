@@ -56,7 +56,11 @@ const RegisteredPlayer = (props) => {
   return (
     <div>
       {isNotEmptyObj(props.playerInfo) && (
-        <PlayerInfo playerInfo={props.playerInfo} players={props.players} />
+        <PlayerInfo
+          playerInfo={props.playerInfo}
+          players={props.players}
+          isGameCompleted={props.gameInfo.isGameCompleted}
+        />
       )}
       {/* <AddEmail addr={props.playerInfo.addr} /> */}
       {hasNotPaidThisSegment &&

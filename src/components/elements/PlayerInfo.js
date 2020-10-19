@@ -97,11 +97,14 @@ const PlayerInfo = (props) => {
           >
             Players Status:
           </span>{" "}
-          <span style={valueStyle}>
-            {props.playerInfo.isStillInGame
-              ? "live 🎉"
-              : "sorry you missed a payment 😢"}
-          </span>
+          {!props.isGameCompleted && (
+            <span style={valueStyle}>
+              {props.playerInfo.isStillInGame
+                ? "live 🎉"
+                : "sorry you missed a payment 😢"}
+            </span>
+          )}
+          {props.isGameCompleted && "work out status at end TODO"}
         </div>
       </div>
 

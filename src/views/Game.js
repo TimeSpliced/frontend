@@ -175,6 +175,7 @@ const GamePage = () => {
         const reason = await parseRevertError(error);
         //   alert.show(reason);
       });
+    setLoadingState({ makeDeposit: false });
   };
 
   const withdraw = async () => {
@@ -183,20 +184,26 @@ const GamePage = () => {
       usersAddress,
       goodGhostingContract
     );
-    // if (gameInfo.redeeemed) {
-    // const redeeem = await goodGhostingContract.methods
-    //   .redeemFromExternalPool()
-    //   .send({
-    //     from: usersAddress,
-    //   })
-    //   .catch(async (error) => {
-    //     const reason = await parseRevertError(error);
-    //     //   alert.show(reason);
-    //     console.log("reason", reason);
-    //   });
-    // console.log("redeem", redeeem);
-    await goodGhostingContract.methods.withdraw().send({ from: usersAddress });
-    // }
+    if (!gameInfo.redeeemed) {
+      const redeeem = await goodGhostingContract.methods
+        .redeemFromExternalPool()
+        .send({
+          from: usersAddress,
+        })
+        .catch(async (error) => {
+          const reason = await parseRevertError(error);
+          //   alert.show(reason);
+          console.log("reason", reason);
+        });
+      console.log("redeem", redeeem);
+      const allocateWithdrawAmounts = await goodGhostingContract.methods
+        .allocateWithdrawAmounts()
+        .send({ from: usersAddress });
+      console.log("allocateWithdrawAmounts", allocateWithdrawAmounts);
+      await goodGhostingContract.methods
+        .withdraw()
+        .send({ from: usersAddress });
+    }
   };
 
   const setUp = () => {
