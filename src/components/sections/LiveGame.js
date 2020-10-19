@@ -60,6 +60,7 @@ const RegisteredPlayer = (props) => {
           playerInfo={props.playerInfo}
           players={props.players}
           isGameCompleted={props.gameInfo.isGameCompleted}
+          lastSegment={props.gameInfo.lastSegment}
         />
       )}
       {/* <AddEmail addr={props.playerInfo.addr} /> */}

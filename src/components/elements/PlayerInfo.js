@@ -104,7 +104,14 @@ const PlayerInfo = (props) => {
                 : "sorry you missed a payment 😢"}
             </span>
           )}
-          {props.isGameCompleted && "work out status at end TODO"}
+          {props.isGameCompleted && (
+            <span style={valueStyle}>
+              {parseInt(props.lastSegment) - 1 ===
+              parseInt(props.playerInfo.mostRecentSegmentPaid)
+                ? "Winner 🥳"
+                : "Loser 😢"}
+            </span>
+          )}
         </div>
       </div>
 
