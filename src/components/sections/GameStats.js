@@ -136,7 +136,9 @@ class GameStats extends React.Component {
       },
       {
         label: "Current Round",
-        data: displaySegment(this.props.gameInfo.currentSegment),
+        data: `${displaySegment(
+          this.props.gameInfo.currentSegment
+        )} / ${displaySegment(this.props.gameInfo.lastSegment)}`,
       },
     ];
 
