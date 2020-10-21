@@ -318,7 +318,11 @@ const GamePage = () => {
   return (
     <main className="site-content">
       <div className="section center-content illustration-section-04">
-        {!isNotEmptyObj(gameInfo) && <Loading />}
+        {!isNotEmptyObj(gameInfo) && (
+          <div style={{ paddingTop: "25vh" }}>
+            <Loading />
+          </div>
+        )}
         {isNotEmptyObj(gameInfo) && (
           <>
             {isFirstSegment() && (
