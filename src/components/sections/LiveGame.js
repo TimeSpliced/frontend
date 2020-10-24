@@ -32,7 +32,16 @@ export default (props) => (
 
       {!props.gameInfo.isGameCompleted && (
         <div style={{ justifyContent: "center", marginTop: "3em " }}>
-          {props.playerInfo.addr && <h4>The Competition</h4>}
+          {props.playerInfo.addr && <h4> The Competition</h4>}
+          {props.players &&
+            PlayersPrint(props.players, props.playerInfo.addr).length < 1 && (
+              <p>
+                Your have elimated the competition
+                <span role="img" aria-label="muscle emoji">
+                  💪
+                </span>
+              </p>
+            )}
           {props.players && PlayersPrint(props.players, props.playerInfo.addr)}
         </div>
       )}
