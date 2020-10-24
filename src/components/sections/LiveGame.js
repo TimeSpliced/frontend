@@ -111,14 +111,28 @@ const RegisteredPlayer = (props) => {
           wideMobile
           onClick={props.withdraw}
         >
-          Withdraw your funds
-          {console.log("🤣", props.playerInfo)}
+          {props.loadingState.withdraw ? (
+            <>
+              {" "}
+              Loading{" "}
+              <img
+                src={Loading}
+                alt="loading"
+                className="loading-img-button"
+                style={{ width: "28px", paddingLeft: "10px" }}
+              />
+            </>
+          ) : (
+            `Withdraw your funds`
+          )}
         </Button>
       )}
-      <p>
-        Time to next payment interval{" "}
-        {dayjs().to(props.gameInfo.nextSegmentEnd)}
-      </p>
+      {!props.gameInfo.isGameCompleted && (
+        <p>
+          Time to next payment interval{" "}
+          {dayjs().to(props.gameInfo.nextSegmentEnd)}
+        </p>
+      )}
       {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
     </div>
   );

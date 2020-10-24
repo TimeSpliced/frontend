@@ -187,6 +187,7 @@ const GamePage = () => {
   };
 
   const withdraw = async () => {
+    setLoadingState({ withdraw: true });
     if (!gameInfo.redeemed) {
       const redeeem = await goodGhostingContract.methods
         .redeemFromExternalPool()
@@ -204,10 +205,12 @@ const GamePage = () => {
       await goodGhostingContract.methods
         .withdraw()
         .send({ from: usersAddress });
+      setLoadingState({ withdraw: false });
     } else {
       await goodGhostingContract.methods
         .withdraw()
         .send({ from: usersAddress });
+      setLoadingState({ withdraw: false });
     }
   };
 
@@ -270,22 +273,59 @@ const GamePage = () => {
   };
 
   const getPlayerInfo = async () => {
-    if (goodGhostingContract && userStatus == status.registered) {
-      if (!players) {
-        await getPlayers();
-      }
-      const player = players.filter(
-        (player) => player.address.toLowerCase() === usersAddress.toLowerCase()
-      )[0];
-      // const playerInfo = await goodGhostingContract.methods
-      //   .players(usersAddress)
-      //   .call();
+    const playerReq = async () => {
+      const hex = web3.utils.toHex(usersAddress);
+      console.log("hex", hex);
+      const query = gql`
+        {
+          player(id: "${hex}") {
+            id
+            address
+            mostRecentSegmentPaid
+            amountPaid
+            withdrawn
+          }
+        }
+      `;
 
-      player.isStillInGame =
-        parseInt(player.mostRecentSegmentPaid) >
-        parseInt(gameInfo.currentSegment) - 2;
-      setPlayerInfo(player);
-    }
+      const res = await request(
+        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
+        query
+      );
+      return res;
+    };
+
+    const players2 = await playerReq()
+      .then((data) => {
+        const player = data.player;
+        player.isLive =
+          gameInfo.currentSegment - 1 >= player.mostRecentSegmentPaid;
+        player.isStillInGame =
+          parseInt(player.mostRecentSegmentPaid) >
+          parseInt(gameInfo.currentSegment) - 2;
+        setPlayerInfo(player);
+      })
+      .catch((err) => {
+        console.error(err);
+        return gqlErrors.players;
+      });
+    // if (goodGhostingContract && userStatus == status.registered) {
+    //   if (!players) {
+    //     await getPlayers();
+    //   }
+    //   const player = players.filter(
+    //     (player) => player.address.toLowerCase() === usersAddress.toLowerCase()
+    //   )[0];
+
+    //   // const playerInfo = await goodGhostingContract.methods
+    //   //   .players(usersAddress)
+    //   //   .call();
+
+    //   player.isStillInGame =
+    //     parseInt(player.mostRecentSegmentPaid) >
+    //     parseInt(gameInfo.currentSegment) - 2;
+    //   setPlayerInfo(player);
+    // }
   };
 
   //🚨TODO replace this with portis or alternative wallet connection
