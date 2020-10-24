@@ -9,7 +9,7 @@ const PlayerInfo = (props) => {
   const getPlayerFromPlayers = () =>
     props.players.filter((player) => {
       return (
-        player.address.toLowerCase() === props.playerInfo.addr.toLowerCase()
+        player.address.toLowerCase() === props.playerInfo.address.toLowerCase()
       );
     });
   const valueStyle = {
@@ -68,7 +68,7 @@ const PlayerInfo = (props) => {
             {" "}
             ETH address{" "}
           </span>{" "}
-          : <span style={valueStyle}>{props.playerInfo.addr}</span>
+          : <span style={valueStyle}>{props.playerInfo.address}</span>
         </div>
         <div>
           <span

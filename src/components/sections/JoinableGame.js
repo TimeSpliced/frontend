@@ -71,7 +71,7 @@ const JoinableGame = (props) => (
     {props.players && isNotEmptyObj(props.gameInfo) && (
       <>
         {props.gameInfo.firstSegmentStart && (
-          <p className="cardo">
+          <p className="cardo" style={{ marginTop: "10px" }}>
             Game launched :{" "}
             <span>
               {`${props.gameInfo.firstSegmentStartArr[2]} . ${

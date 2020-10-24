@@ -154,6 +154,9 @@ const GamePage = () => {
       lastSegment,
       isGameCompleted: currentSegment > lastSegment - 1,
       firstSegmentEnd: dayjs.unix(firstSegmentStart).add(segmentLength, "s"),
+      nextSegmentEnd: dayjs
+        .unix(firstSegmentStart)
+        .add(segmentLength * (currentSegment + 1), "s"),
       // currentSegmentEnd : dayjs.unix(firstSegmentStart).add(segmentLength * , "s")
     };
 
@@ -175,7 +178,8 @@ const GamePage = () => {
       .makeDeposit()
       .send({ from: usersAddress })
       .catch(async (error) => {
-        const reason = await parseRevertError(error);
+        console.log(error);
+        // const reason = await parseRevertError(error);
         //   alert.show(reason);
       });
     getPlayerInfo();
@@ -267,13 +271,20 @@ const GamePage = () => {
 
   const getPlayerInfo = async () => {
     if (goodGhostingContract && userStatus == status.registered) {
-      const playerInfo = await goodGhostingContract.methods
-        .players(usersAddress)
-        .call();
-      playerInfo.isStillInGame =
-        parseInt(playerInfo.mostRecentSegmentPaid) >
+      if (!players) {
+        await getPlayers();
+      }
+      const player = players.filter(
+        (player) => player.address.toLowerCase() === usersAddress.toLowerCase()
+      )[0];
+      // const playerInfo = await goodGhostingContract.methods
+      //   .players(usersAddress)
+      //   .call();
+
+      player.isStillInGame =
+        parseInt(player.mostRecentSegmentPaid) >
         parseInt(gameInfo.currentSegment) - 2;
-      setPlayerInfo(playerInfo);
+      setPlayerInfo(player);
     }
   };
 

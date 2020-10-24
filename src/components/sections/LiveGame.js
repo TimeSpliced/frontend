@@ -5,6 +5,7 @@ import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
+import dayjs from "dayjs";
 
 export default (props) => (
   <>
@@ -32,9 +33,10 @@ export default (props) => (
 
       {!props.gameInfo.isGameCompleted && (
         <div style={{ justifyContent: "center", marginTop: "3em " }}>
-          {props.playerInfo.addr && <h4> The Competition</h4>}
+          {props.playerInfo.address && <h4> The Competition</h4>}
           {props.players &&
-            PlayersPrint(props.players, props.playerInfo.addr).length < 1 && (
+            PlayersPrint(props.players, props.playerInfo.address).length <
+              1 && (
               <p>
                 Your have elimated the competition
                 <span role="img" aria-label="muscle emoji">
@@ -42,12 +44,13 @@ export default (props) => (
                 </span>
               </p>
             )}
-          {props.players && PlayersPrint(props.players, props.playerInfo.addr)}
+          {props.players &&
+            PlayersPrint(props.players, props.playerInfo.address)}
         </div>
       )}
       {props.gameInfo.isGameCompleted && (
         <div style={{ justifyContent: "center", marginTop: "3em " }}>
-          {props.playerInfo.addr && <h4>The Winners! 🥳</h4>}
+          {props.playerInfo.address && <h4>The Winners! 🥳</h4>}
           {props.players && PlayersPrint(props.players)}
         </div>
       )}
@@ -72,7 +75,7 @@ const RegisteredPlayer = (props) => {
           lastSegment={props.gameInfo.lastSegment}
         />
       )}
-      {/* <AddEmail addr={props.playerInfo.addr} /> */}
+      {/* <AddEmail addr={props.playerInfo.address} /> */}
       {hasNotPaidThisSegment &&
         didNotMissPreviousSegment &&
         !props.gameInfo.isGameCompleted && (
@@ -100,7 +103,7 @@ const RegisteredPlayer = (props) => {
             </Button>
           </div>
         )}
-      {props.gameInfo.isGameCompleted && (
+      {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
         <Button
           style={{ margin: "20px" }}
           tag="a"
@@ -109,8 +112,13 @@ const RegisteredPlayer = (props) => {
           onClick={props.withdraw}
         >
           Withdraw your funds
+          {console.log("🤣", props.playerInfo)}
         </Button>
       )}
+      <p>
+        Time to next payment interval{" "}
+        {dayjs().to(props.gameInfo.nextSegmentEnd)}
+      </p>
       {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
     </div>
   );
