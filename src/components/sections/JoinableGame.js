@@ -72,8 +72,12 @@ const JoinableGame = (props) => (
       <>
         {props.gameInfo.firstSegmentStart && (
           <p className="cardo">
-            Game launched :
-            {`${props.gameInfo.firstSegmentStartArr[2]} . ${props.gameInfo.firstSegmentStartArr[1]} . ${props.gameInfo.firstSegmentStartArr[0]}`}
+            Game launched :{" "}
+            <span>
+              {`${props.gameInfo.firstSegmentStartArr[2]} . ${
+                props.gameInfo.firstSegmentStartArr[1] + 1
+              } . ${props.gameInfo.firstSegmentStartArr[0]}`}
+            </span>
           </p>
         )}
         {/* {props.gameInfo.firstSegmentEnd && (

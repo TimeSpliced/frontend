@@ -84,7 +84,7 @@ const AddEmail = (props) => {
                   marginTop: "20px",
                 }}
               >
-                Make sure you don't miss a payment, add an email for reminders
+                Don't miss a payment, add an email for reminders.
               </p>
               <Button tag="a" color="primary" wideMobile onClick={openModal}>
                 Add email
