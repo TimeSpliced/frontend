@@ -51,6 +51,7 @@ const GamePage = () => {
             address
             mostRecentSegmentPaid
             amountPaid
+            withdrawn
           }
         }
       `;
@@ -82,6 +83,7 @@ const GamePage = () => {
             mostRecentSegmentPaid: players.players[key].mostRecentSegmentPaid,
             amountPaid: players.players[key].amountPaid,
             threeBoxName: data.name,
+            withdrawn: players.players[key].withdrawn,
             isLive:
               gameInfo.currentSegment - 1 >=
               players.players[key].mostRecentSegmentPaid,
