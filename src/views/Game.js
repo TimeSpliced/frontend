@@ -185,33 +185,50 @@ const GamePage = () => {
     getPlayerInfo();
     setLoadingState({ makeDeposit: false });
   };
+  const redeem = async () => {
+    setLoadingState({ redeem: true });
+    await goodGhostingContract.methods
+      .redeemFromExternalPool()
+      .send({
+        from: usersAddress,
+      })
+      .catch(async (error) => {
+        const reason = await parseRevertError(error);
+        //   alert.show(reason);
+        console.log("reason", reason);
+      });
+    await goodGhostingContract.methods
+      .allocateWithdrawAmounts()
+      .send({ from: usersAddress });
+    const newGameInfo = Object.assign({}, gameInfo, { redeemed: true });
+    setGameInfo(newGameInfo);
+    setLoadingState({ redeem: false });
+  };
 
   const withdraw = async () => {
     setLoadingState({ withdraw: true });
-    if (!gameInfo.redeemed) {
-      const redeeem = await goodGhostingContract.methods
-        .redeemFromExternalPool()
-        .send({
-          from: usersAddress,
-        })
-        .catch(async (error) => {
-          const reason = await parseRevertError(error);
-          //   alert.show(reason);
-          console.log("reason", reason);
-        });
-      const allocateWithdrawAmounts = await goodGhostingContract.methods
-        .allocateWithdrawAmounts()
-        .send({ from: usersAddress });
-      await goodGhostingContract.methods
-        .withdraw()
-        .send({ from: usersAddress });
-      setLoadingState({ withdraw: false });
-    } else {
-      await goodGhostingContract.methods
-        .withdraw()
-        .send({ from: usersAddress });
-      setLoadingState({ withdraw: false });
-    }
+    // if (!gameInfo.redeemed) {
+    // const redeeem = await goodGhostingContract.methods
+    //   .redeemFromExternalPool()
+    //   .send({
+    //     from: usersAddress,
+    //   })
+    //   .catch(async (error) => {
+    //     const reason = await parseRevertError(error);
+    //     //   alert.show(reason);
+    //     console.log("reason", reason);
+    //   });
+    // const allocateWithdrawAmounts = await goodGhostingContract.methods
+    //   .allocateWithdrawAmounts()
+    //   .send({ from: usersAddress });
+    //   await goodGhostingContract.methods
+    //     .withdraw()
+    //     .send({ from: usersAddress });
+    //   setLoadingState({ withdraw: false });
+    // } else {
+    await goodGhostingContract.methods.withdraw().send({ from: usersAddress });
+    setLoadingState({ withdraw: false });
+    // }
   };
 
   const setUp = () => {
@@ -403,6 +420,7 @@ const GamePage = () => {
                 gameInfo={gameInfo}
                 makeDeposit={makeDeposit}
                 withdraw={withdraw}
+                redeem={redeem}
               />
             )}
             <RoboHashCredit />

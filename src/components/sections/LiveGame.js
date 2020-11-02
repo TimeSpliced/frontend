@@ -6,9 +6,11 @@ import PlayerInfo from "../elements/PlayerInfo";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
 import dayjs from "dayjs";
+import CheckBox from "react-animated-checkbox";
 
 export default (props) => (
   <>
+    {console.log("live game ", props)}
     <GameStats
       hasBgColor
       className="illustration-section-07"
@@ -28,6 +30,7 @@ export default (props) => (
           players={props.players}
           withdraw={props.withdraw}
           loadingState={props.loadingState}
+          redeem={props.redeem}
         />
       )}
 
@@ -64,6 +67,9 @@ const RegisteredPlayer = (props) => {
     props.playerInfo.mostRecentSegmentPaid !== props.gameInfo.currentSegment;
   const didNotMissPreviousSegment =
     props.playerInfo.mostRecentSegmentPaid > props.gameInfo.currentSegment - 2;
+  {
+    console.log("Registered players", props);
+  }
 
   return (
     <div>
@@ -103,6 +109,32 @@ const RegisteredPlayer = (props) => {
             </Button>
           </div>
         )}
+      {props.gameInfo.isGameCompleted && (
+        <>
+          <p> {!props.gameInfo.redeemed && <span>Call this first</span>}</p>
+          <p>
+            <Button
+              style={{ margin: "20px" }}
+              tag="a"
+              color={props.gameInfo.redeemed ? "hjsdgf" : "secondary"}
+              wideMobile
+              onClick={props.redeem}
+            >
+              Redeem
+            </Button>
+
+            <CheckBox
+              checked={props.gameInfo.redeemed}
+              checkBoxStyle={{
+                checkedColor: "#8E79FC",
+                size: 20,
+                unCheckedColor: "#b8b8b8",
+              }}
+              duration={400}
+            />
+          </p>
+        </>
+      )}
       {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
         <Button
           style={{ margin: "20px" }}
