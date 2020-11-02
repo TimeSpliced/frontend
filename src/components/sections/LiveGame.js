@@ -5,6 +5,7 @@ import Button from "./../elements/Button";
 import PlayerInfo from "../elements/PlayerInfo";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
+import LoadingDark from "./../../assets/loading-dark.svg";
 import dayjs from "dayjs";
 import CheckBox from "react-animated-checkbox";
 
@@ -110,30 +111,11 @@ const RegisteredPlayer = (props) => {
           </div>
         )}
       {props.gameInfo.isGameCompleted && (
-        <>
-          <p> {!props.gameInfo.redeemed && <span>Call this first</span>}</p>
-          <p>
-            <Button
-              style={{ margin: "20px" }}
-              tag="a"
-              color={props.gameInfo.redeemed ? "hjsdgf" : "secondary"}
-              wideMobile
-              onClick={props.redeem}
-            >
-              Redeem
-            </Button>
-
-            <CheckBox
-              checked={props.gameInfo.redeemed}
-              checkBoxStyle={{
-                checkedColor: "#8E79FC",
-                size: 20,
-                unCheckedColor: "#b8b8b8",
-              }}
-              duration={400}
-            />
-          </p>
-        </>
+        <ButtonAndTick
+          gameInfo={props.gameInfo}
+          redeem={props.redeem}
+          loadingState={props.loadingState}
+        />
       )}
       {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
         <Button
@@ -173,5 +155,56 @@ const RegisteredPlayer = (props) => {
 const UnRegisteredPlayer = (props) => (
   <>
     <p>Too bad you missed out, sign up to be the first to join the next one</p>
+  </>
+);
+
+const ButtonAndTick = (props) => (
+  <>
+    <p style={{ lineHeight: "69px" }}>
+      <span
+        style={{
+          marginRight: "25px",
+          fontFamily: "Montserrat",
+          fontWeight: "900",
+        }}
+        className={!props.gameInfo.redeemed ? "button-tick-hooverable" : ""}
+        onClick={() => {
+          console.log("in onlick ", props);
+          if (!props.gameInfo.redeemed) {
+            props.redeem();
+          }
+        }}
+      >
+        Allocate Pool's Funds
+      </span>
+      {!props.loadingState.redeem && (
+        <CheckBox
+          checked={props.gameInfo.redeemed}
+          checkBoxStyle={{
+            checkedColor: "#8E79FC",
+            size: 20,
+            unCheckedColor: "#b8b8b8",
+          }}
+          duration={400}
+        />
+      )}
+      {props.loadingState.redeem && (
+        <img
+          src={LoadingDark}
+          alt="loading"
+          // className="loading-img-button"
+          style={{ width: "28px", paddingLeft: "10px", display: "inline" }}
+        />
+      )}
+      {/* <Button
+        style={{ margin: "20px" }}
+        tag="a"
+        color={props.gameInfo.redeemed ? "hjsdgf" : "secondary"}
+        onClick={props.redeem}
+        disabled={true}
+      >
+        Redeem
+      </Button> */}
+    </p>
   </>
 );

@@ -18,3 +18,11 @@
 .alert-close:hover {
   color: #8e79fc !important;
 }
+
+.button-tick-hooverable {
+  transition: color 0.15s ease;
+}
+
+.button-tick-hooverable:hover {
+  color: #8e79fc !important;
+}
