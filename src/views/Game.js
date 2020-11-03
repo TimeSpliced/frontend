@@ -25,6 +25,7 @@ import {
 } from "../utils/utilities";
 import RoboHashCredit from "../components/elements/RoboHashCredit";
 import { request, gql } from "graphql-request";
+import PlayerInfo from "../components/elements/PlayerInfo";
 
 // import getRevertReason from "eth-revert-reason";
 
@@ -206,6 +207,7 @@ const GamePage = () => {
   };
 
   const withdraw = async () => {
+    console.log("playerInfop", playerInfo);
     setLoadingState({ withdraw: true });
     // if (!gameInfo.redeemed) {
     // const redeeem = await goodGhostingContract.methods
@@ -227,6 +229,10 @@ const GamePage = () => {
     //   setLoadingState({ withdraw: false });
     // } else {
     await goodGhostingContract.methods.withdraw().send({ from: usersAddress });
+    // props.playerInfo.withdrawn
+    const newPlayerInfo = Object.assign({}, playerInfo, { withdrawn: true });
+    console.log("playerInfo", playerInfo, "newPlayerInfor", newPlayerInfo);
+    setPlayerInfo(newPlayerInfo);
     setLoadingState({ withdraw: false });
     // }
   };
@@ -276,7 +282,6 @@ const GamePage = () => {
         setErrors({ joinGameApprove: err }); // 🚨 TODO display in FE
         setLoadingState({ joinGame: false });
       });
-    console.log("approve", approve);
 
     await goodGhostingContract.methods.joinGame().send({ from: usersAddress });
     setSuccessState({ joinGame: true });
@@ -290,6 +295,9 @@ const GamePage = () => {
   };
 
   const getPlayerInfo = async () => {
+    if (!usersAddress) {
+      return;
+    }
     const playerReq = async () => {
       const hex = web3.utils.toHex(usersAddress);
       console.log("hex", hex);
@@ -385,6 +393,7 @@ const GamePage = () => {
     return gameInfo.firstSegmentEnd.valueOf() > Date.now();
   };
 
+  console.log("🤣", playerInfo);
   return (
     <main className="site-content">
       <div className="section center-content illustration-section-04">

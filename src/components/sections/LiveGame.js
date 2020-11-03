@@ -111,13 +111,22 @@ const RegisteredPlayer = (props) => {
           </div>
         )}
       {props.gameInfo.isGameCompleted && (
-        <ButtonAndTick
-          gameInfo={props.gameInfo}
-          redeem={props.redeem}
-          loadingState={props.loadingState}
-        />
+        <>
+          <ButtonAndTick
+            isActive={props.gameInfo.redeemed}
+            isLoading={props.loadingState.redeem}
+            description="Allocate Pool's Funds"
+            onClickFunc={props.redeem}
+          />
+          <ButtonAndTick
+            isActive={props.playerInfo.withdrawn}
+            isLoading={props.loadingState.withdraw}
+            description="Withdraw your funds"
+            onClickFunc={props.withdraw}
+          />
+        </>
       )}
-      {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
+      {/* {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
         <Button
           style={{ margin: "20px" }}
           tag="a"
@@ -140,7 +149,7 @@ const RegisteredPlayer = (props) => {
             `Withdraw your funds`
           )}
         </Button>
-      )}
+      )} */}
       {!props.gameInfo.isGameCompleted && (
         <p>
           Time to next payment interval{" "}
@@ -160,26 +169,25 @@ const UnRegisteredPlayer = (props) => (
 
 const ButtonAndTick = (props) => (
   <>
-    <p style={{ lineHeight: "69px" }}>
+    <p style={{ lineHeight: "69px", marginBottom: "0px" }}>
       <span
         style={{
           marginRight: "25px",
           fontFamily: "Montserrat",
           fontWeight: "900",
         }}
-        className={!props.gameInfo.redeemed ? "button-tick-hooverable" : ""}
+        className={!props.isActive ? "button-tick-hooverable" : ""}
         onClick={() => {
-          console.log("in onlick ", props);
-          if (!props.gameInfo.redeemed) {
-            props.redeem();
+          if (!props.isActive) {
+            props.onClickFunc();
           }
         }}
       >
-        Allocate Pool's Funds
+        {props.description}
       </span>
-      {!props.loadingState.redeem && (
+      {!props.isLoading && (
         <CheckBox
-          checked={props.gameInfo.redeemed}
+          checked={props.isActive}
           checkBoxStyle={{
             checkedColor: "#8E79FC",
             size: 20,
@@ -188,7 +196,7 @@ const ButtonAndTick = (props) => (
           duration={400}
         />
       )}
-      {props.loadingState.redeem && (
+      {props.isLoading && (
         <img
           src={LoadingDark}
           alt="loading"
