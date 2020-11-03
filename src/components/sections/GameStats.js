@@ -90,7 +90,7 @@ class GameStats extends React.Component {
         : "Our Saving Pool is live!",
       paragraph: props.isJoinable
         ? ""
-        : "👉 Don't forget to make your recurring deposit to stay alive!",
+        : "👉 Don't forget to make your recurring deposits to stay alive!",
     };
     const numberOfPlayers = (status) => {
       const conditions = {
@@ -137,9 +137,8 @@ class GameStats extends React.Component {
       },
       {
         label: "Players Status",
-        data: ` Live: ${numberOfPlayers("alive")} Dead: ${numberOfPlayers(
-          "dead"
-        )} `,
+        data: `${numberOfPlayers("alive")} Alive & ${numberOfPlayers(
+          "dead")} Dead`,
         condition: !props.hidePlayersStatus,
       },
     ];
@@ -172,7 +171,7 @@ class GameStats extends React.Component {
                       style={{ textAlign: "left" }}
                     >
                       <h3 style={{ marginTop: "5px" }}>
-                        Game Stats 
+                        Game Stats {' '}
                         <span role="img" aria-label="game emoji">
                           👾
                         </span>
