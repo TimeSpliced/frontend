@@ -79,7 +79,7 @@ class HeroSplit extends React.Component {
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
                     <Link to="/game">
-                    <Button tag="a" color="primary"  wideMobile>
+                    <Button tag="a" color="primary" wide="true" wideMobile="true">
                       Start saving
                     </Button>
                     </Link>
