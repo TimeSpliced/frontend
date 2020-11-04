@@ -7,7 +7,7 @@ const PlayerInfo = (props) => {
   const humanMostRecentSegmentPaid =
     parseInt(props.playerInfo.mostRecentSegmentPaid) + 1;
   const humanTotalDepositsNeeded =
-    parseInt(props.gameInfo.lastSegment) - 1; 
+    parseInt(props.lastSegment);
   const getPlayerFromPlayers = () =>
     props.players.filter((player) => {
       return (
@@ -20,9 +20,10 @@ const PlayerInfo = (props) => {
     paddingLeft: "15px",
     paddingRight: "15px",
     borderRadius: "3px",
-    fontFamily: "monospace",
+    fontFamily: "monospace, monospace",
     fontSize: "0.85rem",
     marginLeft: "0px",
+    color: "#333366"
   };
   return (
     <div
@@ -80,8 +81,8 @@ const PlayerInfo = (props) => {
           <span style={valueStyle}>
             {parseInt(props.lastSegment) - 1 ===
             parseInt(props.playerInfo.mostRecentSegmentPaid)
-              ? "Winner 🥳 you made all deposits and earned a slice of the interest"
-              : "Defeated 😢 you missed a deposit and did not earn a slice of the interest this time"}
+              ? "WINNER 🥳 you made all deposits and earned a slice of the interest"
+              : "DEFEATED 😢 you missed a deposit and did not earn a slice of the interest this time"}
           </span>
         )}
       </div>
@@ -90,20 +91,20 @@ const PlayerInfo = (props) => {
             className="sans_serif"
             style={{ fontWeight: "600", fontSize: "0.85rem" }}
           >
-            Amount Deposited:
+            Deposits made:
           </span>{" "}
-          <span style={valueStyle}>
-            {weiToERC20(props.playerInfo.amountPaid)} DAI
-          </span>
+          <span style={valueStyle}>{humanMostRecentSegmentPaid} (out of {humanTotalDepositsNeeded})</span>
         </div>
         <div>
           <span
             className="sans_serif"
             style={{ fontWeight: "600", fontSize: "0.85rem" }}
           >
-            Succesfull Deposits:
+            Total Deposited:
           </span>{" "}
-          <span style={valueStyle}>{humanMostRecentSegmentPaid} (out of {humanTotalDepositsNeeded})</span>  //🚨 Not sure if this formatting works
+          <span style={valueStyle}>
+            {weiToERC20(props.playerInfo.amountPaid)} DAI
+          </span>
         </div>
         <div>
           <span
