@@ -19,7 +19,7 @@ class Team extends React.Component {
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -50,7 +50,7 @@ class Team extends React.Component {
 
     const sectionHeader = {
       title: 'Meet the team',
-      paragraph: 'We are a team of passionate builder, traders and occassional savers.'
+      paragraph: 'We are a team of passionate builders, traders and occassional savers.'
     };
 
     return (
@@ -67,11 +67,13 @@ class Team extends React.Component {
                 <div className="tiles-item-inner">
                   <div className="team-item-header reveal-from-top" data-reveal-container=".tiles-item">
                     <div className="team-item-image mb-24 illustration-element-03">
+                    <a href="https://www.linkedin.com/in/rachblondon/" target="_blank" rel="noopener">
                       <Image
                         src={require('./../../assets/images/rachel.jpeg')}
                         alt="Team member 01"
                         width={180}
                         height={180} />
+                    </a>
                     </div>
                   </div>
                   <div className="team-item-content reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
@@ -79,10 +81,10 @@ class Team extends React.Component {
                       Rachel Black
                     </h5>
                     <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8 sans_serif">
-                      CEO & Co-Founder
+                      CEO | Frontend dev
                     </div>
                     <p className="m-0 text-sm">
-                      Rachel is an experienced developer. She has also worked in developer relations for a number of blockchain projects, most recently 3Box. She is passionate about building products and community.
+                    Rachel is an experienced frontend developer. She also worked in developer relations for a number of blockchain projects, including 3Box and has most recently joined Twilio. She is passionate about building products and community.
                     </p>
                   </div>
                 </div>
@@ -92,36 +94,13 @@ class Team extends React.Component {
                 <div className="tiles-item-inner">
                   <div className="team-item-header reveal-from-top" data-reveal-container=".tiles-item">
                     <div className="team-item-image mb-24 illustration-element-04">
+                    <a href="https://www.linkedin.com/in/giel-detienne-8a792094/" target="_blank" rel="noopener">
                       <Image
-                        src={require('./../../assets/images/piotr.jpeg')}
+                        src={require('./../../assets/images/giel.jpg')}
                         alt="Team member 02"
                         width={180}
                         height={180} />
-                    </div>
-                  </div>
-                  <div className="team-item-content reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                    <h5 className="team-item-name mt-0 mb-4">
-                    Piotr Yordanov
-                    </h5>
-                    <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8 sans_serif">
-                      Fullstack Developer
-                    </div>
-                    <p className="m-0 text-sm">
-                    CFD Index scalper. Swing Trader. Trading indicator/bots developer. Built a few startups for 4 years and now swing trade. Currently interested in DeFi.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="tiles-item">
-                <div className="tiles-item-inner">
-                  <div className="team-item-header reveal-from-top" data-reveal-container=".tiles-item">
-                    <div className="team-item-image mb-24 illustration-element-05">
-                      <Image
-                        src={require('./../../assets/images/giel.jpg')}
-                        alt="Team member 03"
-                        width={180}
-                        height={180} />
+                    </a>
                     </div>
                   </div>
                   <div className="team-item-content reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
@@ -129,24 +108,27 @@ class Team extends React.Component {
                     Giel Detienne
                     </h5>
                     <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8 sans_serif">
-                      DeFi Degen
+                      COO | Crypto Economics
                     </div>
                     <p className="m-0 text-sm">
-                    Heavy DeFi user & Financial Architect ⟠ Experienced in DeFi asset-management and yield optimizing. Molecular scientist by training (PhD in Biotechnology).
+                    Heavy DeFi user and professional blockchain consultant. Experienced in digital asset management, yield optimization and research.<br/> Molecular scientist by training (PhD in Biotechnology). Member of the Melon Council DAO.
                     </p>
                   </div>
                 </div>
               </div>
 
+
               <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="team-item-header reveal-from-top" data-reveal-container=".tiles-item">
                     <div className="team-item-image mb-24 illustration-element-06">
+                    <a href="https://www.linkedin.com/in/babyjessiparker/" target="_blank" rel="noopener">
                       <Image
                         src={require('./../../assets/images/jessi.jpg')}
-                        alt="Team member 04"
+                        alt="Team member 03"
                         width={180}
                         height={180} />
+                    </a>
                     </div>
                   </div>
                   <div className="team-item-content reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
@@ -154,10 +136,10 @@ class Team extends React.Component {
                     Baby Jessi Parker
                     </h5>
                     <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8 sans_serif">
-                      UX Designer
+                      UX Designer | Community
                     </div>
                     <p className="m-0 text-sm">
-                    UX/UI designer with a background in sales, customer relations, and education. Interested in DeFi and becoming more involved in blockchain.                    </p>
+                    UX/UI designer with a background in sales, customer relations and education. Interested in DeFi and becoming more involved within the blockchain ecosystem. Utilizes design thinking to create beautiful and immersive experiences for users.</p>
                   </div>
                 </div>
               </div>
