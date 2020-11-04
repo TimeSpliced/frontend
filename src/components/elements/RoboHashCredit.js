@@ -9,7 +9,7 @@ const RoboHashCredit = () => (
       backgroundColor: "white",
     }}
   >
-    Robots lovingly delivered by
+    Robots lovingly delivered by {" "}
     <a href="https://robohash.org" target="_blank" rel="noopener noreferrer" >
       Robohash.org
     </a>
