@@ -165,7 +165,7 @@ class Team extends React.Component {
                       Senior Blockchain Developer
                     </div>
                     <p className="m-0 text-sm">
-                    Software engineer and PMO, with experience leading large-scale projects and developing scaling platforms. He would like to remain building behind the scenes for the time being. </p>
+                    Software engineer and PMO, with experience leading large-scale projects and developing scaling platforms. He would like to remain behind the scenes for the time being, focussing on building our Solidity smart contracts in a secure manner. </p>
                   </div>
                 </div>
               </div>
@@ -191,7 +191,7 @@ class Team extends React.Component {
                       Junior Blockchain Developer
                     </div>
                     <p className="m-0 text-sm">
-                    Proficient Ethereum hackathon participant & developer since 2017. Also experienced in MERN & MEAN Stack App Development. He would like to remain building behind the scenes for the time being.</p>
+                    Proficient Ethereum hackathon participant & developer since 2017, with a focus on DeFi. Also experienced in MERN & MEAN Stack App Development. He would like to remain building behind the scenes for the time being.</p>
                   </div>
                 </div>
               </div>
