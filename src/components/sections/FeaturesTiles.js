@@ -19,7 +19,7 @@ class FeaturesTiles extends React.Component {
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -49,8 +49,12 @@ class FeaturesTiles extends React.Component {
     );
 
     const sectionHeader = {
-      title: "The end of boring saving.",
-      paragraph: "Our groundbreaking 'savers take it all' mechanism, gives you the ultimate push to save. The opportunity to get higher interest rates, without risking your principal. If you are motivated enough to make all deposits, you will earn more than you would by saving by yourself."
+      title: "The end of boring saving",
+      paragraph: "Our groundbreaking gameplay, will give you the ultimate push to save. Compete with others and take the opportunity get higher interest rates, without risking your principal. If you are motivated enough to complete all deposits, you will earn more than you would by saving by yourself."
+    };
+    const sectionBottom = {
+      title: "Regular savers earn extra 💸",
+      paragraph: "When a saving pool ends, everyone gets their principle back. The extra interest that was earned, is split amongst the savvy savers who made every deposit. Players that missed a payment, forfeit their claim to the generated interest. Hence, the more people fail to meet their goals, the higher the rewards for those that do!   So hit your goals to earn a slice of the interest! ",
     };
 
     return (
@@ -81,7 +85,7 @@ class FeaturesTiles extends React.Component {
                     Join our saving pool
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      Dive in and join our saving pool. Once your are motivated to save. No more waiting for the right time to start!
+                      Dive in and join our one of our shared saving pools. Get motivated to save. No more waiting for the right time to start!
                     </p>
                   </div>
                 </div>
@@ -103,7 +107,7 @@ class FeaturesTiles extends React.Component {
                      Make regular deposits
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                     Add to your savings weekly. Feel proud as your balance grows. You are free to remove your principle at any point.
+                     Add to your savings weekly or monthly. Feel proud as your balance grows and you hit your financial goals. You are free to remove your deposited funds at any point.
                     </p>
                   </div>
                 </div>
@@ -122,15 +126,22 @@ class FeaturesTiles extends React.Component {
                   </div>
                   <div className="features-tiles-item-content">
                     <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                       Get rewarded
+                       Watch interest accrue
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="400">
-                    Everyone gets their principle back, but the savvy savers who made every payment, split the interest. Hit your goals to get higher interest.
+                    Pooled funds are deposited in audited DeFi platforms, generating higher interest rates than in traditional finance. Annual rates of over 7% are possible - for all winners.
                     </p>
                   </div>
                 </div>
               </div>
-{/* 
+
+              <div className={innerClasses}>
+                <SectionHeader data={sectionBottom} className="center-content"
+                  width={72}
+                  height={72} />
+              </div>
+
+{/*
               <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="features-tiles-item-header">
@@ -147,50 +158,6 @@ class FeaturesTiles extends React.Component {
                       High-Quality Service
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* <div className="tiles-item">
-                <div className="tiles-item-inner">
-                  <div className="features-tiles-item-header">
-                    <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="100">
-                      <Image
-                        src={require('./../../assets/images/feature-tile-icon-05.svg')}
-                        alt="Features tile icon 05"
-                        width={72}
-                        height={72} />
-                    </div>
-                  </div>
-                  <div className="features-tiles-item-content">
-                    <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      High-Quality Service
-                    </h4>
-                    <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                      A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* <div className="tiles-item">
-                <div className="tiles-item-inner">
-                  <div className="features-tiles-item-header">
-                    <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      <Image
-                        src={require('./../../assets/images/feature-tile-icon-06.svg')}
-                        alt="Features tile icon 06"
-                        width={72}
-                        height={72} />
-                    </div>
-                  </div>
-                  <div className="features-tiles-item-content">
-                    <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                      High-Quality Service
-                    </h4>
-                    <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="400">
                       A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
                     </p>
                   </div>
