@@ -74,7 +74,7 @@ class HeroSplit extends React.Component {
                     A better way to grow your savings
                   </h1>
                   <p className="mt-0 mb-32 reveal-from-top" data-reveal-delay="300">
-                  The new addictive way to save. Our incetivized pool rewards regular savers with higher interest rates.<br/>Start building the financial habits you deserve today.
+                  The new addictive way to save. Our incetivized pools rewards regular savers with higher interest rates.<br/>Start building the financial habits you deserve today.
                   {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
