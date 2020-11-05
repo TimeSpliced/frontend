@@ -144,27 +144,28 @@ class Team extends React.Component {
                 </div>
               </div>
 
-              {/* <div className="tiles-item">
+              <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="team-item-header reveal-from-top" data-reveal-container=".tiles-item">
-                    <div className="team-item-image mb-24 illustration-element-07">
+                    <div className="team-item-image mb-24 illustration-element-06">
+                  {/*  <a href="https://www.linkedin.com/in/babyjessiparker/" target="_blank" rel="noopener"> */}
                       <Image
-                        src={require('./../../assets/images/team-member-05.jpg')}
-                        alt="Team member 05"
+                        src={require('./../../assets/images/DevX.png')}
+                        alt="Team member 04"
                         width={180}
                         height={180} />
+                    {/*</a>*/}
                     </div>
                   </div>
                   <div className="team-item-content reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
                     <h5 className="team-item-name mt-0 mb-4">
-                      Clifford Kennedy
+                    Dev X
                     </h5>
-                    <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8">
-                      CEO & Co-Founder
+                    <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8 sans_serif">
+                      Senior Blockchain Developer
                     </div>
                     <p className="m-0 text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                    </p>
+                    Software engineer and PMO, with experience leading large-scale projects and developing scaling platforms. He would like to remain building behind the scenes for the time being. </p>
                   </div>
                 </div>
               </div>
@@ -172,27 +173,29 @@ class Team extends React.Component {
               <div className="tiles-item">
                 <div className="tiles-item-inner">
                   <div className="team-item-header reveal-from-top" data-reveal-container=".tiles-item">
-                    <div className="team-item-image mb-24 illustration-element-03">
+                    <div className="team-item-image mb-24 illustration-element-06">
+                      {/*<a href="https://www.linkedin.com/in/babyjessiparker/" target="_blank" rel="noopener">*/}
                       <Image
-                        src={require('./../../assets/images/team-member-06.jpg')}
-                        alt="Team member 06"
+                        src={require('./../../assets/images/DevY.png')}
+                        alt="Team member 05"
                         width={180}
                         height={180} />
+                    {/*</a>*/}
                     </div>
                   </div>
                   <div className="team-item-content reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
                     <h5 className="team-item-name mt-0 mb-4">
-                      Clifford Kennedy
+                    Dev Y
                     </h5>
-                    <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8">
-                      CEO & Co-Founder
+                    <div className="team-item-role text-xxs tt-u fw-500 text-color-primary mb-8 sans_serif">
+                      Junior Blockchain Developer
                     </div>
                     <p className="m-0 text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                    </p>
+                    Proficient Ethereum hackathon participant & developer since 2017. Also experienced in MERN & MEAN Stack App Development. He would like to remain building behind the scenes for the time being.</p>
                   </div>
                 </div>
-              </div> */}
+              </div>
+
 
             </div>
           </div>
