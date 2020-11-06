@@ -21,7 +21,7 @@ class Cta extends React.Component {
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -62,7 +62,7 @@ class Cta extends React.Component {
             </div>
             <div className="cta-action">
               <Link to="/game">
-              <Button tag="a" color="primary" wideMobile href="https://discord.com/invite/AWvcTFP">
+              <Button tag="a" color="primary" wide="true" wideMobile="true" href="https://discord.com/invite/AWvcTFP">
                 Join our discord
               </Button>
               </Link>
