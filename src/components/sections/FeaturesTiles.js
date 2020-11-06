@@ -53,8 +53,8 @@ class FeaturesTiles extends React.Component {
       paragraph: "Our groundbreaking gameplay, will give you the ultimate push to save. Compete with others and take the opportunity get higher interest rates, without risking your principal. If you are motivated enough to complete all deposits, you will earn more than you would by saving by yourself."
     };
     const sectionBottom = {
-      title: "Regular savers earn extra 💸",
-      paragraph: "When a saving pool ends, everyone gets their principle back. The extra interest that was earned, is split amongst the savvy savers who made every deposit. Players that missed a payment, forfeit their claim to the generated interest. Hence, the more people fail to meet their goals, the higher the rewards for those that do!   So hit your goals to earn a slice of the interest! ",
+      title: "Hit your goals and win 💸",
+      paragraph: "By hitting your predefined goals, you earn a slice of the interest! When a saving pool ends, the earned interest is split amongst the savvy savers who made every deposit. Players that missed a deposit, still get their principal back but do not earn any interest. So, the more people drop out, the greater the returns for the winnners! ",
     };
 
     return (
@@ -107,7 +107,7 @@ class FeaturesTiles extends React.Component {
                      Make regular deposits
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                     Add to your savings weekly or monthly. Feel proud as your balance grows and you hit your financial goals. You are free to remove your deposited funds at any point.
+                     Add to your savings weekly or monthly to say in the game. Feel proud as your balance grows and you hit your financial goals. You are free to remove your deposited funds at any point.
                     </p>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ class FeaturesTiles extends React.Component {
                        Watch interest accrue
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="400">
-                    Pooled funds are deposited in audited DeFi platforms, generating higher interest rates than in traditional finance. Annual rates of over 7% are possible - for all winners.
+                    Pooled funds are deposited in DeFi savings accounts, generating higher interest rates than in traditional finance. Annual rates of over 7% are possible - shared between all winners.
                     </p>
                   </div>
                 </div>
@@ -140,29 +140,6 @@ class FeaturesTiles extends React.Component {
                   width={72}
                   height={72} />
               </div>
-
-{/*
-              <div className="tiles-item">
-                <div className="tiles-item-inner">
-                  <div className="features-tiles-item-header">
-                    <div className="features-tiles-item-image mb-16 reveal-from-top" data-reveal-container=".tiles-item">
-                      <Image
-                        src={require('./../../assets/images/feature-tile-icon-04.svg')}
-                        alt="Features tile icon 04"
-                        width={72}
-                        height={72} />
-                    </div>
-                  </div>
-                  <div className="features-tiles-item-content">
-                    <h4 className="mt-0 mb-8 reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="100">
-                      High-Quality Service
-                    </h4>
-                    <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="200">
-                      A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design for previewing layouts.
-                    </p>
-                  </div>
-                </div>
-              </div> */}
 
             </div>
           </div>
