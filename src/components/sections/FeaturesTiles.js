@@ -129,7 +129,7 @@ class FeaturesTiles extends React.Component {
                        Watch interest accrue
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="400">
-                    Pooled funds are deposited in DeFi savings accounts, generating higher interest rates than in traditional finance. Annual rates of over 7% are possible - shared between all winners.
+                    Pooled funds are deposited in DeFi savings accounts, generating higher interest rates than in traditional finance. Annual rates of over 7%* are possible - shared between all winners. *Returns vary and are based on the interest rate provided by <a href="https://aave.com/" target="_blank" rel="noopener noreferrer">Aave</a>.
                     </p>
                   </div>
                 </div>
