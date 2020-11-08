@@ -20,7 +20,7 @@ class Roadmap extends React.Component {
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -72,9 +72,9 @@ class Roadmap extends React.Component {
                 <a href="https://gitcoin.co/grants/1112/goodghosting-a-defi-savings-game" target="_blank" rel="noopener"> Our gitcoin grant is live.</a>
               </TimelineItem>
               <TimelineItem title="Q4 2020">
-                Testnet launch and UX .
+                Testnet launch and UX testing.
               </TimelineItem>
-              <TimelineItem title="Q4 2020">
+              <TimelineItem title="Q1 2021">
                 Mainnet launch with gas minimised MVP architecture.
               </TimelineItem>
               {/* <TimelineItem title="March 2020">

@@ -26,7 +26,7 @@ class HeroSplit extends React.Component {
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -71,16 +71,16 @@ class HeroSplit extends React.Component {
               <div className="split-item" style={inlineStyle()}>
                 <div className="hero-content split-item-content center-content-mobile">
                   <h1 className="mt-0 mb-16 reveal-from-top" data-reveal-delay="150">
-                    A better way to grow your savings.
+                    A better way to grow your savings
                   </h1>
                   <p className="mt-0 mb-32 reveal-from-top" data-reveal-delay="300">
-                  The new addictive way to save. Our incentivised pool rewards regular savers with higher interest rates. Start building the financial habits you deserve today.
+                  The new addictive way to save. Our incetivized pools rewards regular savers with higher interest rates.<br/>Start building the financial habits you deserve.
                   {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
-                   
-                    <Button tag="a" color="primary"  wideMobile>
-                      <a className="cta-button" href="https://discord.com/invite/AWvcTFP">Join our discord</a>
+
+                    <Button tag="a" color="primary" wide="true" wideMobile="true">
+                      <a className="cta-button" href="https://discord.com/invite/AWvcTFP">Get early access</a>
                     </Button>
                   </div>
                 </div>
@@ -96,7 +96,7 @@ class HeroSplit extends React.Component {
 // inline style
 const inlineCss = {
   alignItems: 'flex-start',
-  minHeight: '492px'
+  minHeight: '100px'
 }
 
 const inlineStyle = function () {

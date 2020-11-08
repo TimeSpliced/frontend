@@ -52,7 +52,7 @@ class Secondary extends React.Component {
       <React.Fragment>
         {/* <HeroFull className="illustration-section-02" /> */}
         <Team className="illustration-section-04" />
-        {/* 
+        {/*
         <GenericSection topDivider>
           <div className="container-xs">
             <h2 className="mt-0">
@@ -242,9 +242,7 @@ class Secondary extends React.Component {
             />
             <Accordion>
               <AccordionItem title="When are you launching?">
-                We are in active development. We will be launching a testent
-                version early Q4. After this launch we will incorporate the
-                feedback gathered, and launch a mainnet version later in 2020.
+                We are in active development. We will be recruiting alpha testers during Q4 2020 from our Discord community. After fine-tuning our product, we will launch a first version in early 2021.
                 Read more about our <a href="https://medium.com/goodghosting/confession-time-whats-next-f5ac52aa517d" target="_blank" rel="noopener"> development plans in this blog post.</a>
               </AccordionItem>
               <AccordionItem
@@ -252,33 +250,39 @@ class Secondary extends React.Component {
                 active
               >
                 <span>
-                  We deposit your principal into two decentralized finance
-                  (DeFi) services (
-                </span>
+                  We deposit your principal into </span>
+                  <a
+                    href="https://defipulse.com/blog/what-is-defi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                  decentralized finance (DeFi) services
+                  </a>
+                <span> such as </span>
                 <a
-                  href="https://aave.com/"
+                  href="https://docs.aave.com/faq/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   AAVE
                 </a>
-                <span> and </span>
+                <span> and/or </span>
                 <a
-                  href="https://yearn.finance/"
+                  href="https://docs.yearn.finance/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Yearn Finance
                 </a>
                 <span>
-                  ). Both use non-custodial borrowing and lending platforms that
+              . Both use non-custodial borrowing and lending platforms that
                   run on the Ethereum blockchain. This currently generates
-                  higher interest rates than your bank. Learn more here. Please
-                  note past interest rates returns does not indicate future
+                  higher interest rates than your bank account. Please
+                  note that past interest rates do not indicate future
                   returns.
                 </span>
               </AccordionItem>
-              <AccordionItem title="Which coins do you support?">
+              <AccordionItem title="Which currencies do you support?">
                 <span>We currently support </span>
                 <a
                   href="https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/dai"
@@ -286,22 +290,24 @@ class Secondary extends React.Component {
                 >
                   DAI
                 </a>
-                {/* <span> and </span>
-                <a href="https://www.circle.com/en/usdc" target="_blank"  rel="noopener noreferrer">
-                  USDC
-                </a> */}
-                <span>
-                  , however we are looking at adding more tokens. If there is a
-                  particular token you would like please let us know on our
-                  discord.
-                </span>
+                    <span>: a digital stablecoin which is pegged to the US Dollar. We are looking at adding more digital currencies, including </span>
+                        <a href="https://www.circle.com/en/usdc" target="_blank"  rel="noopener noreferrer">
+                          USDC
+                        </a><span>. In the future, we aim to offer the ability to save in most international currencies. </span>
               </AccordionItem>
               <AccordionItem title="Is the annual percentage yield (APY) guaranteed?">
-                No, the minimal APY that is indicated is an estimation based on
-                historical data. Past performance is no guarantee of future
+                <span>No, the 7% interest rate that is indicated is an estimation based on </span>
+                <a href="https://loanscan.io/earn/historical" target="_blank"  rel="noopener noreferrer">
+                  historical data</a>
+                <span>. Past performance is no guarantee of future
                 results. Actual APY will fluctuate based on supply and demand of
-                the underlying assets, as well as how many people complete the
-                game.
+                the underlying automated money markets, as well as how many people complete the
+                game.</span>
+              </AccordionItem>
+              <AccordionItem title="Is my money safe?">
+                As with all DeFi products there is an inherent risk. Although we only
+                plug into audited platforms - and adhere to strict security practices - our smart contracts are not (yet)
+                audited. Please do not add more money than you can afford to lose.
               </AccordionItem>
               <AccordionItem title="Which DeFi platforms are you using?">
                 <span>We currently support </span>
@@ -312,42 +318,45 @@ class Secondary extends React.Component {
                 >
                   AAVE
                 </a>
-                <span> and </span>
-                <a
-                  href="https://yearn.finance/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Yearn.finance
-                </a>
+                <span> for our MVP, and </span>
                 <span>
-                  . We are researching adding alternative platforms. Let us know
-                  if there is one you are looking for. We also use Uniswap to
-                  convert your stable coins to ETH if you choose to do so.
-                </span>
-              </AccordionItem>
-              <AccordionItem title="Is my money safe?">
-                As with all DeFi products there is an inherent risk. Although we
-                plug into audited platforms, our smart contracts are not
-                audited. Please do not add more money than you can afford to
-                lose.
-              </AccordionItem>
-              <AccordionItem title="If I add a portion of ETH to my regular savings, how is the interest calculated?">
-                It’s not. Any ETH portion is completely standalone to the rest
-                of the game logic, it is just an option to add a regular
-                contribution (e.g. dollar-cost average into ETH). You can
-                withdraw this at any point without affecting you capability to
-                collect interest.
+                   are actively researching adding more yield platforms such as </span>
+                  <a href="https://yearn.finance/" target="_blank" rel="noopener noreferrer">
+                                Yearn.finance </a>
+                <span>, </span> <a href="https://pickle.finance/" target="_blank" rel="noopener noreferrer">
+                              Pickle.finance </a><span> and </span>
+                              <a href="https://idle.finance/" target="_blank" rel="noopener noreferrer">
+                                            Idle.finance </a>
+                <span>. Let us know if there is one particular DeFi project or robo-advisor you are looking for.</span>
               </AccordionItem>
               <AccordionItem title="What about gas costs?">
-                We know Ethereum gas costs are high, so we are sponsoring our
+                We know Ethereum gas costs can be rather high, so we are sponsoring our
                 users transaction fees for their first complete saving game. In
-                the future, we will be using layer 2 solutions to reduce our gas
-                costs.
+                the future, we will be using multiple solutions to reduce the gas
+                costs for savers (e.g. layer 2 scaling and meta-transactions).
+              </AccordionItem>
+              <AccordionItem title="Can I save ETH instead of stablecoins?">
+                Not yet, but we plan to add the ability to convert a portion of your regular stablecoin savings into Ethereum (ETH).
+                This will provide you with an easy way to dollar-cost average into ETH. You will be able to
+                withdraw the ETH at any point without affecting you capability to win a game and collect interest.
               </AccordionItem>
               <AccordionItem title="How do you make money?">
                 Currently we are a free service, however in the future we will
-                likely charge a small transaction fee to fund the project.
+                likely charge a small performance fee on all earnings to fund the project. Additionally, we may offer the ability to create your
+                own fully configurable savings pool for a small fee.
+              </AccordionItem>
+              <AccordionItem title="What is an Ethereum wallet and why do I need it?">
+                To access our service, you will need an Ethereum wallet or a Web3.0-enabled browser.
+                For instance,  <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer">
+                                                MetaMask </a> which works on most computers and smartphones.
+                This allows you to access the next generation of decentralized financial apps.
+                We will write a more detailed guide about how to interact with the GoodGhosting app when we launch. But don't worry, we'll make it as simple as possible!
+              </AccordionItem>
+              <AccordionItem title="Can I access GoodGhosting from any country?">
+              <span>Yes, we welcome savers from anywhere in the world. We are a permissionless platform built on top of the </span>
+              <a href="https://ethereum.org/en/what-is-ethereum/" target="_blank" rel="noopener noreferrer">
+                                              open and decentralized Ethereum network </a>
+              <span>. This allows for any individual to directly interact with GoodGhosting, irrespective of their country of residence or nationality.</span>
               </AccordionItem>
             </Accordion>
           </div>
