@@ -10,7 +10,7 @@ export const status = {
 export const isNotEmptyObj = (myObject) => !!Object.keys(myObject).length;
 
 export const daiAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
-export const goodGhostingAdress = "0xded83e22be86e1201d4df0b9f9a2b1ee06818f01"; // short demo game
+export const goodGhostingAdress = "0x9376824d041620f50dee568c066996aff9f63f91"; // short demo game
 // export const goodGhostingAdress = '0x79C01423De3Ca5c436dF4996c9B16d796c871370' //1800 secs
 // export const goodGhostingAdress = "0x839f2F25216621D01D0567646c459d960abD6267";
 
