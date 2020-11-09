@@ -1,19 +1,18 @@
-import React from 'react';
-import classNames from 'classnames';
-import { SectionSplitProps } from '../../utils/SectionProps';
-import Button from '../elements/Button';
-import { Link } from 'react-router-dom';
+import React from "react";
+import classNames from "classnames";
+import { SectionSplitProps } from "../../utils/SectionProps";
+import Button from "../elements/Button";
+import { Link } from "react-router-dom";
 
 const propTypes = {
-  ...SectionSplitProps.types
-}
+  ...SectionSplitProps.types,
+};
 
 const defaultProps = {
-  ...SectionSplitProps.defaults
-}
+  ...SectionSplitProps.defaults,
+};
 
 class HeroSplit extends React.Component {
-
   componentDidMount() {
     // this is only to handle inline style on window resize
     window.onresize = function () {
@@ -22,11 +21,10 @@ class HeroSplit extends React.Component {
   }
 
   render() {
-
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -39,49 +37,54 @@ class HeroSplit extends React.Component {
     } = this.props;
 
     const outerClasses = classNames(
-      'hero section',
-      topOuterDivider && 'has-top-divider',
-      bottomOuterDivider && 'has-bottom-divider',
-      hasBgColor && 'has-bg-color',
-      invertColor && 'invert-color',
+      "hero section",
+      topOuterDivider && "has-top-divider",
+      bottomOuterDivider && "has-bottom-divider",
+      hasBgColor && "has-bg-color",
+      invertColor && "invert-color",
       className
     );
 
     const innerClasses = classNames(
-      'hero-inner section-inner',
-      topDivider && 'has-top-divider',
-      bottomDivider && 'has-bottom-divider'
+      "hero-inner section-inner",
+      topDivider && "has-top-divider",
+      bottomDivider && "has-bottom-divider"
     );
 
     const splitClasses = classNames(
-      'split-wrap',
-      invertMobile && 'invert-mobile',
-      invertDesktop && 'invert-desktop',
-      alignTop && 'align-top'
+      "split-wrap",
+      invertMobile && "invert-mobile",
+      invertDesktop && "invert-desktop",
+      alignTop && "align-top"
     );
 
     return (
-      <section
-        {...props}
-        className={outerClasses}
-      >
+      <section {...props} className={outerClasses}>
         <div className="container">
           <div className={innerClasses}>
             <div className={splitClasses}>
               <div className="split-item" style={inlineStyle()}>
                 <div className="hero-content split-item-content center-content-mobile">
-                  <h1 className="mt-0 mb-16 reveal-from-top" data-reveal-delay="150">
+                  <h1
+                    className="mt-0 mb-16 reveal-from-top"
+                    data-reveal-delay="150"
+                  >
                     A better way to grow your savings.
                   </h1>
-                  <p className="mt-0 mb-32 reveal-from-top" data-reveal-delay="300">
-                  The new addictive way to save. Our incentivised pool rewards regular savers with higher interest rates. Start building the financial habits you deserve today.
-                  {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
+                  <p
+                    className="mt-0 mb-32 reveal-from-top"
+                    data-reveal-delay="300"
+                  >
+                    The new addictive way to save. Our incentivised pool rewards
+                    regular savers with higher interest rates. Start building
+                    the financial habits you deserve today.
+                    {/* Join our pool, hit your goals and get rewarded. Interest rates of over 7% are possible. The more people drop out, the higher your returns. */}
                   </p>
                   <div className="reveal-from-top" data-reveal-delay="450">
                     <Link to="/game">
-                    <Button tag="a" color="primary"  wideMobile>
-                      Start saving
-                    </Button>
+                      <Button tag="a" color="primary" wideMobile="true">
+                        Start saving
+                      </Button>
                     </Link>
                   </div>
                 </div>
@@ -96,9 +99,9 @@ class HeroSplit extends React.Component {
 
 // inline style
 const inlineCss = {
-  alignItems: 'flex-start',
-  minHeight: '492px'
-}
+  alignItems: "flex-start",
+  minHeight: "492px",
+};
 
 const inlineStyle = function () {
   if (window.innerWidth > 641) {
