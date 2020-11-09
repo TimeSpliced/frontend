@@ -40,6 +40,7 @@ const GamePage = () => {
   const [getPlayersStatus, setGetPlayersStatus] = useState(false);
   const [gameInfo, setGameInfo] = useState({});
   const [web3, setWeb3] = useState({});
+  const [netId, setNetId] = useState(null);
   const [errors, setErrors] = useState({});
 
   const getPlayers = async () => {
@@ -243,6 +244,7 @@ const GamePage = () => {
       GoodGhostingABI,
       goodGhostingAdress
     );
+    web3.eth.net.getId().then((netId) => setNetId(netId));
     setGoodGhostingContract(goodGhostingContract);
     setWeb3(web3);
   };
@@ -392,15 +394,21 @@ const GamePage = () => {
   const isFirstSegment = () => {
     return gameInfo.firstSegmentEnd.valueOf() > Date.now();
   };
-
-  console.log("🤣", playerInfo);
+  const isNotOnKovan = netId && netId !== 42;
   return (
     <main className="site-content">
       <div className="section center-content illustration-section-04">
-        {!isNotEmptyObj(gameInfo) && (
+        {!isNotEmptyObj(gameInfo) && !isNotOnKovan && (
           <div style={{ paddingTop: "25vh" }}>
             <Loading />
           </div>
+        )}
+        {isNotOnKovan && (
+          <>
+            {" "}
+            <h2>Our prototype runs on Kovan.</h2>
+            <p>Switch networks in MetaMask</p>
+          </>
         )}
         {isNotEmptyObj(gameInfo) && (
           <>
