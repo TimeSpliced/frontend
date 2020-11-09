@@ -381,14 +381,19 @@ const GamePage = () => {
 
   const connectToWallet = () =>
     !usersAddress && (
-      <Button
-        tag="a"
-        color="primary"
-        wideMobile
-        onClick={getAddressFromMetaMask}
-      >
-        Connect MetaMask
-      </Button>
+      <>
+        <Button
+          tag="a"
+          color="primary"
+          wideMobile
+          onClick={getAddressFromMetaMask}
+        >
+          Connect MetaMask *
+        </Button>
+        <p style={{ lineHeight: "3rem" }}>
+          * additional wallets will be added soon.
+        </p>
+      </>
     );
 
   const isFirstSegment = () => {
