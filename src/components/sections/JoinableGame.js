@@ -59,7 +59,7 @@ const JoinableGame = (props) => (
                   />
                 </>
               ) : (
-                "Join Game"
+                "Join Game *"
               )}
             </Button>
             <p
@@ -70,7 +70,7 @@ const JoinableGame = (props) => (
                 fontSize: "0.9rem",
               }}
             >
-              You will be asked to sign two requests in your wallet.
+              *You will be asked to sign two requests in your wallet.
             </p>
           </>
         )}
