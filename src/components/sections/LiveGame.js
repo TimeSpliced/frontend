@@ -38,7 +38,8 @@ export default (props) => (
       {!props.gameInfo.isGameCompleted && (
         <div style={{ justifyContent: "center", marginTop: "3em " }}>
           {props.playerInfo.address && <h4> The Competition</h4>}
-          {props.players &&
+          {props.userStatus !== status.unregistered &&
+            props.players &&
             PlayersPrint(props.players, props.playerInfo.address).length <
               1 && (
               <p>
@@ -163,7 +164,17 @@ const RegisteredPlayer = (props) => {
 
 const UnRegisteredPlayer = (props) => (
   <>
-    <p>Too bad you missed out, sign up to be the first to join the next one</p>
+    <p>
+      <span role="img">🙁</span>Too late to join!
+    </p>
+    <p>
+      Keep an eye on our{" "}
+      <a href="https://discord.com/invite/AWvcTFP" rel="noopener noreferrer">
+        discord
+      </a>{" "}
+      for news of the next game.
+      <span role="img">👀</span>
+    </p>
   </>
 );
 

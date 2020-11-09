@@ -46,21 +46,33 @@ const JoinableGame = (props) => (
     {props.usersAddress && props.userStatus === status.unregistered && (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
-          <Button tag="a" color="primary" wideMobile onClick={props.joinGame}>
-            {props.loadingState.joinGame ? (
-              <>
-                Loading{" "}
-                <img
-                  src={Loading}
-                  alt="loading"
-                  className="loading-img-button"
-                  style={{ width: "28px", paddingLeft: "10px" }}
-                />
-              </>
-            ) : (
-              "Join Game"
-            )}
-          </Button>
+          <>
+            <Button tag="a" color="primary" wideMobile onClick={props.joinGame}>
+              {props.loadingState.joinGame ? (
+                <>
+                  Loading{" "}
+                  <img
+                    src={Loading}
+                    alt="loading"
+                    className="loading-img-button"
+                    style={{ width: "28px", paddingLeft: "10px" }}
+                  />
+                </>
+              ) : (
+                "Join Game"
+              )}
+            </Button>
+            <p
+              style={{
+                maxWidth: "200px",
+                margin: "auto",
+                marginTop: "10px",
+                fontSize: "0.9rem",
+              }}
+            >
+              You will be asked to sign two requests in your wallet.
+            </p>
+          </>
         )}
         {props.success.joinGame && <h1>🎉 Success</h1>}
       </>
