@@ -20,7 +20,7 @@ class Roadmap extends React.Component {
     const {
       className,
       topOuterDivider,
-      bottomOuterDivider,      
+      bottomOuterDivider,
       topDivider,
       bottomDivider,
       hasBgColor,
@@ -58,15 +58,23 @@ class Roadmap extends React.Component {
             <SectionHeader data={sectionHeader} className="center-content" />
             <Timeline>
               <TimelineItem title="February 2020">
+                <a href="https://www.youtube.com/watch?v=nUW8ASimbH8" target="_blank" rel="noopener">
                 Initial product ideation at ETH London, award a finalist position.
+                </a>
               </TimelineItem>
               <TimelineItem title="July 2020">
                 GoodGhosting joins Gitcoin's Kernel program. New team formation.
               </TimelineItem>
               <TimelineItem title="August 2020">
-                Concept launch and validiated.
+                <a href="https://medium.com/goodghosting/confession-time-whats-next-f5ac52aa517d" target="_blank"  rel="noopener">Concept launch and validiated.</a>
+              </TimelineItem>
+              <TimelineItem title="September 2020">
+                <a href="https://gitcoin.co/grants/1112/goodghosting-a-defi-savings-game" target="_blank" rel="noopener"> Our gitcoin grant is live.</a>
               </TimelineItem>
               <TimelineItem title="Q4 2020">
+                Testnet launch and UX testing.
+              </TimelineItem>
+              <TimelineItem title="Q1 2021">
                 Mainnet launch with gas minimised MVP architecture.
               </TimelineItem>
               {/* <TimelineItem title="March 2020">
