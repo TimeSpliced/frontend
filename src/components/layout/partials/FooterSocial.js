@@ -8,10 +8,10 @@ const FooterSocial = ({ className, ...props }) => {
     <div {...props} className={classes}>
       <ul className="list-reset">
       <li>
-          <a href="https://discord.gg/AWvcTFP" target="_blank"  rel="noopener noreferrer">
+          <a href="https://github.com/Good-Ghosting" target="_blank"  rel="noopener noreferrer">
             <svg
-              width="16"
-              height="16"
+              width="30"
+              height="30"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -23,8 +23,8 @@ const FooterSocial = ({ className, ...props }) => {
         <li>
           <a href="https://discord.gg/AWvcTFP" target="_blank"  rel="noopener noreferrer">
             <svg
-              width="16"
-              height="16"
+              width="30"
+              height="30"
               viewBox="0 0 245 240"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -37,8 +37,8 @@ const FooterSocial = ({ className, ...props }) => {
         <li>
           <a href="https://twitter.com/goodghosting" target="_blank"  rel="noopener noreferrer">
             <svg
-              width="16"
-              height="16"
+              width="30"
+              height="30"
               viewBox="0 0 16 16"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -48,10 +48,10 @@ const FooterSocial = ({ className, ...props }) => {
           </a>
         </li>
         <li>
-          <a href="https://medium.com/goodghosting" target="_blank"  rel="noopener noreferrer"> 
+          <a href="https://medium.com/goodghosting" target="_blank"  rel="noopener noreferrer">
             <svg
-              width="16"
-              height="16"
+              width="30"
+              height="30"
               viewBox="0 0 256 256"
               xmlns="http://www.w3.org/2000/svg"
             >
