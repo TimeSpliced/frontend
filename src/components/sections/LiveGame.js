@@ -8,6 +8,7 @@ import Loading from "./../../assets/loading.svg";
 import LoadingDark from "./../../assets/loading-dark.svg";
 import dayjs from "dayjs";
 import CheckBox from "react-animated-checkbox";
+import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
 
 export default (props) => (
   <>
@@ -112,18 +113,11 @@ const RegisteredPlayer = (props) => {
             </Button>
           </div>
         )}
-      {!props.gameInfo.isGameCompleted && (
-        <div style={{ padding: "10px" }}>
-          <Button
-            tag="a"
-            color="dark"
-            wideMobile
-            onClick={props.emergencyWithdraw}
-          >
-            Withdraw funds early*
-          </Button>
-          <p> * You will lose your slice of the interest.</p>
-        </div>
+      {!props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
+        <EmergencyWithdraw
+          emergencyWithdraw={props.emergencyWithdraw}
+          loadingState={props.loadingState}
+        />
       )}
       {props.gameInfo.isGameCompleted && (
         <>

@@ -316,7 +316,7 @@ const GamePage = () => {
       `;
 
       const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
+        "https://api.thegraph.com//name/good-ghosting/goodghostingsept",
         query
       );
       return res;
@@ -368,9 +368,11 @@ const GamePage = () => {
   };
 
   const emergencyWithdraw = async () => {
+    setLoadingState({ emergencyWithdraw: true });
     await goodGhostingContract.methods
       .emergencyWithdraw()
       .send({ from: usersAddress });
+    setLoadingState({ emergencyWithdraw: false });
   };
 
   const checkUserStatus = () => {

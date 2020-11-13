@@ -9,6 +9,7 @@ import SectionHeader from "./partials/SectionHeader";
 import AddEmail from "./../elements/AddEmail";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
+import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -103,22 +104,15 @@ const JoinableGame = (props) => (
         <p>
           Time left to{" "}
           {props.userStatus === status.registered
-            ? "your first deposit"
+            ? "the next payment window."
             : "join"}
           : {dayjs().to(props.gameInfo.firstSegmentEnd)}
         </p>
         {props.userStatus === status.registered && (
-          <>
-            <Button
-              tag="a"
-              color="dark"
-              wideMobile
-              onClick={props.emergencyWithdraw}
-            >
-              Withdraw funds early*
-            </Button>
-            <p> * You will lose your slice of the interest.</p>
-          </>
+          <EmergencyWithdraw
+            emergencyWithdraw={props.emergencyWithdraw}
+            loadingState={props.loadingState}
+          />
         )}
 
         <div className="connect-to-wallet" style={{ margin: "20px" }}>
