@@ -42,7 +42,6 @@ const JoinableGame = (props) => (
       />
     )}
 
-    {/* TODO add bac in when reading iterable players from the graph */}
     {props.usersAddress && props.userStatus === status.unregistered && (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
@@ -108,6 +107,19 @@ const JoinableGame = (props) => (
             : "join"}
           : {dayjs().to(props.gameInfo.firstSegmentEnd)}
         </p>
+        {props.userStatus === status.registered && (
+          <>
+            <Button
+              tag="a"
+              color="dark"
+              wideMobile
+              onClick={props.emergencyWithdraw}
+            >
+              Withdraw funds early*
+            </Button>
+            <p> * You will lose your slice of the interest.</p>
+          </>
+        )}
 
         <div className="connect-to-wallet" style={{ margin: "20px" }}>
           {props.connectToWallet()}

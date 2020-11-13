@@ -32,6 +32,7 @@ export default (props) => (
           withdraw={props.withdraw}
           loadingState={props.loadingState}
           redeem={props.redeem}
+          emergencyWithdraw={props.emergencyWithdraw}
         />
       )}
 
@@ -111,6 +112,19 @@ const RegisteredPlayer = (props) => {
             </Button>
           </div>
         )}
+      {!props.gameInfo.isGameCompleted && (
+        <div style={{ padding: "10px" }}>
+          <Button
+            tag="a"
+            color="dark"
+            wideMobile
+            onClick={props.emergencyWithdraw}
+          >
+            Withdraw funds early*
+          </Button>
+          <p> * You will lose your slice of the interest.</p>
+        </div>
+      )}
       {props.gameInfo.isGameCompleted && (
         <>
           <ButtonAndTick

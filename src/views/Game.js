@@ -367,6 +367,12 @@ const GamePage = () => {
     }
   };
 
+  const emergencyWithdraw = async () => {
+    await goodGhostingContract.methods
+      .emergencyWithdraw()
+      .send({ from: usersAddress });
+  };
+
   const checkUserStatus = () => {
     if (!usersAddress) {
       return status.unloaded;
@@ -432,6 +438,7 @@ const GamePage = () => {
                 connectToWallet={connectToWallet}
                 playerInfo={playerInfo}
                 gameInfo={gameInfo}
+                emergencyWithdraw={emergencyWithdraw}
               />
             )}
             {!isFirstSegment() && (
@@ -446,6 +453,7 @@ const GamePage = () => {
                 makeDeposit={makeDeposit}
                 withdraw={withdraw}
                 redeem={redeem}
+                emergencyWithdraw={emergencyWithdraw}
               />
             )}
             <RoboHashCredit />
