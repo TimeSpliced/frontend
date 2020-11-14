@@ -84,13 +84,13 @@ class GameStats extends React.Component {
 
     const sectionHeader = {
       title: props.isJoinable
-        ? `Our saving pool closes in ${dayjs().to(
+        ? `Our Saving Pool closes ${dayjs().to(
             props.gameInfo.firstSegmentEnd
           )}`
         : "Our Saving Pool is live!",
       paragraph: props.isJoinable
         ? ""
-        : "👉Don't forget to make your regular deposit!",
+        : "👉 Don't forget to make your recurring deposits to stay alive!",
     };
     const numberOfPlayers = (status) => {
       const conditions = {
@@ -109,38 +109,37 @@ class GameStats extends React.Component {
 
     const gameData = [
       {
-        label: "Regular deposit",
+        label: "⏳ Current Round",
+        data: !this.props.gameInfo.isGameCompleted
+          ? `${displaySegment(
+              this.props.gameInfo.currentSegment
+            )} out of ${displaySegment(this.props.gameInfo.lastSegment)}`
+          : "Game Completed ✔️",
+      },
+      {
+        label: "🎯 Recurring Deposit",
         data: `${web3.utils.fromWei(
           this.props.gameInfo.rawSegmentPayment
         )} DAI`,
       },
       {
-        label: "Total Pool Amount",
+        label: "🏦 Total Pool Funds",
         data: `${
           this.props.gameInfo &&
           weiToERC20(this.props.gameInfo.totalGamePrincipal)
         } DAI`,
       },
       {
-        label: "Total Pool Interest",
+        label: "💸 Total Pool Interest",
         data: `${
           this.props.gameInfo && weiToERC20(this.props.totalGameInterest)
-        } DAI`,
+        } DAI`, //🚨 would be nice if this can show more decimals! 
       },
       {
         label: "Players Status",
-        data: ` Live: ${numberOfPlayers("alive")} Dead: ${numberOfPlayers(
-          "dead"
-        )} `,
+        data: `${numberOfPlayers("alive")} Alive & ${numberOfPlayers(
+          "dead")} Dead`,
         condition: !props.hidePlayersStatus,
-      },
-      {
-        label: "Current Round",
-        data: !this.props.gameInfo.isGameCompleted
-          ? `${displaySegment(
-              this.props.gameInfo.currentSegment
-            )} / ${displaySegment(this.props.gameInfo.lastSegment)}`
-          : "Game Completed",
       },
     ];
 
@@ -172,7 +171,7 @@ class GameStats extends React.Component {
                       style={{ textAlign: "left" }}
                     >
                       <h3 style={{ marginTop: "5px" }}>
-                        Game Stats
+                        Game Stats {' '}
                         <span role="img" aria-label="game emoji">
                           👾
                         </span>
