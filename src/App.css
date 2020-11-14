@@ -30,3 +30,12 @@
 .kovan-link:hover {
   color: #fe88e4;
 }
+
+.round-circle {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.timeline {
+  margin-top: 60px;
+  margin-bottom: 100px;
+}

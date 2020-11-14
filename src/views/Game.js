@@ -188,6 +188,11 @@ const GamePage = () => {
         //   alert.show(reason);
       });
     //setplayer Info TODO 🚨
+    const newPlayerInfo = Object.assign({}, playerInfo, {
+      mostRecentSegmentPaid: parseInt(playerInfo.mostRecentSegmentPaid) + 1,
+    });
+    console.log("newPlayerInfo", newPlayerInfo);
+    setPlayerInfo(newPlayerInfo);
     getPlayerInfo();
     getGameInfo();
     setLoadingState({ makeDeposit: false });

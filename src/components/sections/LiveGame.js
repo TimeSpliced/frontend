@@ -11,10 +11,10 @@ import CheckBox from "react-animated-checkbox";
 import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
 import KovanFaucet from "./../elements/KovanFaucet";
 import KovanFauctet from "./../elements/KovanFaucet";
+import Schedule from "./../elements/Schedule";
 
 export default (props) => (
   <>
-    {console.log("live game ", props)}
     <GameStats
       hasBgColor
       className="illustration-section-07"
@@ -64,6 +64,7 @@ export default (props) => (
         </div>
       )}
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
+      <Schedule gameInfo={props.gameInfo} />
       <KovanFauctet />
     </>
   </>
