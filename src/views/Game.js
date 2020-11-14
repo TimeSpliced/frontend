@@ -302,7 +302,7 @@ const GamePage = () => {
       `;
 
       const res = await request(
-        "https://api.thegraph.com//name/good-ghosting/goodghostingsept",
+        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
         query
       );
       return res;
@@ -310,6 +310,7 @@ const GamePage = () => {
 
     const players2 = await playerReq()
       .then((data) => {
+        console.log("🤣", data.player);
         const player = data.player;
         player.isLive =
           gameInfo.currentSegment - 1 >= player.mostRecentSegmentPaid;
