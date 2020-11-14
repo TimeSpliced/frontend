@@ -8,10 +8,13 @@ import Loading from "./../../assets/loading.svg";
 import LoadingDark from "./../../assets/loading-dark.svg";
 import dayjs from "dayjs";
 import CheckBox from "react-animated-checkbox";
+import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
+import KovanFaucet from "./../elements/KovanFaucet";
+import KovanFauctet from "./../elements/KovanFaucet";
+import Schedule from "./../elements/Schedule";
 
 export default (props) => (
   <>
-    {console.log("live game ", props)}
     <GameStats
       hasBgColor
       className="illustration-section-07"
@@ -32,6 +35,7 @@ export default (props) => (
           withdraw={props.withdraw}
           loadingState={props.loadingState}
           redeem={props.redeem}
+          emergencyWithdraw={props.emergencyWithdraw}
         />
       )}
 
@@ -60,6 +64,8 @@ export default (props) => (
         </div>
       )}
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
+      <Schedule gameInfo={props.gameInfo} />
+      <KovanFauctet />
     </>
   </>
 );
@@ -69,9 +75,6 @@ const RegisteredPlayer = (props) => {
     props.playerInfo.mostRecentSegmentPaid !== props.gameInfo.currentSegment;
   const didNotMissPreviousSegment =
     props.playerInfo.mostRecentSegmentPaid > props.gameInfo.currentSegment - 2;
-  {
-    console.log("Registered players", props);
-  }
 
   return (
     <div>
@@ -111,6 +114,12 @@ const RegisteredPlayer = (props) => {
             </Button>
           </div>
         )}
+      {!props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
+        <EmergencyWithdraw
+          emergencyWithdraw={props.emergencyWithdraw}
+          loadingState={props.loadingState}
+        />
+      )}
       {props.gameInfo.isGameCompleted && (
         <>
           <ButtonAndTick
@@ -127,37 +136,13 @@ const RegisteredPlayer = (props) => {
           />
         </>
       )}
-      {/* {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
-        <Button
-          style={{ margin: "20px" }}
-          tag="a"
-          color="primary"
-          wideMobile
-          onClick={props.withdraw}
-        >
-          {props.loadingState.withdraw ? (
-            <>
-              {" "}
-              Loading{" "}
-              <img
-                src={Loading}
-                alt="loading"
-                className="loading-img-button"
-                style={{ width: "28px", paddingLeft: "10px" }}
-              />
-            </>
-          ) : (
-            `Withdraw your funds`
-          )}
-        </Button>
-      )} */}
-      {!props.gameInfo.isGameCompleted && (
+
+      {/* {!props.gameInfo.isGameCompleted && (
         <p>
           Time to next payment interval{" "}
           {dayjs().to(props.gameInfo.nextSegmentEnd)}
         </p>
-      )}
-      {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
+      )} */}
     </div>
   );
 };
@@ -203,6 +188,11 @@ const ButtonAndTick = (props) => (
             checkedColor: "#8E79FC",
             size: 20,
             unCheckedColor: "#b8b8b8",
+          }}
+          onClick={() => {
+            if (!props.isActive) {
+              props.onClickFunc();
+            }
           }}
           duration={400}
         />

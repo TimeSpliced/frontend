@@ -9,6 +9,9 @@ import SectionHeader from "./partials/SectionHeader";
 import AddEmail from "./../elements/AddEmail";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
+import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
+import KovanFaucet from "./../elements/KovanFaucet";
+import Schedule from "./../elements/Schedule";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -42,7 +45,6 @@ const JoinableGame = (props) => (
       />
     )}
 
-    {/* TODO add bac in when reading iterable players from the graph */}
     {props.usersAddress && props.userStatus === status.unregistered && (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (
@@ -78,7 +80,11 @@ const JoinableGame = (props) => (
       </>
     )}
     {isNotEmptyObj(props.playerInfo) && (
-      <PlayerInfo playerInfo={props.playerInfo} players={props.players} />
+      <PlayerInfo
+        playerInfo={props.playerInfo}
+        players={props.players}
+        lastSegment={props.gameInfo.lastSegment}
+      />
     )}
     {props.players && isNotEmptyObj(props.gameInfo) && (
       <>
@@ -104,10 +110,16 @@ const JoinableGame = (props) => (
         <p>
           Time left to{" "}
           {props.userStatus === status.registered
-            ? "your first deposit"
+            ? "the next payment window."
             : "join"}
           : {dayjs().to(props.gameInfo.firstSegmentEnd)}
         </p>
+        {props.userStatus === status.registered && (
+          <EmergencyWithdraw
+            emergencyWithdraw={props.emergencyWithdraw}
+            loadingState={props.loadingState}
+          />
+        )}
 
         <div className="connect-to-wallet" style={{ margin: "20px" }}>
           {props.connectToWallet()}
@@ -121,6 +133,8 @@ const JoinableGame = (props) => (
           </a>
         </p>
         {props.players && PlayersPrint(props.players)}
+        <Schedule gameInfo={props.gameInfo} />
+        <KovanFaucet />
       </>
     )}
   </div>
