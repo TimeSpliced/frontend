@@ -9,6 +9,8 @@ import LoadingDark from "./../../assets/loading-dark.svg";
 import dayjs from "dayjs";
 import CheckBox from "react-animated-checkbox";
 import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
+import KovanFaucet from "./../elements/KovanFaucet";
+import KovanFauctet from "./../elements/KovanFaucet";
 
 export default (props) => (
   <>
@@ -62,6 +64,7 @@ export default (props) => (
         </div>
       )}
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
+      <KovanFauctet />
     </>
   </>
 );
@@ -165,6 +168,7 @@ const RegisteredPlayer = (props) => {
           {dayjs().to(props.gameInfo.nextSegmentEnd)}
         </p>
       )}
+
       {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
     </div>
   );

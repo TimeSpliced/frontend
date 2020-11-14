@@ -10,6 +10,8 @@ import AddEmail from "./../elements/AddEmail";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
 import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
+import KovanFaucet from "./../elements/KovanFaucet";
+import KovanFauctet from "./../elements/KovanFaucet";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -127,6 +129,7 @@ const JoinableGame = (props) => (
           </a>
         </p>
         {props.players && PlayersPrint(props.players)}
+        <KovanFauctet />
       </>
     )}
   </div>

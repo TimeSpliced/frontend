@@ -99,6 +99,9 @@ const GamePage = () => {
   };
 
   const getGameInfo = async () => {
+    if (typeof goodGhostingContract == undefined) {
+      return;
+    }
     const gameReq = async () => {
       const query = gql`
         {
@@ -208,34 +211,11 @@ const GamePage = () => {
   };
 
   const withdraw = async () => {
-    console.log("playerInfop", playerInfo);
     setLoadingState({ withdraw: true });
-    // if (!gameInfo.redeemed) {
-    // const redeeem = await goodGhostingContract.methods
-    //   .redeemFromExternalPool()
-    //   .send({
-    //     from: usersAddress,
-    //   })
-    //   .catch(async (error) => {
-    //     const reason = await parseRevertError(error);
-    //     //   alert.show(reason);
-    //     console.log("reason", reason);
-    //   });
-    // const allocateWithdrawAmounts = await goodGhostingContract.methods
-    //   .allocateWithdrawAmounts()
-    //   .send({ from: usersAddress });
-    //   await goodGhostingContract.methods
-    //     .withdraw()
-    //     .send({ from: usersAddress });
-    //   setLoadingState({ withdraw: false });
-    // } else {
     await goodGhostingContract.methods.withdraw().send({ from: usersAddress });
-    // props.playerInfo.withdrawn
     const newPlayerInfo = Object.assign({}, playerInfo, { withdrawn: true });
-    console.log("playerInfo", playerInfo, "newPlayerInfor", newPlayerInfo);
     setPlayerInfo(newPlayerInfo);
     setLoadingState({ withdraw: false });
-    // }
   };
 
   const setUp = () => {
@@ -267,6 +247,12 @@ const GamePage = () => {
   useEffect(() => {
     getPlayerInfo();
   }, [userStatus]);
+
+  // setInterval(() => {
+  //   console.log("settimeout", goodGhostingContract);
+  //   getGameInfo();
+  //   getPlayerInfo();
+  // }, 10000);
 
   const joinGame = async () => {
     setLoadingState({ joinGame: true });

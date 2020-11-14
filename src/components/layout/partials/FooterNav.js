@@ -1,27 +1,17 @@
-import React from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import React from "react";
+import classNames from "classnames";
+import { Link } from "react-router-dom";
 
-const FooterNav = ({
-  className,
-  ...props
-}) => {
-
-  const classes = classNames(
-    'footer-nav',
-    className
-  );
+const FooterNav = ({ className, ...props }) => {
+  const classes = classNames("footer-nav", className);
 
   return (
-    <nav
-      {...props}
-      className={classes}
-    >
+    <nav {...props} className={classes}>
       <ul className="list-reset">
         <li>
-          <Link to="/contact/">Contact</Link>
+          <p>boo@goodghosting.com</p>
         </li>
-        <li>
+        {/* <li>
           <Link to="/about-us/">About us</Link>
         </li>
         <li>
@@ -29,10 +19,10 @@ const FooterNav = ({
         </li>
         <li>
           <Link to="/support/">Support</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
-}
+};
 
 export default FooterNav;
