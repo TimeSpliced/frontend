@@ -26,3 +26,7 @@
 .button-tick-hooverable:hover {
   color: #8e79fc !important;
 }
+
+.kovan-link:hover {
+  color: #fe88e4;
+}

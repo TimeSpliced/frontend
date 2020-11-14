@@ -51,6 +51,7 @@ class Footer extends React.Component {
               <p>
                 To play, you need{" "}
                 <a
+                  className="kovan-link"
                   style={{ textDecoration: "none" }}
                   href="https://testnet.aave.com/faucet"
                   target="_blank"
@@ -60,6 +61,7 @@ class Footer extends React.Component {
                 </a>{" "}
                 and{" "}
                 <a
+                  className="kovan-link"
                   style={{ textDecoration: "none" }}
                   href="https://faucet.kovan.network/"
                   target="blank"
