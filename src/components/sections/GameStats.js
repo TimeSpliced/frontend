@@ -84,9 +84,7 @@ class GameStats extends React.Component {
 
     const sectionHeader = {
       title: props.isJoinable
-        ? `Our Saving Pool closes ${dayjs().to(
-            props.gameInfo.firstSegmentEnd
-          )}`
+        ? `Our Saving Pool closes ${dayjs().to(props.gameInfo.firstSegmentEnd)}`
         : "Our Saving Pool is live!",
       paragraph: props.isJoinable
         ? ""
@@ -113,7 +111,7 @@ class GameStats extends React.Component {
         data: !this.props.gameInfo.isGameCompleted
           ? `${displaySegment(
               this.props.gameInfo.currentSegment
-            )} out of ${displaySegment(this.props.gameInfo.lastSegment)}`
+            )} out of ${displaySegment(this.props.gameInfo.lastSegment - 1)}`
           : "Game Completed ✔️",
       },
       {
@@ -133,12 +131,13 @@ class GameStats extends React.Component {
         label: "💸 Total Pool Interest",
         data: `${
           this.props.gameInfo && weiToERC20(this.props.totalGameInterest)
-        } DAI`, //🚨 would be nice if this can show more decimals! 
+        } DAI`, //🚨 would be nice if this can show more decimals!
       },
       {
         label: "Players Status",
         data: `${numberOfPlayers("alive")} Alive & ${numberOfPlayers(
-          "dead")} Dead`,
+          "dead"
+        )} Dead`,
         condition: !props.hidePlayersStatus,
       },
     ];
@@ -171,7 +170,7 @@ class GameStats extends React.Component {
                       style={{ textAlign: "left" }}
                     >
                       <h3 style={{ marginTop: "5px" }}>
-                        Game Stats {' '}
+                        Game Stats{" "}
                         <span role="img" aria-label="game emoji">
                           👾
                         </span>
