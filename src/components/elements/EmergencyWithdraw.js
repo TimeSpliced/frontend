@@ -4,7 +4,7 @@ import Loading from "./../../assets/loading.svg";
 export default (props) => {
   return (
     <div style={{ padding: "10px" }}>
-      <Button tag="a" color="dark" wideMobile onClick={props.emergencyWithdraw}>
+      {/* <Button tag="a" color="dark" wideMobile onClick={props.emergencyWithdraw}>
         {props.loadingState.emergencyWithdraw ? (
           <>
             Withdraw funds early*
@@ -19,7 +19,7 @@ export default (props) => {
           "Withdraw funds early*"
         )}
       </Button>
-      <p> * You will lose your slice of the interest.</p>
+      <p> * You will lose your slice of the interest.</p> */}
     </div>
   );
 };

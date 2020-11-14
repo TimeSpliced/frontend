@@ -80,7 +80,11 @@ const JoinableGame = (props) => (
       </>
     )}
     {isNotEmptyObj(props.playerInfo) && (
-      <PlayerInfo playerInfo={props.playerInfo} players={props.players} />
+      <PlayerInfo
+        playerInfo={props.playerInfo}
+        players={props.players}
+        lastSegment={props.gameInfo.lastSegment}
+      />
     )}
     {props.players && isNotEmptyObj(props.gameInfo) && (
       <>

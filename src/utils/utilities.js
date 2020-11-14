@@ -10,7 +10,7 @@ export const status = {
 export const isNotEmptyObj = (myObject) => !!Object.keys(myObject).length;
 
 export const daiAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
-export const goodGhostingAdress = "0x880e4fcd7e5a7b9589944b5dbefb93aa45e2e459"; // 1 day
+export const goodGhostingAdress = "0x2a978e9d79bcbe0d69cc035b62c1e8954ea111f9"; // 1 day
 // export const goodGhostingAdress = '0x79C01423De3Ca5c436dF4996c9B16d796c871370' //1800 secs
 // export const goodGhostingAdress = "0x839f2F25216621D01D0567646c459d960abD6267";
 

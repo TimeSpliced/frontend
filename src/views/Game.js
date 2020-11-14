@@ -187,7 +187,9 @@ const GamePage = () => {
         // const reason = await parseRevertError(error);
         //   alert.show(reason);
       });
+    //setplayer Info TODO 🚨
     getPlayerInfo();
+    getGameInfo();
     setLoadingState({ makeDeposit: false });
   };
   const redeem = async () => {
@@ -202,9 +204,9 @@ const GamePage = () => {
         //   alert.show(reason);
         console.log("reason", reason);
       });
-    await goodGhostingContract.methods
-      .allocateWithdrawAmounts()
-      .send({ from: usersAddress });
+    // await goodGhostingContract.methods
+    //   .allocateWithdrawAmounts()
+    //   .send({ from: usersAddress });
     const newGameInfo = Object.assign({}, gameInfo, { redeemed: true });
     setGameInfo(newGameInfo);
     setLoadingState({ redeem: false });

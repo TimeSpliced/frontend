@@ -74,9 +74,6 @@ const RegisteredPlayer = (props) => {
     props.playerInfo.mostRecentSegmentPaid !== props.gameInfo.currentSegment;
   const didNotMissPreviousSegment =
     props.playerInfo.mostRecentSegmentPaid > props.gameInfo.currentSegment - 2;
-  {
-    console.log("Registered players", props);
-  }
 
   return (
     <div>
@@ -138,38 +135,13 @@ const RegisteredPlayer = (props) => {
           />
         </>
       )}
-      {/* {props.gameInfo.isGameCompleted && !props.playerInfo.withdrawn && (
-        <Button
-          style={{ margin: "20px" }}
-          tag="a"
-          color="primary"
-          wideMobile
-          onClick={props.withdraw}
-        >
-          {props.loadingState.withdraw ? (
-            <>
-              {" "}
-              Loading{" "}
-              <img
-                src={Loading}
-                alt="loading"
-                className="loading-img-button"
-                style={{ width: "28px", paddingLeft: "10px" }}
-              />
-            </>
-          ) : (
-            `Withdraw your funds`
-          )}
-        </Button>
-      )} */}
-      {!props.gameInfo.isGameCompleted && (
+
+      {/* {!props.gameInfo.isGameCompleted && (
         <p>
           Time to next payment interval{" "}
           {dayjs().to(props.gameInfo.nextSegmentEnd)}
         </p>
-      )}
-
-      {/* {isNotEmptyObj(props.gameInfo) && <GameStats gameInfo={props.gameInfo} />} */}
+      )} */}
     </div>
   );
 };
@@ -215,6 +187,11 @@ const ButtonAndTick = (props) => (
             checkedColor: "#8E79FC",
             size: 20,
             unCheckedColor: "#b8b8b8",
+          }}
+          onClick={() => {
+            if (!props.isActive) {
+              props.onClickFunc();
+            }
           }}
           duration={400}
         />
