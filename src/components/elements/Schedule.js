@@ -1,5 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+dayjs.extend(duration);
 
 const Schedule = (props) => {
   const numberOfPayableRounds = parseInt(props.gameInfo.lastSegment);
@@ -37,7 +39,10 @@ const Schedule = (props) => {
   return (
     <div>
       <h3>Schedule</h3>
-      Each round lasts {roundsLengthsSecs} seconds
+      Each round lasts {dayjs
+        .duration(roundsLengthsSecs, "seconds")
+        .asDays()}{" "}
+      days
       {/* {console.log(i)} */}
       <div className="timeline">
         {segments.map((i) => (

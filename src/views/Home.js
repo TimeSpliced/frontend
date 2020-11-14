@@ -8,7 +8,7 @@ import Testimonial from "../components/sections/Testimonial";
 import Cta from "../components/sections/Cta";
 import HowItWorks from "../components/sections/HowItWorks";
 import CountdownContainer from "./../components/elements/countdown-container";
-import Button from './../components/elements/Button';
+import Button from "./../components/elements/Button";
 
 class Home extends React.Component {
   render() {
@@ -23,8 +23,11 @@ class Home extends React.Component {
         <HowItWorks />
         {/* <Pricing pricingSwitcher hasBgColor className="illustration-section-07" /> */}
         {/* <Testimonial className="illustration-section-05" /> */}
-        <div className="container" style={{ padding: "5%", textAlign :" center" }}>
-          <h5>Next game starts in</h5>
+        <div
+          className="container"
+          style={{ padding: "5%", textAlign: " center" }}
+        >
+          {/* <h5>Next game starts in</h5> */}
           <CountdownContainer
             timeTillDate="08 16 2020 , 6:00 am"
             timeFormat="MM DD YYYY, h:mm a"
@@ -37,7 +40,6 @@ class Home extends React.Component {
           </div> */}
         </div>
         <Cta topDivider bottomDivider split className="reveal-from-top" />
-        
       </React.Fragment>
     );
   }
