@@ -124,6 +124,7 @@ const JoinableGame = (props) => (
         <div className="connect-to-wallet" style={{ margin: "20px" }}>
           {props.connectToWallet()}
         </div>
+        <Schedule gameInfo={props.gameInfo} />
         <h5 className="cardo">Players in the game</h5>
         <p style={{ fontSize: "0.7rem" }}>
           Customize your avatar at{" "}
@@ -132,7 +133,6 @@ const JoinableGame = (props) => (
             3Box Hub
           </a>
         </p>
-        <Schedule gameInfo={props.gameInfo} />
         {props.players && PlayersPrint(props.players)}
         <KovanFaucet />
       </>
