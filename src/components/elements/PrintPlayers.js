@@ -9,23 +9,27 @@ const PlayersPrint = (players, currentPlayer) => {
     );
   }
 
-  return iterablePlayers.map((player, key) => (
-    <div
-      key={key}
-      style={{
-        width: "10rem",
-        display: "inline-block",
-        margin: "0.5rem",
-      }}
-    >
-      <PlayerImage i={key} player={player} />
-      <p className="sans_serif text-color-primary fw-500 text-xxs tt-u">
-        {player.threeBoxName
-          ? player.threeBoxName
-          : `${player.id.slice(0, 7)}...`}
-      </p>
+  return (
+    <div style={{ marginBottom: "100px" }}>
+      {iterablePlayers.map((player, key) => (
+        <div
+          key={key}
+          style={{
+            width: "10rem",
+            display: "inline-block",
+            margin: "0.5rem",
+          }}
+        >
+          <PlayerImage i={key} player={player} />
+          <p className="sans_serif text-color-primary fw-500 text-xxs tt-u">
+            {player.threeBoxName
+              ? player.threeBoxName
+              : `${player.id.slice(0, 7)}...`}
+          </p>
+        </div>
+      ))}
     </div>
-  ));
+  );
 };
 
 export default PlayersPrint;

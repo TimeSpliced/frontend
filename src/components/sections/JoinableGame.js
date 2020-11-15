@@ -4,14 +4,13 @@ import PlayersPrint from "./../elements/PrintPlayers";
 import { status, isNotEmptyObj, brandColors } from "../../utils/utilities";
 import PlayerInfo from "../elements/PlayerInfo";
 import dayjs from "dayjs";
-import SignupForm from "./SignupForm";
-import SectionHeader from "./partials/SectionHeader";
 import AddEmail from "./../elements/AddEmail";
 import GameStats from "./GameStats";
 import Loading from "./../../assets/loading.svg";
 import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
 import KovanFaucet from "./../elements/KovanFaucet";
 import Schedule from "./../elements/Schedule";
+import classNames from "classnames";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -125,15 +124,17 @@ const JoinableGame = (props) => (
           {props.connectToWallet()}
         </div>
         <Schedule gameInfo={props.gameInfo} />
-        <h5 className="cardo">Players in the game</h5>
-        <p style={{ fontSize: "0.7rem" }}>
-          Customize your avatar at{" "}
-          <a href="https://3box.io/hub" target="_blank" rel="noopen">
-            {" "}
-            3Box Hub
-          </a>
-        </p>
-        {props.players && PlayersPrint(props.players)}
+        <section style={{ paddingTop: "80px" }}>
+          <h3>Players in the game</h3>
+          <p style={{ fontSize: "0.7rem" }}>
+            Customize your avatar at{" "}
+            <a href="https://3box.io/hub" target="_blank" rel="noopen">
+              {" "}
+              3Box Hub
+            </a>
+          </p>
+          {props.players && PlayersPrint(props.players)}
+        </section>
         <KovanFaucet />
       </>
     )}

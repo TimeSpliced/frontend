@@ -40,7 +40,7 @@ const Schedule = (props) => {
   });
 
   return (
-    <div>
+    <div className="schedule">
       <section {...props} className={outerClasses}>
         <h3>Deposit Schedule</h3>
         <p style={{ marginBottom: "10px" }}>
@@ -78,6 +78,7 @@ const Schedule = (props) => {
                 fontFamily: "Cardo",
                 fontWeight: "400",
                 marginTop: "40px",
+                fontSize: "14px",
               }}
             >
               After the final round ends
@@ -86,7 +87,8 @@ const Schedule = (props) => {
               role="img"
               aria-label="money-emoji"
               style={{
-                fontSize: "1.7rem",
+                fontSize: "2.5rem",
+                lineHeight: "2.5rem",
               }}
             >
               🤑
