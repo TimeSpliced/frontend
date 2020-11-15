@@ -81,7 +81,7 @@ const Schedule = (props) => {
                 fontSize: "14px",
               }}
             >
-              After the final round ends
+              After the final round
             </p>
             <span
               role="img"
