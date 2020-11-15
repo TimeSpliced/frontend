@@ -42,7 +42,7 @@ const Schedule = (props) => {
   return (
     <div className="schedule">
       <section {...props} className={outerClasses}>
-        <h3>Deposit Schedule</h3>
+        <h3>Deposit Timeline</h3>
         <p style={{ marginBottom: "10px" }}>
           Each round lasts{" "}
           {dayjs.duration(roundsLengthsSecs, "seconds").asDays()} days
