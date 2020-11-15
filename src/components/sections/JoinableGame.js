@@ -132,8 +132,8 @@ const JoinableGame = (props) => (
             3Box Hub
           </a>
         </p>
-        {props.players && PlayersPrint(props.players)}
         <Schedule gameInfo={props.gameInfo} />
+        {props.players && PlayersPrint(props.players)}
         <KovanFaucet />
       </>
     )}

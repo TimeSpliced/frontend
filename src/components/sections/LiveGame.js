@@ -39,6 +39,7 @@ export default (props) => (
         />
       )}
 
+      <Schedule gameInfo={props.gameInfo} topDivider />
       {!props.gameInfo.isGameCompleted && (
         <div style={{ justifyContent: "center", marginTop: "3em " }}>
           {props.playerInfo.address && <h4> The Competition</h4>}
@@ -64,7 +65,6 @@ export default (props) => (
         </div>
       )}
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
-      <Schedule gameInfo={props.gameInfo} topDivider />
       <KovanFauctet />
     </>
   </>
