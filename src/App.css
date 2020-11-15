@@ -39,3 +39,14 @@
   margin-top: 60px;
   margin-bottom: 100px;
 }
+.schedule-right {
+  text-align: left;
+}
+.schedule-left {
+  text-align: left;
+}
+@media (min-width: 641) {
+  .schedule-right {
+    text-align: right;
+  }
+}

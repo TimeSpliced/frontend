@@ -64,7 +64,7 @@ export default (props) => (
         </div>
       )}
       {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
-      <Schedule gameInfo={props.gameInfo} />
+      <Schedule gameInfo={props.gameInfo} topDivider />
       <KovanFauctet />
     </>
   </>
