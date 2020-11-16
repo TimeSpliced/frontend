@@ -107,7 +107,7 @@ class FeaturesTiles extends React.Component {
                      Make regular deposits
                     </h4>
                     <p className="m-0 text-sm reveal-from-top" data-reveal-container=".tiles-item" data-reveal-delay="300">
-                     Add to your savings weekly or monthly to say in the game. Feel proud as your balance grows and you hit your financial goals. You are free to remove your deposited funds at any point.
+                     Add to your savings weekly or monthly to stay in the game. Feel proud as your balance grows and you hit your financial goals. You are free to remove your deposited funds at any point.
                     </p>
                   </div>
                 </div>
