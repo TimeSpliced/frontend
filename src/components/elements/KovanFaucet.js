@@ -117,7 +117,7 @@ export default Footer;
 //   </a>{" "}
 //   and{" "}
 //   <a
-//     href="https://faucet.kovan.network/"
+//     href="https://kovan.faucet.enjin.io//"
 //     target="blank"
 //     rel="noopener noreferrer nofollow"
 //   >
