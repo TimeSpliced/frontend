@@ -105,7 +105,22 @@ class GameStats extends React.Component {
       return deadPlayers.length;
     };
 
+    const roundsLengthsSecs = props.gameInfo.segmentLengthInSecs;
+    const numberOfPayableRounds = parseInt(props.gameInfo.lastSegment);
+    const numberOfRounds = numberOfPayableRounds + 1;
+    const gameLength = numberOfPayableRounds * roundsLengthsSecs;
+
     const gameData = [
+      {
+        label: "🕒 Game Duration",
+        data: `${dayjs.duration(gameLength, "seconds").asDays()} days`,
+      },
+      {
+        label: "🎯 Recurring Deposit",
+        data: `${web3.utils.fromWei(
+          this.props.gameInfo.rawSegmentPayment
+        )} DAI every ${dayjs.duration(roundsLengthsSecs, "seconds").asDays()} days`,
+      },
       {
         label: "⏳ Current Round",
         data: !this.props.gameInfo.isGameCompleted
@@ -115,10 +130,9 @@ class GameStats extends React.Component {
           : "Game Completed ✔️",
       },
       {
-        label: "🎯 Recurring Deposit",
-        data: `${web3.utils.fromWei(
-          this.props.gameInfo.rawSegmentPayment
-        )} DAI`,
+        label: "👻 Players Status",
+        data: `${numberOfPlayers("alive")} Alive and ${numberOfPlayers("dead")} Dead`,
+        //condition: !props.hidePlayersStatus,  //🚨 defaults to false so is not shown (see JoinableGame.js); not sure why you'd want to hide this?? because it is loading slowly?
       },
       {
         label: "🏦 Total Pool Funds",
@@ -134,11 +148,8 @@ class GameStats extends React.Component {
         } DAI`, //🚨 would be nice if this can show more decimals!
       },
       {
-        label: "Players Status",
-        data: `${numberOfPlayers("alive")} Alive & ${numberOfPlayers(
-          "dead"
-        )} Dead`,
-        condition: !props.hidePlayersStatus,
+        label: "💸 Pool APY",
+        data: `4.73%`, //🚨TODO: add actual real-time percentage! See https://docs.aave.com/developers/developing-on-aave/the-protocol/lendingpool#getreservedata
       },
     ];
 
