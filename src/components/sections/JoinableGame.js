@@ -109,7 +109,7 @@ const JoinableGame = (props) => (
         <p>
           Time left to{" "}
           {props.userStatus === status.registered
-            ? "the next payment window."
+            ? "the next payment window"
             : "join"}
           : {dayjs().to(props.gameInfo.firstSegmentEnd)}
         </p>
