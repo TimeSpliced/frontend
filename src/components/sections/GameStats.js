@@ -119,7 +119,9 @@ class GameStats extends React.Component {
         label: "🎯 Recurring Deposit",
         data: `${web3.utils.fromWei(
           this.props.gameInfo.rawSegmentPayment
-        )} DAI every ${dayjs.duration(roundsLengthsSecs, "seconds").asDays()} days`,
+        )} DAI every ${dayjs
+          .duration(roundsLengthsSecs, "seconds")
+          .asDays()} days`,
       },
       {
         label: "⏳ Current Round",
@@ -131,7 +133,9 @@ class GameStats extends React.Component {
       },
       {
         label: "👻 Players Status",
-        data: `${numberOfPlayers("alive")} Alive and ${numberOfPlayers("dead")} Dead`,
+        data: `${numberOfPlayers("alive")} Alive and ${numberOfPlayers(
+          "dead"
+        )} Dead`,
         //condition: !props.hidePlayersStatus,  //🚨 defaults to false so is not shown (see JoinableGame.js); not sure why you'd want to hide this?? because it is loading slowly?
       },
       {
@@ -149,7 +153,9 @@ class GameStats extends React.Component {
       },
       {
         label: "💸 Pool APY",
-        data: `4.73%`, //🚨TODO: add actual real-time percentage! See https://docs.aave.com/developers/developing-on-aave/the-protocol/lendingpool#getreservedata
+        data: `${
+          Math.round((this.props.gameInfo.poolAPY + Number.EPSILON) * 100) / 100
+        }%`,
       },
     ];
 

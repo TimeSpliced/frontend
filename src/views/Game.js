@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import GoodGhostingABI from "../ABIs/ABI-goodghosting";
 import DaiABI from "../ABIs/ABI-dai";
+import lendingPoolAddressProviderABI from "./../ABIs/ABI-aave-lending-pool-provider";
+import lendingPoolABI from "./../ABIs/ABI-aave-lendingPool.js";
 import Web3 from "web3";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -147,6 +149,32 @@ const GamePage = () => {
       .getCurrentSegment()
       .call();
 
+    //get lending pool address from lending pool address provider
+    const providerInstance = new web3.eth.Contract(
+      lendingPoolAddressProviderABI,
+      "0x506B0B2CF20FAA8f38a4E2B524EE43e1f4458Cc5"
+    );
+
+    const lendingPoolAddress = await providerInstance.methods
+      .getLendingPool()
+      .call()
+      .catch((e) => {
+        throw Error(`Error getting lendingPool address: ${e.message}`);
+      });
+
+    // load lending pool instance to query APY
+    const lendingPoolInstance = new web3.eth.Contract(
+      lendingPoolABI,
+      lendingPoolAddress
+    );
+
+    const lendingPoolData = await lendingPoolInstance.methods
+      .getReserveData(daiAddress)
+      .call();
+
+    const rawADaiAPY = new web3.utils.BN(lendingPoolData.liquidityRate);
+
+    const aDaiAPY = (rawADaiAPY / 10 ** 27) * 100;
     const lastSegment = await goodGhostingContract.methods.lastSegment().call();
     const gameInfo = {
       firstSegmentStart: dayjs.unix(firstSegmentStart),
@@ -157,6 +185,7 @@ const GamePage = () => {
       segmentLength: dayjs.duration(segmentLength * 1000),
       currentSegment,
       lastSegment,
+      poolAPY: aDaiAPY,
       isGameCompleted: currentSegment > lastSegment - 1,
       firstSegmentEnd: dayjs.unix(firstSegmentStart).add(segmentLength, "s"),
       nextSegmentEnd: dayjs
@@ -191,7 +220,6 @@ const GamePage = () => {
     const newPlayerInfo = Object.assign({}, playerInfo, {
       mostRecentSegmentPaid: parseInt(playerInfo.mostRecentSegmentPaid) + 1,
     });
-    console.log("newPlayerInfo", newPlayerInfo);
     setPlayerInfo(newPlayerInfo);
     getPlayerInfo();
     getGameInfo();
