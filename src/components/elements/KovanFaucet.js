@@ -63,7 +63,7 @@ class Footer extends React.Component {
                 <a
                   className="kovan-link"
                   style={{ textDecoration: "none" }}
-                  href="https://faucet.kovan.network/"
+                  href="https://kovan.faucet.enjin.io/"
                   target="blank"
                   rel="noopener noreferrer nofollow"
                 >
