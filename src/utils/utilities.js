@@ -12,7 +12,7 @@ export const isNotEmptyObj = (myObject) => !!Object.keys(myObject).length;
 export const aaveLendingPoolProvider =
   "0x506B0B2CF20FAA8f38a4E2B524EE43e1f4458Cc5";
 export const daiAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
-export const goodGhostingAdress = "0x79cae7b7826bd404737fd9e9c52eee6d76ef4893"; // 1 day
+export const goodGhostingAdress = "0x16D1feaC977dFb79a879BD5e5B7Ed37E81C3D660"; // 2 week segments
 // export const goodGhostingAdress = '0x79C01423De3Ca5c436dF4996c9B16d796c871370' //1800 secs
 // export const goodGhostingAdress = "0x839f2F25216621D01D0567646c459d960abD6267";
 
