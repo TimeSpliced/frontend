@@ -24,6 +24,7 @@ import {
   daiAddress,
   getRevertReason,
   parseRevertError,
+  aaveLendingPoolProvider,
 } from "../utils/utilities";
 import RoboHashCredit from "../components/elements/RoboHashCredit";
 import { request, gql } from "graphql-request";
@@ -152,7 +153,7 @@ const GamePage = () => {
     //get lending pool address from lending pool address provider
     const providerInstance = new web3.eth.Contract(
       lendingPoolAddressProviderABI,
-      "0x506B0B2CF20FAA8f38a4E2B524EE43e1f4458Cc5"
+      aaveLendingPoolProvider
     );
 
     const lendingPoolAddress = await providerInstance.methods
