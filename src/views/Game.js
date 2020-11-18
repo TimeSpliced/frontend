@@ -11,6 +11,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import Button from "./../components/elements/Button";
 import { useAlert } from "react-alert";
 import { gameNumber, gqlErrors } from "./../utils/utilities";
+import { NotKovan, NoWeb3 } from "./../components/elements/Errors";
 // import parseErr  from 'parse-err';
 // import ErrorStackParser from 'error-stack-parser';
 
@@ -428,37 +429,8 @@ const GamePage = () => {
               <Loading />
             </div>
           )}
-        {isNotOnKovan && (
-          <>
-            {" "}
-            <h2>Our prototype runs on Kovan.</h2>
-            <p>
-              Switch networks in MetaMask* and refresh your needToAWeb3Browser
-            </p>
-            <p style={{ fontStyle: "italic", fontSize: "0.7rem" }}>
-              *We will be integrating with other wallets soon.
-            </p>
-          </>
-        )}
-        {errors.needToAWeb3Browser && (
-          <>
-            <h2>Our prototype requires MetaMask to run.</h2>
-            <p>
-              Install{" "}
-              <a
-                href="https://metamask.io/"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                MetaMask
-              </a>{" "}
-              and refresh your browser*.
-            </p>
-            <p style={{ fontStyle: "italic", fontSize: "0.7rem" }}>
-              *Works best on chrome.
-            </p>
-          </>
-        )}
+        {isNotOnKovan && <NotKovan />}
+        {errors.needToAWeb3Browser && <NoWeb3 />}
         {isNotEmptyObj(gameInfo) && (
           <>
             {isFirstSegment() && (
