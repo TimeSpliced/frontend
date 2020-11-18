@@ -11,6 +11,7 @@ import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
 import KovanFaucet from "./../elements/KovanFaucet";
 import Schedule from "./../elements/Schedule";
 import classNames from "classnames";
+import { JoinError } from "./../elements/Errors";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
@@ -95,6 +96,7 @@ const JoinableGame = (props) => (
             </p>
           </>
         )}
+        {props.errors.joinGame && <JoinError />}
         {props.success.joinGame && <h1>🎉 Success</h1>}
       </>
     )}

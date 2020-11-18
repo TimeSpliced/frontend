@@ -289,12 +289,6 @@ const GamePage = () => {
     getPlayerInfo();
   }, [userStatus]);
 
-  // setInterval(() => {
-  //   console.log("settimeout", goodGhostingContract);
-  //   getGameInfo();
-  //   getPlayerInfo();
-  // }, 10000);
-
   const joinGame = async () => {
     setLoadingState({ joinGame: true });
     if (!isNotEmptyObj(web3)) {
@@ -308,11 +302,18 @@ const GamePage = () => {
       .send({ from: usersAddress })
       .then((res) => console.log("res", res))
       .catch((err) => {
-        setErrors({ joinGameApprove: err }); // 🚨 TODO display in FE
+        setErrors({ joinGame: err }); // 🚨 TODO display in FE
         setLoadingState({ joinGame: false });
       });
 
-    await goodGhostingContract.methods.joinGame().send({ from: usersAddress });
+    await goodGhostingContract.methods
+      .joinGame()
+      .send({ from: usersAddress })
+      .catch((err) => {
+        console.log("err", err);
+        setErrors({ joinGame: true }); // 🚨 TODO display in FE
+        setLoadingState({ joinGame: false });
+      });
     setSuccessState({ joinGame: true });
     setLoadingState({ joinGame: false });
     setUserStatus(status.registered);
@@ -446,6 +447,7 @@ const GamePage = () => {
                 playerInfo={playerInfo}
                 gameInfo={gameInfo}
                 emergencyWithdraw={emergencyWithdraw}
+                errors={errors}
               />
             )}
             {!isFirstSegment() && (

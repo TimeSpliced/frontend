@@ -30,3 +30,36 @@ export const NotKovan = () => (
     </p>
   </>
 );
+
+export const JoinError = () => (
+  <div className="sans_serif" style={{ color: "red", fontWeight: "900" }}>
+    <p style={{ marginBottom: 0 }}>
+      Something went wrong.{" "}
+      <span role="img" aria-label="sad">
+        😢
+      </span>
+    </p>
+    <p style={{ marginBottom: 0 }}>
+      Make sure you have enough{" "}
+      <a
+        className="kovan-link"
+        style={{ textDecoration: "none" }}
+        href="https://testnet.aave.com/faucet"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        DAI
+      </a>{" "}
+      and{" "}
+      <a
+        className="kovan-link"
+        style={{ textDecoration: "none" }}
+        href="https://kovan.faucet.enjin.io/"
+        target="blank"
+        rel="noopener noreferrer nofollow"
+      >
+        ETH
+      </a>
+    </p>
+  </div>
+);
