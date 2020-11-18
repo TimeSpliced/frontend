@@ -359,23 +359,6 @@ const GamePage = () => {
         console.error(err);
         return gqlErrors.players;
       });
-    // if (goodGhostingContract && userStatus == status.registered) {
-    //   if (!players) {
-    //     await getPlayers();
-    //   }
-    //   const player = players.filter(
-    //     (player) => player.address.toLowerCase() === usersAddress.toLowerCase()
-    //   )[0];
-
-    //   // const playerInfo = await goodGhostingContract.methods
-    //   //   .players(usersAddress)
-    //   //   .call();
-
-    //   player.isStillInGame =
-    //     parseInt(player.mostRecentSegmentPaid) >
-    //     parseInt(gameInfo.currentSegment) - 2;
-    //   setPlayerInfo(player);
-    // }
   };
 
   //🚨TODO replace this with portis or alternative wallet connection

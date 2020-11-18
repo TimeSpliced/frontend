@@ -65,13 +65,33 @@ const JoinableGame = (props) => (
             </Button>
             <p
               style={{
-                maxWidth: "200px",
+                maxWidth: "300px",
                 margin: "auto",
                 marginTop: "10px",
                 fontSize: "0.9rem",
               }}
             >
-              *You will be asked to sign two requests in your wallet.
+              *You will need Kovan{" "}
+              <a
+                className="kovan-link"
+                style={{ textDecoration: "none" }}
+                href="https://kovan.faucet.enjin.io/"
+                target="blank"
+                rel="noopener noreferrer nofollow"
+              >
+                ETH
+              </a>{" "}
+              and{" "}
+              <a
+                className="kovan-link"
+                style={{ textDecoration: "none" }}
+                href="https://testnet.aave.com/faucet"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                DAI
+              </a>
+              , and sign two requests in your wallet.
             </p>
           </>
         )}
@@ -85,11 +105,14 @@ const JoinableGame = (props) => (
         lastSegment={props.gameInfo.lastSegment}
       />
     )}
+    <div className="connect-to-wallet" style={{ margin: "20px" }}>
+      {props.connectToWallet()}
+    </div>
     {props.players && isNotEmptyObj(props.gameInfo) && (
-      <>
+      <div>
         {props.gameInfo.firstSegmentStart && (
           <p className="cardo" style={{ marginTop: "10px" }}>
-            Game launched :{" "}
+            Game launched on{" "}
             <span>
               {`${props.gameInfo.firstSegmentStartArr[2]} . ${
                 props.gameInfo.firstSegmentStartArr[1] + 1
@@ -97,22 +120,9 @@ const JoinableGame = (props) => (
             </span>
           </p>
         )}
-        {/* {props.gameInfo.firstSegmentEnd && (
-          <p>Join by: {props.gameInfo.firstSegmentEnd.toString()}</p>
-        )} */}
-        {/* {props.gameInfo.segmentLength && props.gameInfo.segmentPayment && (
-          <p>
-            Deposit {props.gameInfo.segmentPayment} DAI every{" "}
-            {props.gameInfo.segmentLength.asDays()} days
-          </p>
-        )} */}
-        <p>
-          Time left to{" "}
-          {props.userStatus === status.registered
-            ? "the next payment window"
-            : "join"}
-          : {dayjs().to(props.gameInfo.firstSegmentEnd)}
-        </p>
+        <h3 style={{ fontSize: "2rem" }}>
+          Pool Closes {dayjs().to(props.gameInfo.firstSegmentEnd)}
+        </h3>
         {props.userStatus === status.registered && (
           <EmergencyWithdraw
             emergencyWithdraw={props.emergencyWithdraw}
@@ -120,9 +130,6 @@ const JoinableGame = (props) => (
           />
         )}
 
-        <div className="connect-to-wallet" style={{ margin: "20px" }}>
-          {props.connectToWallet()}
-        </div>
         <Schedule gameInfo={props.gameInfo} />
         <section style={{ paddingTop: "80px" }}>
           <h3>Players in the game</h3>
@@ -136,7 +143,7 @@ const JoinableGame = (props) => (
           {props.players && PlayersPrint(props.players)}
         </section>
         <KovanFaucet />
-      </>
+      </div>
     )}
   </div>
 );
