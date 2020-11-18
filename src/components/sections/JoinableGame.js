@@ -91,7 +91,7 @@ const JoinableGame = (props) => (
               >
                 DAI
               </a>
-              , and sign two requests in your wallet.
+              . Requires two signatures from your wallet.
             </p>
           </>
         )}
