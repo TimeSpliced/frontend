@@ -255,6 +255,10 @@ const GamePage = () => {
   };
 
   const setUp = () => {
+    if (typeof window.ethereum == "undefined") {
+      setErrors({ needToAWeb3Browser: true });
+      return;
+    }
     const web3 = new Web3(window.ethereum);
     const goodGhostingContract = new web3.eth.Contract(
       GoodGhostingABI,
@@ -364,7 +368,7 @@ const GamePage = () => {
   //🚨TODO replace this with portis or alternative wallet connection
   const getAddressFromMetaMask = async () => {
     if (typeof window.ethereum == "undefined") {
-      this.setState({ needToAWeb3Browser: true });
+      setErrors({ needToAWeb3Browser: true });
     } else {
       window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
       const accounts = await window.ethereum.enable();
@@ -417,18 +421,41 @@ const GamePage = () => {
   return (
     <main className="site-content">
       <div className="section center-content illustration-section-04">
-        {!isNotEmptyObj(gameInfo) && !isNotOnKovan && (
-          <div style={{ paddingTop: "25vh" }}>
-            <Loading />
-          </div>
-        )}
+        {!isNotEmptyObj(gameInfo) &&
+          !isNotOnKovan &&
+          !errors.needToAWeb3Browser && (
+            <div style={{ paddingTop: "25vh" }}>
+              <Loading />
+            </div>
+          )}
         {isNotOnKovan && (
           <>
             {" "}
             <h2>Our prototype runs on Kovan.</h2>
-            <p>Switch networks in MetaMask*</p>
+            <p>
+              Switch networks in MetaMask* and refresh your needToAWeb3Browser
+            </p>
             <p style={{ fontStyle: "italic", fontSize: "0.7rem" }}>
               *We will be integrating with other wallets soon.
+            </p>
+          </>
+        )}
+        {errors.needToAWeb3Browser && (
+          <>
+            <h2>Our prototype requires MetaMask to run.</h2>
+            <p>
+              Install{" "}
+              <a
+                href="https://metamask.io/"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                MetaMask
+              </a>{" "}
+              and refresh your browser*.
+            </p>
+            <p style={{ fontStyle: "italic", fontSize: "0.7rem" }}>
+              *Works best on chrome.
             </p>
           </>
         )}
