@@ -113,7 +113,7 @@ class GameStats extends React.Component {
     const gameData = [
       {
         label: "🕒 Game Duration",
-        data: `${dayjs.duration(gameLength, "seconds").asDays()} days`,
+        data: `${dayjs.duration(gameLength, "seconds").asWeeks()} weeks`,
       },
       {
         label: "🎯 Recurring Deposit",
