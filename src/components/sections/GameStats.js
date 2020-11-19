@@ -84,10 +84,10 @@ class GameStats extends React.Component {
 
     const sectionHeader = {
       title: props.isJoinable
-        ? `Our Saving Pool closes ${dayjs().to(props.gameInfo.firstSegmentEnd)}`
-        : "Our Saving Pool is live!",
+        ? `Our Savings Pool closes ${dayjs().to(props.gameInfo.firstSegmentEnd)}`
+        : "Our Savings Pool is live!",
       paragraph: props.isJoinable
-        ? ""
+        ? "👉 Make your first deposit by then!"
         : "👉 Don't forget to make your recurring deposits to stay alive!",
     };
     const numberOfPlayers = (status) => {
@@ -161,11 +161,12 @@ class GameStats extends React.Component {
 
     const valueStyle = {
       backgroundColor: "#F6F8FE",
-      marginLeft: "20px",
-      paddingLeft: "15px",
-      paddingRight: "15px",
+      marginLeft: "18px",
+      paddingLeft: "10px",
+      paddingRight: "4px",
       borderRadius: "3px",
       fontFamily: "monospace",
+      fontSize: '14pt',
     };
     return (
       <section className={outerClasses}>
@@ -174,6 +175,7 @@ class GameStats extends React.Component {
             <SectionHeader
               data={sectionHeader}
               className="center-content invert-color"
+              tag="h3"
             />
             <div className={tilesClasses}>
               <div
