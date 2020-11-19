@@ -130,8 +130,8 @@ class Header extends React.Component {
                         </Link>
                       </li>
                       <li>
-                        <Link to="/2/#team" onClick={this.closeMenu}>
-                          Team
+                        <Link to="/2/" onClick={this.closeMenu}>
+                          Team | FAQ | Roadmap
                         </Link>
                       </li>
                     </ul>
