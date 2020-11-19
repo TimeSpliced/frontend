@@ -24,7 +24,7 @@ export const NotKovan = () => (
   <>
     {" "}
     <h2>Our prototype runs on Kovan.</h2>
-    <p>Switch networks in MetaMask* and refresh your needToAWeb3Browser</p>
+    <p>Switch networks in MetaMask* and refresh your browser</p>
     <p style={{ fontStyle: "italic", fontSize: "0.7rem" }}>
       *We will be integrating with other wallets soon.
     </p>
