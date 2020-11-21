@@ -183,7 +183,7 @@ const GamePage = () => {
       firstSegmentStartArr: dayjs.unix(firstSegmentStart).toArray(),
       segmentPayment: segmentPayment / 10 ** 18,
       rawSegmentPayment: segmentPayment,
-      cumulativeSegmentPayments: String(segmentPayment * lastSegment),
+      //cumulativeSegmentPayments: String(segmentPayment * lastSegment), TODO: FIX WHY THIS RETURNS INVALID_ARGUMENT WHEN >1000 
       segmentLengthInSecs: segmentLength,
       segmentLength: dayjs.duration(segmentLength * 1000),
       currentSegment,
@@ -206,10 +206,10 @@ const GamePage = () => {
       const web3 = new Web3(window.ethereum);
       setWeb3(web3);
     }
-    //const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
-    //await daiContract.methods
-    //  .approve(goodGhostingAdress, gameInfo.rawSegmentPayment) //should no longer be needed anymore for new games - but keep until tested
-    //  .send({ from: usersAddress });
+    const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
+    await daiContract.methods
+      .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
+      .send({ from: usersAddress });
 
     await goodGhostingContract.methods
       .makeDeposit()
@@ -299,7 +299,7 @@ const GamePage = () => {
 
     const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
     const approve = await daiContract.methods
-      .approve(goodGhostingAdress, gameInfo.cumulativeSegmentPayments)
+      .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
       .send({ from: usersAddress })
       .then((res) => console.log("res", res))
       .catch((err) => {
