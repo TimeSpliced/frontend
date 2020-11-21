@@ -84,7 +84,9 @@ class GameStats extends React.Component {
 
     const sectionHeader = {
       title: props.isJoinable
-        ? `Our Savings Pool closes ${dayjs().to(props.gameInfo.firstSegmentEnd)}`
+        ? `Our Savings Pool closes ${dayjs().to(
+            props.gameInfo.firstSegmentEnd
+          )}`
         : "Our Savings Pool is live!",
       paragraph: props.isJoinable
         ? "👉 Make your first deposit by then!"
@@ -113,7 +115,7 @@ class GameStats extends React.Component {
     const gameData = [
       {
         label: "🕒 Game Duration",
-        data: `${dayjs.duration(gameLength, "seconds").asWeeks()} weeks`,
+        data: `${dayjs.duration(gameLength, "seconds").asDays()} days`,
       },
       {
         label: "🎯 Recurring Deposit",
@@ -166,7 +168,7 @@ class GameStats extends React.Component {
       paddingRight: "4px",
       borderRadius: "3px",
       fontFamily: "monospace",
-      fontSize: '14pt',
+      fontSize: "14pt",
     };
     return (
       <section className={outerClasses}>
