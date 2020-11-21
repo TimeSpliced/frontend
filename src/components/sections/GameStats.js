@@ -123,7 +123,7 @@ class GameStats extends React.Component {
           this.props.gameInfo.rawSegmentPayment
         )} DAI every ${dayjs
           .duration(roundsLengthsSecs, "seconds")
-          .asWeeks()} weeks`,
+          .asDays()} days`,
       },
       {
         label: "⏳ Current Round",
