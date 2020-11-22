@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Varibles
+We store GoodGhosting's contract address, the graph URL and a value to indicate days or weeks in environment variables. To run locally you will need to create a  `.env.local` file in the root dir. Add to it the following variables:
+```
+REACT_APP_GG_CONTRACT={CONTRACT ADDRESS}
+REACT_APP_GRAPH_URL={THE GRAPH URL}
+REACT_APP_WEEKS_OR_DAYS={ie weeks or days}
+```
+An example graph url is "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingnov"
+
+
 ## Available Scripts
 
 In the project directory, you can run:

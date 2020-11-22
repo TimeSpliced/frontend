@@ -84,7 +84,9 @@ class GameStats extends React.Component {
 
     const sectionHeader = {
       title: props.isJoinable
-        ? `Our Savings Pool closes ${dayjs().to(props.gameInfo.firstSegmentEnd)}`
+        ? `Our Savings Pool closes ${dayjs().to(
+            props.gameInfo.firstSegmentEnd
+          )}`
         : "Our Savings Pool is live!",
       paragraph: props.isJoinable
         ? "👉 Make your first deposit by then!"
@@ -109,19 +111,24 @@ class GameStats extends React.Component {
     const numberOfPayableRounds = parseInt(props.gameInfo.lastSegment);
     const numberOfRounds = numberOfPayableRounds + 1;
     const gameLength = numberOfPayableRounds * roundsLengthsSecs;
-
     const gameData = [
       {
         label: "🕒 Game Duration",
-        data: `${dayjs.duration(gameLength, "seconds").asWeeks()} weeks`,
+        data: `${
+          process.env.REACT_APP_WEEKS_OR_DAYS === "weeks"
+            ? dayjs.duration(roundsLengthsSecs, "seconds").asWeeks()
+            : dayjs.duration(roundsLengthsSecs, "seconds").asDays()
+        } ${process.env.REACT_APP_WEEKS_OR_DAYS}`,
       },
       {
         label: "🎯 Recurring Deposit",
         data: `${web3.utils.fromWei(
           this.props.gameInfo.rawSegmentPayment
-        )} DAI every ${dayjs
-          .duration(roundsLengthsSecs, "seconds")
-          .asWeeks()} weeks`,
+        )} DAI every ${
+          process.env.REACT_APP_WEEKS_OR_DAYS === "weeks"
+            ? dayjs.duration(roundsLengthsSecs, "seconds").asWeeks()
+            : dayjs.duration(roundsLengthsSecs, "seconds").asDays()
+        } ${process.env.REACT_APP_WEEKS_OR_DAYS}`,
       },
       {
         label: "⏳ Current Round",
@@ -166,7 +173,7 @@ class GameStats extends React.Component {
       paddingRight: "4px",
       borderRadius: "3px",
       fontFamily: "monospace",
-      fontSize: '14pt',
+      fontSize: "14pt",
     };
     return (
       <section className={outerClasses}>
