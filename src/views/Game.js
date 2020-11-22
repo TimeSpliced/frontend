@@ -344,7 +344,7 @@ const GamePage = () => {
       `;
 
       const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingnov",
+        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
         query
       );
       return res;
