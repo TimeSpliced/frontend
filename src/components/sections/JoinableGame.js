@@ -12,10 +12,15 @@ import KovanFaucet from "./../elements/KovanFaucet";
 import Schedule from "./../elements/Schedule";
 import classNames from "classnames";
 import { JoinError } from "./../elements/Errors";
+import SuccessModal from "./../elements/SuccessModal";
 // import CountdownContainer from "./../elements/countdown-container";
 
 const JoinableGame = (props) => (
   <div>
+    <SuccessModal
+      close={props.toggleSuccess.bind(null, "joinGame")}
+      show={props.success.joinGame}
+    />
     {/* <SectionHeader
       tag="h1"
       data={{
@@ -25,7 +30,6 @@ const JoinableGame = (props) => (
       headerStyle={{ paddingBottom: "20px" }}
       className="center-content"
     /> */}
-
     {/* <CountdownContainer
       timeTillDate="08 16 2020 , 6:00 am"
       timeFormat="MM DD YYYY, h:mm a"
@@ -33,7 +37,6 @@ const JoinableGame = (props) => (
     {props.userStatus === status.registered && (
       <AddEmail addr={props.playerInfo.addr} bannerStyle={true} />
     )}
-
     {props.gameInfo && props.players && (
       <GameStats
         hasBgColor
@@ -44,7 +47,6 @@ const JoinableGame = (props) => (
         isJoinable={true}
       />
     )}
-
     {props.usersAddress && props.userStatus === status.unregistered && (
       <>
         {props.usersAddress && props.userStatus !== status.registered && (

@@ -41,7 +41,7 @@ const GamePage = () => {
   const [success, setSuccessState] = useState({});
   const [userStatus, setUserStatus] = useState(status.unloaded);
   const [playerInfo, setPlayerInfo] = useState({});
-  const [getPlayersStatus, setGetPlayersStatus] = useState(false);
+  const [getPlayersStatus, setGetPlayersStatus] = useState(null);
   const [gameInfo, setGameInfo] = useState({});
   const [web3, setWeb3] = useState({});
   const [netId, setNetId] = useState(null);
@@ -183,7 +183,7 @@ const GamePage = () => {
       firstSegmentStartArr: dayjs.unix(firstSegmentStart).toArray(),
       segmentPayment: segmentPayment / 10 ** 18,
       rawSegmentPayment: segmentPayment,
-      //cumulativeSegmentPayments: String(segmentPayment * lastSegment), TODO: FIX WHY THIS RETURNS INVALID_ARGUMENT WHEN >1000 
+      //cumulativeSegmentPayments: String(segmentPayment * lastSegment), TODO: FIX WHY THIS RETURNS INVALID_ARGUMENT WHEN >1000
       segmentLengthInSecs: segmentLength,
       segmentLength: dayjs.duration(segmentLength * 1000),
       currentSegment,
@@ -310,19 +310,27 @@ const GamePage = () => {
     await goodGhostingContract.methods
       .joinGame()
       .send({ from: usersAddress })
+      .then(() => {
+        setSuccessState({ joinGame: true });
+        setLoadingState({ joinGame: false });
+        setUserStatus(status.registered);
+        getPlayers();
+      })
       .catch((err) => {
         console.log("err", err);
         setErrors({ joinGame: true }); // 🚨 TODO display in FE
         setLoadingState({ joinGame: false });
+        return;
       });
-    setSuccessState({ joinGame: true });
-    setLoadingState({ joinGame: false });
-    setUserStatus(status.registered);
 
-    setTimeout(() => {
-      getPlayers();
-      setSuccessState({ joinGame: false });
-    }, 2000);
+    // setTimeout(() => {
+    //   setSuccessState({ joinGame: false });
+    // }, 5000);
+  };
+
+  const toggleSuccess = (attribute) => {
+    console.log(attribute);
+    setSuccessState({ [attribute]: !success[attribute] });
   };
 
   const getPlayerInfo = async () => {
@@ -449,6 +457,7 @@ const GamePage = () => {
                 gameInfo={gameInfo}
                 emergencyWithdraw={emergencyWithdraw}
                 errors={errors}
+                toggleSuccess={toggleSuccess}
               />
             )}
             {!isFirstSegment() && (
