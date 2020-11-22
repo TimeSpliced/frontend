@@ -111,19 +111,24 @@ class GameStats extends React.Component {
     const numberOfPayableRounds = parseInt(props.gameInfo.lastSegment);
     const numberOfRounds = numberOfPayableRounds + 1;
     const gameLength = numberOfPayableRounds * roundsLengthsSecs;
-
     const gameData = [
       {
         label: "🕒 Game Duration",
-        data: `${dayjs.duration(gameLength, "seconds").asDays()} days`,
+        data: `${
+          process.env.REACT_APP_WEEKS_OR_DAYS === "weeks"
+            ? dayjs.duration(roundsLengthsSecs, "seconds").asWeeks()
+            : dayjs.duration(roundsLengthsSecs, "seconds").asDays()
+        } ${process.env.REACT_APP_WEEKS_OR_DAYS}`,
       },
       {
         label: "🎯 Recurring Deposit",
         data: `${web3.utils.fromWei(
           this.props.gameInfo.rawSegmentPayment
-        )} DAI every ${dayjs
-          .duration(roundsLengthsSecs, "seconds")
-          .asDays()} days`,
+        )} DAI every ${
+          process.env.REACT_APP_WEEKS_OR_DAYS === "weeks"
+            ? dayjs.duration(roundsLengthsSecs, "seconds").asWeeks()
+            : dayjs.duration(roundsLengthsSecs, "seconds").asDays()
+        } ${process.env.REACT_APP_WEEKS_OR_DAYS}`,
       },
       {
         label: "⏳ Current Round",

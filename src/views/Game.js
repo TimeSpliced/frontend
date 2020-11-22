@@ -61,10 +61,8 @@ const GamePage = () => {
           }
         }
       `;
-      const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
-        query
-      );
+
+      const res = await request(process.env.REACT_APP_GRAPH_URL, query);
       return res;
     };
     const players = await playerReq().catch((err) => {
@@ -117,10 +115,7 @@ const GamePage = () => {
         }
       `;
 
-      const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingsept",
-        query
-      );
+      const res = await request(process.env.REACT_APP_GRAPH_URL, query);
       return res;
     };
     const glqGameData = await gameReq().catch((err) => {
@@ -182,7 +177,7 @@ const GamePage = () => {
       firstSegmentStartArr: dayjs.unix(firstSegmentStart).toArray(),
       segmentPayment: segmentPayment / 10 ** 18,
       rawSegmentPayment: segmentPayment,
-      cumulativeSegmentPayments: String(segmentPayment * lastSegment),
+      //cumulativeSegmentPayments: String(segmentPayment * lastSegment), TODO: FIX WHY THIS RETURNS INVALID_ARGUMENT WHEN >1000
       segmentLengthInSecs: segmentLength,
       segmentLength: dayjs.duration(segmentLength * 1000),
       currentSegment,
@@ -205,10 +200,10 @@ const GamePage = () => {
       const web3 = new Web3(window.ethereum);
       setWeb3(web3);
     }
-    //const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
-    //await daiContract.methods
-    //  .approve(goodGhostingAdress, gameInfo.rawSegmentPayment) //should no longer be needed anymore for new games - but keep until tested
-    //  .send({ from: usersAddress });
+    const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
+    await daiContract.methods
+      .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
+      .send({ from: usersAddress });
 
     await goodGhostingContract.methods
       .makeDeposit()
@@ -298,7 +293,7 @@ const GamePage = () => {
 
     const daiContract = new web3.eth.Contract(DaiABI, daiAddress);
     const approve = await daiContract.methods
-      .approve(goodGhostingAdress, gameInfo.cumulativeSegmentPayments)
+      .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
       .send({ from: usersAddress })
       .then((res) => console.log("res", res))
       .catch((err) => {
@@ -309,19 +304,26 @@ const GamePage = () => {
     await goodGhostingContract.methods
       .joinGame()
       .send({ from: usersAddress })
+      .then(() => {
+        setSuccessState({ joinGame: true });
+        setLoadingState({ joinGame: false });
+        setUserStatus(status.registered);
+        getPlayers();
+      })
       .catch((err) => {
         console.log("err", err);
         setErrors({ joinGame: true }); // 🚨 TODO display in FE
         setLoadingState({ joinGame: false });
+        return;
       });
-    setSuccessState({ joinGame: true });
-    setLoadingState({ joinGame: false });
-    setUserStatus(status.registered);
 
-    setTimeout(() => {
-      getPlayers();
-      setSuccessState({ joinGame: false });
-    }, 2000);
+    // setTimeout(() => {
+    //   setSuccessState({ joinGame: false });
+    // }, 5000);
+  };
+
+  const toggleSuccess = (attribute) => {
+    setSuccessState({ [attribute]: !success[attribute] });
   };
 
   const getPlayerInfo = async () => {
@@ -343,10 +345,7 @@ const GamePage = () => {
         }
       `;
 
-      const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingnov",
-        query
-      );
+      const res = await request(process.env.REACT_APP_GRAPH_URL, query);
       return res;
     };
 
@@ -448,6 +447,7 @@ const GamePage = () => {
                 gameInfo={gameInfo}
                 emergencyWithdraw={emergencyWithdraw}
                 errors={errors}
+                toggleSuccess={toggleSuccess}
               />
             )}
             {!isFirstSegment() && (
