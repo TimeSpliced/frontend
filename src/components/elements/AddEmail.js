@@ -58,11 +58,9 @@ const AddEmail = (props) => {
   }
 
   useEffect(() => {
-    console.log(props, addr);
     if (props.addr) {
       async function fetchData() {
         const request = await axios.get(`check-email?address=${props.addr}`);
-        console.log("request", request.data);
         setHasEmail(request.data.hasEmail);
         setHasChecked(true);
       }

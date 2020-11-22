@@ -295,7 +295,7 @@ const GamePage = () => {
     const approve = await daiContract.methods
       .approve(goodGhostingAdress, gameInfo.rawSegmentPayment)
       .send({ from: usersAddress })
-      .then((res) => console.log("res", res))
+      .then((res) => console.log(""))
       .catch((err) => {
         setErrors({ joinGame: err }); // 🚨 TODO display in FE
         setLoadingState({ joinGame: false });
@@ -351,7 +351,6 @@ const GamePage = () => {
 
     const players2 = await playerReq()
       .then((data) => {
-        console.log("🤣", data.player);
         const player = data.player;
         player.isLive =
           gameInfo.currentSegment - 1 >= player.mostRecentSegmentPaid;
