@@ -64,7 +64,7 @@ const JoinableGame = (props) => (
                   />
                 </>
               ) : (
-                "Join Game *"
+                "Click to join the Game *"
               )}
             </Button>
             <p
