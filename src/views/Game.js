@@ -41,7 +41,7 @@ const GamePage = () => {
   const [success, setSuccessState] = useState({});
   const [userStatus, setUserStatus] = useState(status.unloaded);
   const [playerInfo, setPlayerInfo] = useState({});
-  const [getPlayersStatus, setGetPlayersStatus] = useState(null);
+  const [getPlayersStatus, setGetPlayersStatus] = useState(false);
   const [gameInfo, setGameInfo] = useState({});
   const [web3, setWeb3] = useState({});
   const [netId, setNetId] = useState(null);
@@ -323,7 +323,6 @@ const GamePage = () => {
   };
 
   const toggleSuccess = (attribute) => {
-    console.log(attribute);
     setSuccessState({ [attribute]: !success[attribute] });
   };
 
