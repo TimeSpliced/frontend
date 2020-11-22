@@ -17,6 +17,7 @@ import SuccessModal from "./../elements/SuccessModal";
 
 const JoinableGame = (props) => (
   <div>
+    {console.log(process.env)}
     <SuccessModal
       close={props.toggleSuccess.bind(null, "joinGame")}
       show={props.success.joinGame}

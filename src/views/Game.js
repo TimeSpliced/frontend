@@ -62,10 +62,7 @@ const GamePage = () => {
         }
       `;
 
-      const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingnov",
-        query
-      );
+      const res = await request(process.env.REACT_APP_GRAPH_URL, query);
       return res;
     };
     const players = await playerReq().catch((err) => {
@@ -118,10 +115,7 @@ const GamePage = () => {
         }
       `;
 
-      const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingnov",
-        query
-      );
+      const res = await request(process.env.REACT_APP_GRAPH_URL, query);
       return res;
     };
     const glqGameData = await gameReq().catch((err) => {
@@ -352,10 +346,7 @@ const GamePage = () => {
         }
       `;
 
-      const res = await request(
-        "https://api.thegraph.com/subgraphs/name/good-ghosting/goodghostingnov",
-        query
-      );
+      const res = await request(process.env.REACT_APP_GRAPH_URL, query);
       return res;
     };
 
