@@ -116,8 +116,8 @@ class GameStats extends React.Component {
         label: "🕒 Game Duration",
         data: `${
           process.env.REACT_APP_WEEKS_OR_DAYS === "weeks"
-            ? dayjs.duration(roundsLengthsSecs, "seconds").asWeeks()
-            : dayjs.duration(roundsLengthsSecs, "seconds").asDays()
+            ? dayjs.duration(gameLength, "seconds").asWeeks()
+            : dayjs.duration(gameLength, "seconds").asDays()
         } ${process.env.REACT_APP_WEEKS_OR_DAYS}`,
       },
       {
