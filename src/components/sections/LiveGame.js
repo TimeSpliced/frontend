@@ -12,9 +12,14 @@ import EmergencyWithdraw from "./../elements/EmergencyWithdraw";
 import KovanFaucet from "./../elements/KovanFaucet";
 import KovanFauctet from "./../elements/KovanFaucet";
 import Schedule from "./../elements/Schedule";
+import SuccessModal from "./../elements/SuccessModal";
 
 export default (props) => (
   <>
+    <SuccessModal
+      close={props.toggleSuccess.bind(null, "makeDeposit")}
+      show={props.success.makeDeposit}
+    />
     <GameStats
       hasBgColor
       className="illustration-section-07"
@@ -25,6 +30,7 @@ export default (props) => (
     <div style={{ justifyContent: "center", marginTop: "3em " }}>
       {props.connectToWallet()}
     </div>
+    {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
     <>
       {props.userStatus === status.registered && (
         <RegisteredPlayer
@@ -64,7 +70,6 @@ export default (props) => (
           {props.players && PlayersPrint(props.players)}
         </div>
       )}
-      {props.userStatus === status.unregistered && <UnRegisteredPlayer />}
       <KovanFauctet />
     </>
   </>

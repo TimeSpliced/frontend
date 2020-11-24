@@ -217,6 +217,7 @@ const GamePage = () => {
     const newPlayerInfo = Object.assign({}, playerInfo, {
       mostRecentSegmentPaid: parseInt(playerInfo.mostRecentSegmentPaid) + 1,
     });
+    setSuccessState({ makeDeposit: true });
     setPlayerInfo(newPlayerInfo);
     getPlayerInfo();
     getGameInfo();
@@ -463,6 +464,8 @@ const GamePage = () => {
                 withdraw={withdraw}
                 redeem={redeem}
                 emergencyWithdraw={emergencyWithdraw}
+                toggleSuccess={toggleSuccess}
+                success={success}
               />
             )}
             <RoboHashCredit />
