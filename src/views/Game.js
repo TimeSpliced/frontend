@@ -213,10 +213,13 @@ const GamePage = () => {
         // const reason = await parseRevertError(error);
         //   alert.show(reason);
       });
-    //setplayer Info TODO 🚨
+    //🚨 TODO Debugg why this is not updating properly -newPlayerInfo is correct -
+    // try next time without the additional calling of getPlayerInfo() - could this be slowing it down?
     const newPlayerInfo = Object.assign({}, playerInfo, {
       mostRecentSegmentPaid: parseInt(playerInfo.mostRecentSegmentPaid) + 1,
     });
+    console.log("newPlayerInfo", newPlayerInfo);
+    setSuccessState({ makeDeposit: true });
     setPlayerInfo(newPlayerInfo);
     getPlayerInfo();
     getGameInfo();
@@ -463,6 +466,8 @@ const GamePage = () => {
                 withdraw={withdraw}
                 redeem={redeem}
                 emergencyWithdraw={emergencyWithdraw}
+                toggleSuccess={toggleSuccess}
+                success={success}
               />
             )}
             <RoboHashCredit />
