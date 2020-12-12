@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import Logo from "./partials/Logo";
 
 const propTypes = {
@@ -130,9 +131,19 @@ class Header extends React.Component {
                         </Link>
                       </li>
                       <li>
-                        <Link to="/2/" onClick={this.closeMenu}>
-                          Team | FAQ | Roadmap
+                        <Link to="/2" onClick={this.closeMenu}>
+                          Team
                         </Link>
+                      </li>
+                      <li>
+                        <HashLink to="/2#faqs" onClick={this.closeMenu}>
+                          FAQ
+                        </HashLink>
+                      </li>
+                      <li>
+                        <HashLink to="/2#roadmap" onClick={this.closeMenu}>
+                          Roadmap
+                        </HashLink>
                       </li>
                     </ul>
                     {!hideSignin && (
