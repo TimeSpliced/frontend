@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { HashLink } from "react-router-hash-link";
 import Logo from './partials/Logo';
 
 const propTypes = {
@@ -120,22 +121,17 @@ class Header extends React.Component {
                         'list-reset text-xxs',
                         navPosition && `header-nav-${navPosition}`
                       )}>
-                        {/* FIX THESE */}
-                        <li>
-                        <a href="https://github.com/Good-Ghosting" target="_blank" rel="noopener" >Github</a>
+                      <li>
+                        <HashLink to="/2#team" onClick={this.closeMenu}>Team</HashLink>
                       </li>
                       <li>
-                        <Link to="/2" onClick={this.closeMenu}>Team</Link>
-                      </li>
-                      
-                      <li>
-                        <Link to="/2/#roadmap" onClick={this.closeMenu}>Roadmap</Link>
+                        <a href="https://medium.com/goodghosting" target="_blank" rel="noopener">Blog</a>
                       </li>
                       <li>
-                        <a href="https://medium.com/@goodghosting" target="_blank" rel="noopener">Blog</a>
+                        <HashLink to="/2/#faqs" onClick={this.closeMenu}>FAQ</HashLink>
                       </li>
                       <li>
-                        <Link to="/2/#roadmap" onClick={this.closeMenu}>FAQs</Link>
+                        <HashLink to="/2/#roadmap" onClick={this.closeMenu}>Roadmap</HashLink>
                       </li>
                     </ul>
                     {!hideSignin &&
